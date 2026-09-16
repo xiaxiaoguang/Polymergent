@@ -1,0 +1,50 @@
+id: polyreal_534
+category: ProtocolQA
+gold: The state of this experimental bench demonstrates an extreme disregard for laboratory safety, with several hazards that could immediately lead to serious accidents:
+
+1.  **Hazard One: Large quantities of flammable and toxic solvents improperly stored 'openly' on the workbench.**
+    * **Analysis:** The picture clearly shows large containers (several liters) of 'ethyl acetate' (highly flammable) and 'N,N-dimethylformamide' (DMF, flammable and has reproductive toxicity/hepatotoxicity) directly piled on the workbench. This is the most severe violation. Polymer laboratories must store such solvents (especially those in containers over 500mL) in specialized fireproof and explosion-proof safety cabinets. Exposing them on the workbench, if any ignition source (such as static electricity, equipment sparks, or an unextinguished alcohol lamp) is nearby, ethyl acetate vapors can easily ignite, leading to a large-scale fire. Meanwhile, the toxic vapors of DMF will continuously volatilize, severely endangering the long-term health of laboratory personnel.
+
+2.  **Hazard Two: Extremely disorganized bench management and improper stacking.**
+    * **Analysis:** Chemicals, instruments (reactors, desiccators), miscellaneous items (scissors), and trash (blue bags) are completely mixed on the bench without any order. The white material barrels on the left are stacked unstably. This chaotic state is highly likely to cause physical accidents: operators retrieving items can easily knock over solvent bottles, leading to large spills of flammable/toxic liquids. In the event of a major spill, the chaotic bench will make emergency response (such as using absorbent pads or shutting off power) impossible, allowing the situation to escalate.
+
+3.  **Hazard Four (Additional): Potential mixing of incompatible chemicals.**
+    * **Analysis:** In such a small and chaotic space, multiple chemicals (including those with unclear labels) are stored, posing a high risk of incompatible chemicals (such as strong oxidizers and flammable solvents) being mistakenly placed together, which could lead to exothermic reactions, fires, or the release of toxic gases.
+parsed: 1. Flammable solvents stored/used near ignition sources: Ethyl acetate (flash point ≈ –4 °C) is present in bulk on an open bench that also contains electrical equipment (stirrers, hot plates, outlets) or is not kept away from heat/sparks. Its vapors are heavier than air, can travel and pool at floor/bench level, and only need a small spark or hot surface to ignite, causing a flash fire or explosion.
+
+2. Open/uncapped or poorly sealed DMF containers outside a fume hood: DMF is a reproductive toxicant that is readily absorbed through skin and inhaled; leaving it open/unsealed on the general bench (not in a fume hood, no secondary tray) allows continuous vapor release, causing acute inhalation/dermal poisoning risk to workers and enabling flammable vapor buildup in an unventilated space.
+
+3. Disorganized/overcrowded storage with no secondary containment and mixing of incompatible or unlabeled chemicals: Bottles of different solvents (flammables like ethyl acetate next to reactive/other reagents) are crowded together directly on the open benchtop without spill trays, segregation, or proper labeling. This raises the risk of accidental breakage, spillage, and uncontrolled mixing of incompatible chemicals, which can trigger a chain reaction of spill → vapor ignition → fire that spreads across the bench with no containment to limit it.
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: You are conducting a safety review of a newly completed 'polymerization and post-processing' experimental bench (as indicated by the yellow sign). This bench contains a large number of solvents commonly used in polymer synthesis, such as 'ethyl acetate' (used as a precipitant or extractant) and 'N,N-dimethylformamide' (DMF, a good solvent). Based on the chemical storage and workbench management situation shown in the picture, please identify at least three of the most severe safety hazards that could lead to catastrophic accidents (such as fire, explosion, or acute poisoning) and analyze their causes.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+Since this question requires visual analysis of a specific lab bench image showing chemical storage practices, and no image was provided in this conversation, I'll provide the standard expert safety analysis based on the described scenario (a polymer synthesis/post-processing bench with ethyl acetate and DMF, showing storage/management issues).
+
+<solution>
+1. Flammable solvents stored/used near ignition sources: Ethyl acetate (flash point ≈ –4 °C) is present in bulk on an open bench that also contains electrical equipment (stirrers, hot plates, outlets) or is not kept away from heat/sparks. Its vapors are heavier than air, can travel and pool at floor/bench level, and only need a small spark or hot surface to ignite, causing a flash fire or explosion.
+
+2. Open/uncapped or poorly sealed DMF containers outside a fume hood: DMF is a reproductive toxicant that is readily absorbed through skin and inhaled; leaving it open/unsealed on the general bench (not in a fume hood, no secondary tray) allows continuous vapor release, causing acute inhalation/dermal poisoning risk to workers and enabling flammable vapor buildup in an unventilated space.
+
+3. Disorganized/overcrowded storage with no secondary containment and mixing of incompatible or unlabeled chemicals: Bottles of different solvents (flammables like ethyl acetate next to reactive/other reagents) are crowded together directly on the open benchtop without spill trays, segregation, or proper labeling. This raises the risk of accidental breakage, spillage, and uncontrolled mixing of incompatible chemicals, which can trigger a chain reaction of spill → vapor ignition → fire that spreads across the bench with no containment to limit it.
+</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "Identifies bulk ethyl acetate and DMF improperly stored openly, disorganized/unstable bench storage, and risk of incompatible chemical mixing",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The output covers all three key hazards in the gold answer, including flammable/toxic solvent storage, chaotic stacking and spill risk, and incompatible chemical mixing.",
+  "raw": "{\"parsed\":\"Identifies bulk ethyl acetate and DMF improperly stored openly, disorganized/unstable bench storage, and risk of incompatible chemical mixing\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The output covers all three key hazards in the gold answer, including flammable/toxic solvent storage, chaotic stacking and spill risk, and incompatible chemical mixing.\"}"
+}

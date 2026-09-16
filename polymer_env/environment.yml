@@ -1,0 +1,75 @@
+name: polymer
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  # --- 层 0 ---
+  - python=3.11
+  - pip
+
+  # --- 层 1–4：数值底座，禁止再走 pip ---
+  - numpy=1.26.*
+  - scipy=1.14.*
+  - pandas
+  - matplotlib
+  - seaborn
+  - statsmodels
+  - scikit-learn
+  - networkx
+  - pyyaml
+  - requests
+  - tqdm
+  - lxml
+  - beautifulsoup4
+  - jupyter
+  - notebook
+  - ipykernel
+  - ipywidgets
+  - pytest
+
+  # --- 层 2–3：化学 / MD / QC / CLI（同一趟 solve）---
+  - rdkit
+  - openbabel
+  - openmm
+  - parmed
+  - mdanalysis
+  - mdtraj
+  - ase
+  - xtb
+  - xtb-python
+  - packmol
+  - lammps
+  - mbuild
+  - foyer
+  - gmso
+  - pymatgen
+  - pyscf
+  - nglview
+  # 需要 packmol-memgen 再打开下一行
+  - ambertools
+
+  - pip:
+      # --- LLM / agent：不要写 numpy/scipy/pandas ---
+      - langchain
+      - langgraph==0.3.18
+      - langchain-openai
+      - langchain-anthropic
+      - langchain-ollama
+      - langchain-community
+      - openai
+      - transformers
+      - sentencepiece
+      - mcp
+      - tooluniverse
+      - python-dotenv
+      - gradio
+
+      # --- 化学纯 Python ---
+      - pubchempy
+      - cirpy
+      - mordred
+      - stk
+      - thermo
+      - chemicals
+      - CoolProp
+      - py3Dmol

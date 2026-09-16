@@ -1,0 +1,44 @@
+id: polyreal_474
+category: PropQA
+gold: ['c', 'b', 'd', 'a']
+parsed: c < b < d < a
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: The Hofmeister series profoundly reveals the impact of different salt ions on the properties of polymer aqueous solutions. Please refer to the diagram below and rank the following sodium salt solutions, each with a concentration of 0.5M, according to their effect on the lower critical solution temperature (LCST) of PNIPAAm, from low temperature to high temperature. a: Sodium thiocyanate (NaSCN) b: Sodium chloride (NaCl) c: Sodium sulfate (Na2SO4) d: Sodium nitrate (NaNO3)
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+**Reasoning:**
+
+The Hofmeister series ranks anions by their "salting-out" (kosmotropic) to "salting-in" (chaotropic) strength:
+
+**SO₄²⁻ > Cl⁻ > NO₃⁻ > SCN⁻**
+
+- Strongly kosmotropic ions (like SO₄²⁻) enhance water structure, promote hydrophobic hydration of PNIPAAm chains, and strengthen polymer-polymer/water-water interactions, causing salting-out — this **lowers** the LCST.
+- Strongly chaotropic ions (like SCN⁻) disrupt water structure, bind directly to the polymer (salting-in), stabilizing the hydrated coil state — this **raises** the LCST.
+
+Thus, ranking anion effect on LCST from **low to high temperature**:
+
+Na₂SO₄ (c) < NaCl (b) < NaNO₃ (d) < NaSCN (a)
+
+<solution>
+c < b < d < a
+</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "c > b > d > a",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The output gives the same ranking as the gold answer: c, b, d, a.",
+  "raw": "{\"parsed\":\"c > b > d > a\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The output gives the same ranking as the gold answer: c, b, d, a.\"}"
+}

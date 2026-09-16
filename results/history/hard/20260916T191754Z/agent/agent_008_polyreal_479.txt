@@ -1,0 +1,31 @@
+id: polyreal_479
+category: PropQA
+gold: ['b', 'd', 'a', 'c']
+parsed: b, d, a, c
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Photolithography is a crucial step in chip manufacturing, involving a series of precisely controlled processes to transfer circuit patterns from a mask onto a silicon wafer. Please refer to the course materials and arrange the core steps of the photolithography process in the correct order of execution in the chip manufacturing process. a: Development b: Photoresist Coating c: Etching d: Exposure
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>
+b, d, a, c
+</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "b, d, a, c",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The output exactly matches the gold ranking.",
+  "raw": "{\"parsed\":\"b, d, a, c\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The output exactly matches the gold ranking.\"}"
+}

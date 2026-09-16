@@ -1,0 +1,21 @@
+id: point2_tg_glass_transition_temperature_0001
+category: PropQA
+gold: 523.15
+parsed: 430
+score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Predict the glass_transition_temperature of the polymer whose repeat-unit SMILES is:
+*/C(=C(/*)c1ccc([Si](C(C)C)(C(C)C)C(C)C)cc1)c1ccccc1
+Report a single number in K. Do not include the unit in the tagged answer.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>430

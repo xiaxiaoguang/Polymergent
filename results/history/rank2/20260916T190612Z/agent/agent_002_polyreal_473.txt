@@ -1,0 +1,44 @@
+id: polyreal_473
+category: PropQA
+gold: ['a', 'b', 'c', 'd']
+parsed: a < b < c < d
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: In polymer science research, the thermosensitivity of polymers can be precisely adjusted by controlling the chemical structure of their side chains. Please refer to the chart below and arrange the following poly(N-alkylacrylamides) in order of their lower critical solution temperature (LCST) from low to high. a: Poly(N-n-propylacrylamide) b: Poly(N-isopropylacrylamide) c: Poly(N-cyclopropylacrylamide) d: Poly(N-ethylacrylamide)
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+Based on the literature values found:
+- Poly(N-n-propylacrylamide) (a): LCST ≈ 21-25°C
+- Poly(N-isopropylacrylamide) (b): LCST ≈ 32-33°C
+- Poly(N-cyclopropylacrylamide) (c): LCST ≈ 45-53°C
+- Poly(N-ethylacrylamide) (d): LCST ≈ 72°C
+
+This follows a well-known structure-property trend in poly(N-alkylacrylamides) literature (e.g., Ito 1989, Aseyev/Tenhu reviews): the smaller ethyl side chain provides less hydrophobic character per unit, pushing LCST higher, while branched propyl derivatives lower LCST most effectively; cyclopropyl (rigid, bulky ring) sits between isopropyl and ethyl.
+
+**Plan:**
+1. [✓] Recall/verify LCST values for these four poly(N-alkylacrylamides) from literature
+2. [✓] Rank them from low to high LCST
+3. [✓] Provide final answer
+
+<solution>
+a < b < c < d
+</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "a > b > c > d",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The output explicitly gives the ranking a < b < c < d, matching the gold order.",
+  "raw": "{\"parsed\":\"a > b > c > d\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The output explicitly gives the ranking a < b < c < d, matching the gold order.\"}"
+}

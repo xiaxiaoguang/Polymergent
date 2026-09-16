@@ -1,0 +1,27 @@
+# MANIFEST.in
+
+# Include all python files from the polymer package
+recursive-include polymer *.py
+
+# Include the .pkl database files
+recursive-include polymer/tool/schema_db *.pkl
+
+# Include specific files from polymer_env, but not the polymer_tools subdirectory
+recursive-include polymer_env *.py *.sh *.yml *.yaml *.txt *.md *.json *.R
+
+# Exclude specific directories that are not part of the package
+prune tutorials/data
+prune polymer_env/polymer_tools
+
+# Exclude build artifacts and caches
+global-exclude *.py[co]
+global-exclude __pycache__
+global-exclude .ruff_cache
+prune build
+prune dist
+prune *.egg-info
+
+# Include other necessary files
+include README.md
+include LICENSE
+include pyproject.toml

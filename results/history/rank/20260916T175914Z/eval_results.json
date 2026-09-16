@@ -1,0 +1,24 @@
+{
+  "timestamp_utc": "2026-09-16T17:59:14.774796+00:00",
+  "task_origin": "polymer.task.polymer_bench",
+  "data_path": "/home/hcao5/workspace/datasets/polymer/data",
+  "split": "rank",
+  "dataset": "PropQA",
+  "answer_type": "exactMatch",
+  "judge_model": null,
+  "env_files": [
+    "/home/hcao5/workspace/polymer/.env"
+  ],
+  "sizes": {
+    "selected_available": 34,
+    "run": 10,
+    "offset": 0
+  },
+  "example_id": "polyreal_472",
+  "history_dir": "/home/hcao5/workspace/polymer/results/history/20260916T175914Z",
+  "runs": {},
+  "errors": {
+    "agent": "GraphRecursionError: Recursion limit of 20 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT",
+    "agent_trace": "Traceback (most recent call last):\n  File \"/home/hcao5/workspace/polymer/run_eval.py\", line 645, in main\n    payload[\"runs\"][\"agent\"] = run_agent(live_task, len(live_task), dump_dir / \"agent\", judge_llm=judge_llm)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/hcao5/workspace/polymer/run_eval.py\", line 409, in run_agent\n    raw = agent.go(item[\"prompt\"])\n          ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/hcao5/workspace/polymer/polymer/agent/a1.py\", line 1807, in go\n    for s in self.app.stream(inputs, stream_mode=\"values\", config=config):\n  File \"/home/hcao5/miniconda3/envs/polymer/lib/python3.11/site-packages/langgraph/pregel/__init__.py\", line 2343, in stream\n    raise GraphRecursionError(msg)\nlanggraph.errors.GraphRecursionError: Recursion limit of 20 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT\n"
+  }
+}

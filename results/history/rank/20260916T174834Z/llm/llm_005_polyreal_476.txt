@@ -1,0 +1,29 @@
+id: polyreal_476
+category: PropQA
+gold: ['b', 'c', 'a']
+parsed: b < c < a
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: The self-assembly morphology of block copolymers in selective solvents is closely related to the geometric configuration of their molecules, which is often described by the critical packing parameter P. Please refer to the diagram below and rank the following three typical self-assembled structures according to their corresponding critical packing parameter P values, from smallest to largest. a: Polymersomes b: Spherical Micelles c: Cylindrical Micelles
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>b < c < a
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "b < c < a",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The output gives the same ranking as the gold answer: b, c, a.",
+  "raw": "{\"parsed\":\"b < c < a\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The output gives the same ranking as the gold answer: b, c, a.\"}"
+}

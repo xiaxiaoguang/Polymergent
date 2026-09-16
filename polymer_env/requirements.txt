@@ -1,0 +1,65 @@
+# Polymer/chemistry tool environment -- matches library_content_dict in
+# polymer_library_content_dict.py.
+#
+#   pip install -r requirements_polymer.txt
+
+# --- Cheminformatics & molecular representation ---
+rdkit
+pubchempy
+cirpy
+mordred
+networkx
+
+# --- Polymer building (pip-installable part of this category) ---
+stk
+
+# --- Molecular dynamics: engine, analysis ---
+openmm
+parmed
+MDAnalysis
+mdtraj
+ase
+
+# --- Quantum chemistry ---
+pyscf
+xtb-python
+
+# --- Thermophysical & materials property estimation ---
+thermo
+chemicals
+CoolProp
+pymatgen
+
+# --- Machine learning for molecules/materials ---
+scikit-learn
+xgboost
+deepchem
+torch
+torch-geometric
+
+# --- Core data science ---
+numpy
+pandas
+scipy
+matplotlib
+seaborn
+
+# --- Visualization ---
+py3Dmol
+nglview
+
+# --- Simulation-box building helper (wraps the packmol CLI) ---
+packmol-memgen
+
+# =============================================================================
+# NOT installable via this file -- see setup_polymer_env.sh instead:
+# =============================================================================
+#
+# openbabel, packmol, xtb (CLI), lammps  -- system/CLI binaries, conda-forge
+# mbuild, foyer, gmso                    -- MoSDeF toolchain, conda-forge-first,
+#                                            not reliably on PyPI
+# radonpy                                -- not on PyPI or conda-forge; install
+#                                            from source: github.com/RadonPy/RadonPy
+#
+# To pin exact versions once you've installed successfully, run:
+#   pip freeze > requirements.lock.txt

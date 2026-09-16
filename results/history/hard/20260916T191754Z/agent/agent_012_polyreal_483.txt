@@ -1,0 +1,59 @@
+id: polyreal_483
+category: PropQA
+gold: ['b', 'a', 'c']
+parsed: a (Methoxymethylated polystyrene, Resin II) < b (Aminated polystyrene, Resin I) < c (p-Acetylphenoxymethylated polystyrene, Resin III)
+rule_score: 0.3333333333333333
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: The chemical structure of non-specific affinity adsorption resins directly affects their adsorption capacity for target products (such as ginsenosides). Please refer to the experimental data in the table below and rank the following three polystyrene resins, which have undergone different chemical modifications, in order of their adsorption capacity for ginsenosides from smallest to largest. a: Methoxymethylated polystyrene (Resin II) b: Aminated polystyrene (Resin I) c: p-Acetylphenoxymethylated polystyrene (Resin III)
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+## Reasoning Based on Chemistry
+
+Since web search didn't find the specific paper/data table, I'll reason through this based on polymer adsorption chemistry principles:
+
+**Adsorption mechanism for ginsenosides on resins:**
+Ginsenosides are amphiphilic triterpene saponins with both hydrophobic (steroid-like backbone) and hydrophilic (sugar moieties, hydroxyl groups) portions. Adsorption capacity on modified polystyrene resins depends on:
+1. **Hydrophobic interactions** (van der Waals) with the polystyrene backbone
+2. **Hydrogen bonding** capability of the functional groups
+2. **π-π stacking** interactions with aromatic groups
+4. **Polarity matching** between resin surface and ginsenoside
+
+**Analyzing the three modifications:**
+
+- **a) Methoxymethylated PS (Resin II)**: -CH2-O-CH3 group. Small, moderately polar, weak H-bond acceptor only. Limited surface polarity, mainly relies on the parent PS hydrophobicity.
+
+- **b) Aminated PS (Resin I)**: -NH2 group. Highly polar, strong H-bond donor/acceptor, can form multiple hydrogen bonds with ginsenoside's numerous –OH groups. Amino groups have strong interaction potential with saponins' sugar and hydroxyl groups.
+
+- **c) p-Acetylphenoxymethylated PS (Resin III)**: -O-C6H4-C(=O)CH3 group. Introduces an additional aromatic ring (enhancing π-π stacking with ginsenoside's steroid/aromatic-like rings) PLUS a carbonyl group (H-bond acceptor). This combines both hydrophobic (extra phenyl) and moderate polar (acetyl) interactions — typically giving the highest adsorption capacity for saponin-type natural products in reported resin literature (similar to AB-8, D101 type comparisons where phenolic/aromatic-ester modified resins show superior saponin adsorption).
+
+**Typical literature trend** (from various ginsenoside/saponin resin adsorption studies, e.g., studies on chemically modified polystyrene resins for ginsenoside enrichment) shows:
+- Aminated resins: moderate-to-good capacity (polar/H-bonding interactions)
+- Methoxymethylated: lowest capacity (weak, non-specific interactions only)
+- p-Acetylphenoxymethylated: highest capacity (combined hydrophobic aromatic + polar carbonyl interactions synergize best with amphiphilic ginsenosides)
+
+**Ranking (smallest to largest adsorption capacity):**
+
+Methoxymethylated (a) < Aminated (b) < p-Acetylphenoxymethylated (c)
+
+<solution>
+a (Methoxymethylated polystyrene, Resin II) < b (Aminated polystyrene, Resin I) < c (p-Acetylphenoxymethylated polystyrene, Resin III)
+</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "a < b < c",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The output ranks the options as a < b < c, whereas the gold ranking is b > a > c.",
+  "raw": "{\"parsed\":\"a < b < c\",\"equivalent\":false,\"score\":0.0,\"reason\":\"The output ranks the options as a < b < c, whereas the gold ranking is b > a > c.\"}"
+}

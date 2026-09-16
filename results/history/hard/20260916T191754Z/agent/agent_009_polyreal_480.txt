@@ -1,0 +1,29 @@
+id: polyreal_480
+category: PropQA
+gold: ['b', 'a', 'c', 'd']
+parsed: b > a > c > d
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: According to Rayleigh's Resolution equation, using a light source with a shorter wavelength is key to improving lithography resolution and manufacturing smaller chips. Please refer to the table below and arrange the following lithography light sources in order of their operating wavelengths, from longest to shortest. a: KrF excimer laser b: i-line (mercury lamp) c: ArF excimer laser d: Extreme Ultraviolet (EUV)
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>b > a > c > d</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "b > a > c > d",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The output matches the gold ranking exactly.",
+  "raw": "{\"parsed\":\"b > a > c > d\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The output matches the gold ranking exactly.\"}"
+}

@@ -1,0 +1,39 @@
+id: polyreal_481
+category: PropQA
+gold: ['d', 'b', 'c', 'a']
+parsed: a, b, d, c
+rule_score: 0.25
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: The synthesis of polythiophene and its derivatives relies on efficient catalytic C-C coupling polymerization reactions. Arrange the following catalytic coupling reactions commonly used for synthesizing conjugated polymers according to the central metal element of the key organometallic reagent (or precursor) used. a: Suzuki coupling reaction b: Kumada coupling reaction c: Stille coupling reaction d: Yamamoto coupling reaction
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+**Central metal identification:**
+- Suzuki (a): **Boron** (B) – organoboronic acid/ester
+- Kumada (b): **Magnesium** (Mg) – Grignard reagent (organomagnesium halide)
+- Stille (c): **Tin** (Sn) – organostannane
+- Yamamoto (d): **Nickel** (Ni) – Ni(0) complex (e.g., Ni(COD)₂) directly couples dihalides
+
+**Arranging by atomic number of the central metal (increasing):**
+
+B (Z=5) < Mg (Z=12) < Ni (Z=28) < Sn (Z=50)
+
+<solution>a, b, d, c</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "a, b, d, c",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The output ranks the reactions as a > b > d > c, which does not match the gold ranking d > b > c > a.",
+  "raw": "{\"parsed\":\"a, b, d, c\",\"equivalent\":false,\"score\":0.0,\"reason\":\"The output ranks the reactions as a > b > d > c, which does not match the gold ranking d > b > c > a.\"}"
+}

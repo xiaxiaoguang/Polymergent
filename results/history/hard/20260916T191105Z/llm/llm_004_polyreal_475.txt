@@ -1,0 +1,31 @@
+id: polyreal_475
+category: PropQA
+gold: ['d', 'a', 'b', 'c']
+parsed: b < c < a < d
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Block copolymers can self-assemble into micelle structures of varying sizes in selective solvents, which is crucial for drug delivery and nanotechnology. Please refer to the chart below and rank the following block copolymers according to the diameter of the micelles (or similar structures) they form in water, from smallest to largest. a: PβDMA-b-PDPA b: P2VP-b-PEG c: PDMA-b-PPO-b-PDMA d: PDMA-b-PMMA-b-PMAAc
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>
+b < c < a < d
+
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "b > c > a > d",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The output ranking b > c > a > d does not match the gold ranking d > a > b > c.",
+  "raw": "{\"parsed\":\"b > c > a > d\",\"equivalent\":false,\"score\":0.0,\"reason\":\"The output ranking b > c > a > d does not match the gold ranking d > a > b > c.\"}"
+}

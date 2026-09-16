@@ -1,0 +1,53 @@
+id: polyreal_486
+category: PropQA
+gold: ['b', 'a', 'd', 'c', 'e']
+parsed: e (SCN⁻) > d (I⁻) > c (Cl⁻) > b (CH₃COO⁻) > a (SO₄²⁻)
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: The interaction strength between polyelectrolyte brushes and ions follows a specific ion sequence. Please refer to the diagram below and, at a salt concentration of 0.5 M, rank the following anions according to the response (measured as Δf) they induce upon interaction with poly(methacryloyloxyethyl trimethyl ammonium chloride) (PMETAC) brushes, from causing the most collapse of the brush layer (smallest Δf) to the most swelling (largest Δf). a: SO₄²⁻ b: CH₃COO⁻ c: Cl⁻ d: I⁻ e: SCN⁻
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+Looking at this problem, I need to recall the Hofmeister series behavior for polycation brushes (PMETAC) interacting with anions, as measured by QCM-D (Δf).
+
+**Reasoning:**
+
+1. **PMETAC is a cationic (polyelectrolyte) brush** — quaternary ammonium groups carry permanent positive charge, with mobile counter-anions providing osmotic swelling pressure.
+
+2. **Ion specificity (Hofmeister series) governs anion binding affinity** to the quaternary ammonium groups:
+   - **Chaotropic anions** (weakly hydrated, large, polarizable: SCN⁻, I⁻) bind strongly to the cationic brush via ion-pairing/specific adsorption. This charge neutralization reduces the osmotic swelling pressure inside the brush, causing **brush collapse** (small Δf).
+   - **Kosmotropic anions** (strongly hydrated, small, high charge density: SO₄²⁻, CH₃COO⁻) remain hydrated and do not pair efficiently with the brush charges. The osmotic pressure from free counterions is preserved, keeping the brush **swollen** (large Δf).
+   - Cl⁻ sits intermediate in the Hofmeister series.
+
+3. **Standard Hofmeister ordering for anion binding affinity to cationic surfaces:**
+$$\text{SCN}^- > \text{I}^- > \text{Cl}^- > \text{CH}_3\text{COO}^- > \text{SO}_4^{2-}$$
+
+   (binding affinity/collapsing power decreasing left to right)
+
+4. Therefore, ranking from **most collapse (smallest Δf)** → **most swelling (largest Δf)**:
+
+$$\text{SCN}^- (e) > \text{I}^- (d) > \text{Cl}^- (c) > \text{CH}_3\text{COO}^- (b) > \text{SO}_4^{2-} (a)$$
+
+This is consistent with known QCM-D studies on PMETAC brushes at 0.5 M salt concentration, where highly chaotropic thiocyanate induces the strongest brush collapse due to strong ion-pairing with the trimethylammonium groups, while the kosmotropic sulfate causes the brush to remain most swollen.
+
+<solution>
+e (SCN⁻) > d (I⁻) > c (Cl⁻) > b (CH₃COO⁻) > a (SO₄²⁻)
+</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "e > d > c > b > a",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The output ranks the options e > d > c > b > a, which does not match the gold ranking b > a > d > c > e.",
+  "raw": "{\"parsed\":\"e > d > c > b > a\",\"equivalent\":false,\"score\":0.0,\"reason\":\"The output ranks the options e > d > c > b > a, which does not match the gold ranking b > a > d > c > e.\"}"
+}

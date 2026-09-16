@@ -1,0 +1,50 @@
+id: polyreal_474
+category: PropQA
+gold: ['c', 'b', 'd', 'a']
+parsed: c < b < d < a
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: The Hofmeister series profoundly reveals the impact of different salt ions on the properties of polymer aqueous solutions. Please refer to the diagram below and rank the following sodium salt solutions, each with a concentration of 0.5M, according to their effect on the lower critical solution temperature (LCST) of PNIPAAm, from low temperature to high temperature. a: Sodium thiocyanate (NaSCN) b: Sodium chloride (NaCl) c: Sodium sulfate (Na2SO4) d: Sodium nitrate (NaNO3)
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+# Hofmeister Series and PNIPAAm LCST
+
+## Background
+The Hofmeister series ranks anions based on their ability to "salt out" (stabilize, lower LCST) or "salt in" (destabilize, raise LCST) proteins/polymers in water. For PNIPAAm, kosmotropic (strongly hydrated) anions promote dehydration of the polymer chain, **lowering** the LCST, while chaotropic (weakly hydrated) anions can bind to the polymer and increase its hydration, **raising** the LCST.
+
+The typical anion order (kosmotropic → chaotropic) is:
+
+$$SO_4^{2-} > Cl^- > NO_3^- > SCN^-$$
+
+## Effect on LCST
+- **SO₄²⁻** (strongly kosmotropic): most effective at salting-out → **lowest LCST**
+- **Cl⁻**: moderately kosmotropic → lowers LCST somewhat
+- **NO₃⁻**: weakly chaotropic → LCST close to or slightly above pure water
+- **SCN⁻** (strongly chaotropic): binds to polymer, increases solubility → **highest LCST**
+
+## Ranking (Low LCST → High LCST)
+
+$$\text{Na}_2\text{SO}_4 < \text{NaCl} < \text{NaNO}_3 < \text{NaSCN}$$
+
+<solution>
+c < b < d < a
+
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "c > b > d > a",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The output gives the same ordering as the gold ranking: c, b, d, a.",
+  "raw": "{\"parsed\":\"c > b > d > a\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The output gives the same ordering as the gold ranking: c, b, d, a.\"}"
+}

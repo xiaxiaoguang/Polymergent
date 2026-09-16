@@ -1,0 +1,39 @@
+id: polyreal_485
+category: PropQA
+gold: ['b', 'a', 'c', 'd', 'e']
+parsed: e, d, c, a, b
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: The salt concentration can shield the electrostatic repulsion between polyelectrolyte brush chains, thereby affecting their pH responsiveness. Please refer to the figure below and rank the following different salt concentrations according to their impact on the swelling degree of poly(methacryloyloxyethyl trimethyl ammonium chloride) (PMETAC) brushes (measured by Δfₙ₌₃) from the least impact (smallest Δf) to the greatest impact (largest Δf). a: 20 mM b: 10 mM c: 30 mM d: 50 mM e: 100 mM
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+Based on established polyelectrolyte brush physics (referenced in the polymer brush know-how and literature on PMETAC brushes studied via QCM-D), increasing salt concentration screens electrostatic repulsions between the permanently charged brush chains. This screening reduces the osmotic pressure driving chain extension, meaning that **at high salt concentrations, the brush behavior becomes less differentiated/less responsive (smaller Δf)**, while **at low salt concentrations, the brush shows the strongest swelling response (largest Δf)** because electrostatic interactions (and thus pH-triggered counterion effects) are not screened.
+
+This is consistent with the known transition from the "osmotic brush" regime (low ionic strength, strong stretching, high sensitivity to changes) to the "salted brush" regime (high ionic strength, screened charges, reduced sensitivity) — well documented for strong polyelectrolyte brushes like PMETAC in QCM-D studies (e.g., Azzaroni et al., Yu et al.).
+
+Thus, ranking salt concentrations from **least impact (smallest Δf)** to **greatest impact (largest Δf)**:
+
+- 100 mM (most screening, smallest response) → 50 mM → 30 mM → 20 mM → 10 mM (least screening, largest response)
+
+<solution>
+e, d, c, a, b
+</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "e > d > c > a > b",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The output ranks the choices as e, d, c, a, b, which does not match the gold ranking b, a, c, d, e.",
+  "raw": "{\"parsed\":\"e > d > c > a > b\",\"equivalent\":false,\"score\":0.0,\"reason\":\"The output ranks the choices as e, d, c, a, b, which does not match the gold ranking b, a, c, d, e.\"}"
+}

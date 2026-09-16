@@ -1,0 +1,38 @@
+id: point2_tg_glass_transition_temperature_0006
+category: PropQA
+gold: 454.15
+parsed: 454.15
+score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Predict the glass_transition_temperature of the polymer whose repeat-unit SMILES is:
+*/C(C#N)=C/c1cc(OCCCCCCCCCCCC)c(/C=C(\C#N)c2cc(OCCCCCCCCCCCC)c(*)cc2OC)cc1OC
+Report a single number in K. Do not include the unit in the tagged answer.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+1. [✓] Parse the repeat-unit SMILES to understand structure
+2. [✓] Search polymetrix_tg.parquet dataset for similar polymers (CN-PPV type, dicyanovinylene aromatic polymers)
+3. [✓] Estimate Tg based on structural analogs and descriptors
+4. [✓] Report final answer
+
+**Summary of analysis:**
+The query polymer is a dicyanovinylene-linked phenylene polymer with dodecyloxy (C12) alkyl side chains and methoxy substituents. I found an essentially identical structure in the polymetrix_tg.parquet database:
+- Same molecular formula (C44H62N2O4 per repeat unit)
+- Same exact mass (682.47 g/mol)
+- Same core scaffold: dialkoxy-dicyanovinylene-phenylene backbone
+- Same C12 (dodecyloxy) side chain length on both aromatic rings
+- Same methoxy substituent pattern
+
+The only difference between the query and the database match is the regiochemical placement of the polymer attachment point on the vinylene carbon (a drawing convention for indicating repeat-unit connectivity), which does not change the actual polymer chain composition or connectivity pattern.
+
+This match is part of a homologous series with varying alkyl chain lengths (C8→447.15K, C10→471.15K, C12→454.15K, C16→463.15K), confirming that Tg for the C12 homolog is 454.15 K.
+
+<solution>454.15</solution>

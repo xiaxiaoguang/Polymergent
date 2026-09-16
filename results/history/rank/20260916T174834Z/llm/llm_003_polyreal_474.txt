@@ -1,0 +1,57 @@
+id: polyreal_474
+category: PropQA
+gold: ['c', 'b', 'd', 'a']
+parsed: c (Na₂SO₄) < b (NaCl) < d (NaNO₃) < a (NaSCN)
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: The Hofmeister series profoundly reveals the impact of different salt ions on the properties of polymer aqueous solutions. Please refer to the diagram below and rank the following sodium salt solutions, each with a concentration of 0.5M, according to their effect on the lower critical solution temperature (LCST) of PNIPAAm, from low temperature to high temperature. a: Sodium thiocyanate (NaSCN) b: Sodium chloride (NaCl) c: Sodium sulfate (Na2SO4) d: Sodium nitrate (NaNO3)
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+# Hofmeister Series Effect on PNIPAAm LCST
+
+## Background Analysis
+
+The Hofmeister series ranks anions by their ability to salt-out (stabilize) or salt-in (destabilize) proteins/polymers in water. For PNIPAAm:
+
+- **Kosmotropic anions** (strongly hydrated, salting-out): Enhance hydrophobic interactions, promote water structuring around the polymer, and **decrease** LCST
+- **Chaotropic anions** (weakly hydrated, salting-in): Disrupt water structure, interact directly with the polymer chain, and **increase** LCST
+
+The Hofmeister series for common anions (from kosmotropic/salting-out to chaotropic/salting-in) is:
+
+$$SO_4^{2-} > Cl^- > NO_3^- > SCN^-$$
+
+## Applying to the Salts
+
+| Salt | Anion | Hofmeister Character | Effect on LCST |
+|------|-------|----------------------|-----------------|
+| Na₂SO₄ (c) | SO₄²⁻ | Strongly kosmotropic | Lowers LCST most |
+| NaCl (b) | Cl⁻ | Weakly kosmotropic | Lowers LCST moderately |
+| NaNO₃ (d) | NO₃⁻ | Weakly chaotropic | Raises LCST moderately |
+| NaSCN (a) | SCN⁻ | Strongly chaotropic | Raises LCST most |
+
+This trend follows the classic Hofmeister series diagram, where sulfate salts strongly promote the coil-to-globule transition (lower cloud point/LCST), while thiocyanate salts bind to the polymer backbone and disrupt hydrophobic collapse (higher cloud point/LCST).
+
+## Final Ranking (Low LCST → High LCST)
+
+<solution>
+c (Na₂SO₄) < b (NaCl) < d (NaNO₃) < a (NaSCN)
+
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "c > b > d > a",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The output ranks the salts as c, b, d, a from low to high LCST, exactly matching the gold ranking.",
+  "raw": "{\"parsed\":\"c > b > d > a\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The output ranks the salts as c, b, d, a from low to high LCST, exactly matching the gold ranking.\"}"
+}

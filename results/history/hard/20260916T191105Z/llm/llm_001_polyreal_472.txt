@@ -1,0 +1,29 @@
+id: polyreal_472
+category: PropQA
+gold: ['c', 'a', 'b']
+parsed: c, a, b
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Amphiphilic polymers can be achieved through different molecular structure designs. Please arrange the following types of polymer structures found in materials in order of their topological complexity from simple to complex. a: ABA triblock copolymer b: ABC triblock copolymer c: AB diblock copolymer
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>c, a, b
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "c, a, b",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The output exactly matches the gold ranking.",
+  "raw": "{\"parsed\":\"c, a, b\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The output exactly matches the gold ranking.\"}"
+}

@@ -1,0 +1,21 @@
+id: point2_tg_glass_transition_temperature_0005
+category: PropQA
+gold: 447.15
+parsed: 380
+score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Predict the glass_transition_temperature of the polymer whose repeat-unit SMILES is:
+*/C(C#N)=C/c1cc(OCCCCCCCC)c(/C=C(\C#N)c2cc(OCCCCCCCC)c(*)cc2OC)cc1OC
+Report a single number in K. Do not include the unit in the tagged answer.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>380

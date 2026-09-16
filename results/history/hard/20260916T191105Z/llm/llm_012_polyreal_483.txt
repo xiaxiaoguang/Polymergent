@@ -1,0 +1,29 @@
+id: polyreal_483
+category: PropQA
+gold: ['b', 'a', 'c']
+parsed: b < a < c
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: The chemical structure of non-specific affinity adsorption resins directly affects their adsorption capacity for target products (such as ginsenosides). Please refer to the experimental data in the table below and rank the following three polystyrene resins, which have undergone different chemical modifications, in order of their adsorption capacity for ginsenosides from smallest to largest. a: Methoxymethylated polystyrene (Resin II) b: Aminated polystyrene (Resin I) c: p-Acetylphenoxymethylated polystyrene (Resin III)
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>b < a < c
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "b > a > c",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The output gives the same ranking as the gold answer.",
+  "raw": "{\"parsed\":\"b > a > c\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The output gives the same ranking as the gold answer.\"}"
+}

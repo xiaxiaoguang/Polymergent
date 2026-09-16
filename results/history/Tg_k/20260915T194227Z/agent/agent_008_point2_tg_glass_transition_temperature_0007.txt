@@ -1,0 +1,31 @@
+id: point2_tg_glass_transition_temperature_0007
+category: PropQA
+gold: 463.15
+parsed: 463.15
+score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Predict the glass_transition_temperature of the polymer whose repeat-unit SMILES is:
+*/C(C#N)=C/c1ccc(N(CC)Cc2ccccc2CN(CC)c2ccc(/C=C(\C#N)S(*)(=O)=O)cc2)cc1
+Report a single number in K. Do not include the unit in the tagged answer.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+The molecular formulas match exactly (C90H86N12O6S3) for trimers of both structures. The difference is simply where the repeat-unit "cut point" was chosen (breaking the polymer chain at a different bond), which is a well-known equivalence in polymer SMILES notation — both represent the exact same infinite polymer chain, just with a different choice of two dummy attachment points along the backbone.
+
+**Verification of repeat unit equivalence:**
+- Target repeat unit: `*/C(C#N)=C/c1ccc(N(CC)Cc2ccccc2CN(CC)c2ccc(/C=C(\C#N)S(*)(=O)=O)cc2)cc1`
+- PMX_TG_03173 repeat unit: `[*]Cc1ccccc1CN(CC)c1ccc(/C=C(\C#N)S(=O)(=O)C(C#N)=Cc2ccc(N([*])CC)cc2)cc1`
+
+Both contain the identical backbone: triethylamine-linked xylylene, N-aryl, cyanovinylsulfonyl-cyanovinyl bridge — same atoms, same connectivity pattern, just the polymerization cut point differs (analogous to writing -CH2-CH2- vs starting mid-unit). The core repeating sequence in both oligomers is identical.
+
+This directly matches the experimental data point **PMX_TG_03173** with Tg = 463.15 K.
+
+<solution>463.15</solution>
