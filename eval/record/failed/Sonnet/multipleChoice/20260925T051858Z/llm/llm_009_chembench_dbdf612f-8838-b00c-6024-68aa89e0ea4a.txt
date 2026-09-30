@@ -1,0 +1,26 @@
+id: chembench_dbdf612f-8838-b00c-6024-68aa89e0ea4a
+category: KnowledgeQA
+gold: D
+parsed: E
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a multiple choice question about polymer science.
+Think step by step if needed, then give the final answer.
+
+Question: To determine the degree of crystallinity of a polymer, which of the following characterization techniques are preferred?
+Options:
+A. Scanning Electron Microscopy
+B. Thermogravimetric Analysis
+C. Insufficient information to answer the question.
+D. Differential Scanning Calorimetry
+E. Wide Angle X-ray Diffraction
+
+Put the final answer inside <solution>...</solution>.
+For multiple choice, the solution body must be a single letter (A, B, C, ...), for example: <solution>C</solution>.
+Do not put extra words inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>E

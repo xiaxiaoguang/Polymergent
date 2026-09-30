@@ -33,7 +33,7 @@ class PolymerConfig:
     timeout_seconds: int = 600
 
     # LLM settings (API keys still from environment)
-    llm: str = "claude-sonnet-4-5"
+    llm: str = "claude-haiku-4-5-20251001"
     temperature: float = 0.7
 
     # Tool settings

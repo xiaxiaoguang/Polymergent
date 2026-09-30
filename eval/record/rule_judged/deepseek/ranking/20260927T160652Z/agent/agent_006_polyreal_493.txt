@@ -1,0 +1,34 @@
+id: polyreal_493
+category: PropQA
+gold: ["c", "d", "a", "b"]
+parsed: ["c", "d", "a", "b"]
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer ranking question.
+Think step by step if needed, then give the ordered list.
+
+Question: In the ionic thermoelectric (i-TE) system, the Seebeck coefficient ($S_e$) is the core parameter determining its thermoelectric conversion performance, and its magnitude mainly depends on the reaction entropy ($\Delta S$) of the redox couple. In scientific practice, different combinations of redox couples and polymer matrices exhibit distinctly different $S_e$ values. Please rank the following common i-TE systems or matrices **in order of their Seebeck coefficient $S_e$ (mV K-1) from high to low**.
+ a: PVA hydrogel with Fe3+/Fe2+ redox couple 
+ b: Polyacrylamide (PAM) matrix (without active redox couple) 
+ c: KCl/gelatin composite gel with [Fe(CN)6]3-/[Fe(CN)6]4- redox couple 
+ d: PVA hydrogel with Fe3+/Fe2+ redox couple and added HCl
+
+Put the final ranking inside <solution>...</solution>.
+Use either JSON list form ["a", "b", "c"] or a > b > c.
+Order matters. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>["c", "d", "a", "b"]</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "[\"c\", \"d\", \"a\", \"b\"]",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The output matches the gold ranking exactly.",
+  "raw": "{\"parsed\":\"[\\\"c\\\", \\\"d\\\", \\\"a\\\", \\\"b\\\"]\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The output matches the gold ranking exactly.\"}"
+}

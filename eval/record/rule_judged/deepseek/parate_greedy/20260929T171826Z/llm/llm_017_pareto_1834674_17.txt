@@ -1,0 +1,29 @@
+id: pareto_1834674_17
+category: KnowledgeQA
+gold: -0.931
+parsed: -0.483
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Polymer reaction_id=1834674, pSMILES `*C(C)=C(*)CNC(=O)OCc1ccccc1`. Features for conformer_8, dipole=1.242, polarizability=186.9, HOMO eV=-5.315, HOMO-1 eV=-5.883, min q=-0.322, chi_water=1.380. Predict LUMO in eV for this conformer, rounded to 3 decimals.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>-0.483
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "-0.483",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The predicted value -0.483 has a relative error of about 48.1% versus the gold value -0.931, exceeding the 15% tolerance.",
+  "raw": "{\"parsed\":\"-0.483\",\"equivalent\":false,\"score\":0.0,\"reason\":\"The predicted value -0.483 has a relative error of about 48.1% versus the gold value -0.931, exceeding the 15% tolerance.\"}"
+}

@@ -1,0 +1,31 @@
+id: polymeragent_egc_chain_bandgap_0001
+category: PropQA
+gold: 4.3204
+parsed: 4.0
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Predict the chain bandgap of the polymer whose repeat-unit SMILES is:
+*=CC1CC(C=*)C2CN(c3cc(C(F)(F)F)cc(C(F)(F)F)c3)CC12
+Report a single number in eV. Do not include the unit in the tagged answer.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>4.0
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "4.0",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The predicted value 4.0 is within 15% relative error of the gold value 4.3204.",
+  "raw": "{\"parsed\":\"4.0\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The predicted value 4.0 is within 15% relative error of the gold value 4.3204.\"}"
+}

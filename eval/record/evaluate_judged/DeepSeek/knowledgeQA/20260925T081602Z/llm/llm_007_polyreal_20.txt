@@ -1,0 +1,45 @@
+id: polyreal_20
+category: KnowledgeQA
+gold: When designing the 'monomerization of functional components', at least the following three key factors need to be considered:
+
+1. **Retention of Functionality and Compatibility**: When introducing polymerizable groups (such as double bonds) to the functional components, the chosen chemical reactions and introduction sites must not destroy or significantly reduce the original core functions of the functional components. Additionally, there should be no adverse chemical or electronic interactions between the introduced polymerizable groups and the functional components. For example, the conditions of the polymerization reaction should not cause the functional components to decompose.
+
+2. **Introduction and Selection of Spacers**: Typically, the functional components are not directly connected to the polymerizable groups but are linked through a flexible chemical structure known as a 'spacer' (such as a methylene chain). The role of the spacer is to decouple the motion of the functional components from the polymer main chain, providing the functional components with greater mobility to fully exert their functions. It also helps to avoid excessive steric hindrance effects from bulky functional components on the polymerization reaction.
+
+3. **Reversible Protection of Important Functional Groups**: If the functional components contain reactive functional groups (such as -OH, -NH₂, -COOH) that are unstable or interfere with the polymerization under reaction conditions, they need to be chemically protected before polymerization, temporarily converting them into stable groups. After polymerization, they can be restored through deprotection reactions to ensure smooth polymerization and retention of functionality.
+parsed: 1. **Functional-group tolerance during polymerization**: The functional component must remain chemically intact under polymerization conditions. If the functional group can inhibit polymerization or undergo side reactions, it should be protected or an orthogonal polymerization chemistry should be chosen.
+
+2. **Preservation of functionality and accessibility**: A suitable spacer between the polymerizable group and the functional unit is often needed. This prevents steric hindrance from the polymer backbone and keeps the functional site accessible, maintaining its activity in the final polymer.
+
+3. **Monomer polymerizability and copolymerization behavior**: The monomer must have appropriate reactivity to achieve high conversion, controlled molecular weight, and desired copolymer composition. Bulky functional groups should not excessively hinder polymerization, and solubility in the chosen polymerization medium must be ensured.
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: In the preparation of functional polymers, polymerizing functional components is one of the core strategies. The first step in this process is to convert the functional components into polymerizable monomers. When designing the 'monomerization of functional components', multiple factors need to be comprehensively considered to ensure the final functional polymer exhibits excellent performance. List and explain at least three key considerations among them.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>
+1. **Functional-group tolerance during polymerization**: The functional component must remain chemically intact under polymerization conditions. If the functional group can inhibit polymerization or undergo side reactions, it should be protected or an orthogonal polymerization chemistry should be chosen.
+
+2. **Preservation of functionality and accessibility**: A suitable spacer between the polymerizable group and the functional unit is often needed. This prevents steric hindrance from the polymer backbone and keeps the functional site accessible, maintaining its activity in the final polymer.
+
+3. **Monomer polymerizability and copolymerization behavior**: The monomer must have appropriate reactivity to achieve high conversion, controlled molecular weight, and desired copolymer composition. Bulky functional groups should not excessively hinder polymerization, and solubility in the chosen polymerization medium must be ensured.
+
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "1) functional-group tolerance/protection during polymerization; 2) spacer to preserve functionality and accessibility; 3) monomer polymerizability and copolymerization behavior",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The output does not fully cover the GOLD requirement for reversible protection/deprotection of reactive functional groups and instead adds a different polymerizability factor.",
+  "raw": "{\"parsed\":\"1) functional-group tolerance/protection during polymerization; 2) spacer to preserve functionality and accessibility; 3) monomer polymerizability and copolymerization behavior\",\"equivalent\":false,\"score\":0.0,\"reason\":\"The output does not fully cover the GOLD requirement for reversible protection/deprotection of reactive functional groups and instead adds a different polymerizability factor.\"}"
+}

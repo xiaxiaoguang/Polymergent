@@ -1,0 +1,34 @@
+id: polyreal_492
+category: PropQA
+gold: ["b", "c", "d", "a"]
+parsed: b > a > d > c
+rule_score: 0.5
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer ranking question.
+Think step by step if needed, then give the ordered list.
+
+Question: The optical transparency (Transmittance) of a material is an important consideration in specific applications such as smart windows or optoelectronic devices. Rank the following four systems in order of their **optical transparency (Transmittance) from low to high**. 
+ a: Fe3+/ Fe2+ PVA/gelatin/Binary Solvent 
+ b: [Fe(CN)6]3-/[Fe(CN)6]4- KCl/Gelatin 
+ c: Fe3+/ Fe2+ PVA 
+ d: Fe3+/ Fe2+ HCl/PVA
+
+Put the final ranking inside <solution>...</solution>.
+Use either JSON list form ["a", "b", "c"] or a > b > c.
+Order matters. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>b > a > d > c
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "b > a > d > c",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The ranking order differs significantly: OUTPUT has 'b > a > d > c' but GOLD requires 'b > c > d > a'; only the first position matches.",
+  "raw": "```json\n{\n  \"parsed\": \"b > a > d > c\",\n  \"equivalent\": false,\n  \"score\": 0.0,\n  \"reason\": \"The ranking order differs significantly: OUTPUT has 'b > a > d > c' but GOLD requires 'b > c > d > a'; only the first position matches.\"\n}\n```"
+}

@@ -1,0 +1,34 @@
+id: polyreal_505
+category: PropQA
+gold: ["b", "d", "a", "c"]
+parsed: b > a > d > c
+rule_score: 0.5
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer ranking question.
+Think step by step if needed, then give the ordered list.
+
+Question: When constructing ion-conductive gels for flexible electronics and thermoelectric devices, the choice of polymer matrix has a decisive impact on the final mechanical strength of the material. Using the $[Fe(CN)_6]^{3-}/[Fe(CN)_6]^{4-}$ redox couple as the functional center, researchers compared the mechanical properties of gelatin, double networks, and different types and concentrations of polyvinyl alcohol (PVA) as matrices. Based on relevant experimental data, please rank the following four gel systems in order of their mechanical strength (MPa) from low to high.
+ a: $[Fe(CN)_6]^{3-}/[Fe(CN)_6]^{4-}$ - 5% h-PVA 
+ b: $[Fe(CN)_6]^{3-}/[Fe(CN)_6]^{4-}$ - Gelatin 
+ c: $[Fe(CN)_6]^{3-}/[Fe(CN)_6]^{4-}$ - 10% m-PVA 
+ d: $[Fe(CN)_6]^{3-}/[Fe(CN)_6]^{4-}$ - Double networks
+
+Put the final ranking inside <solution>...</solution>.
+Use either JSON list form ["a", "b", "c"] or a > b > c.
+Order matters. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>b > a > d > c
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "b > a > d > c",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The ranking order is incorrect: OUTPUT has 'b > a > d > c' but GOLD requires 'b > d > a > c'; positions of 'a' and 'd' are swapped.",
+  "raw": "```json\n{\n  \"parsed\": \"b > a > d > c\",\n  \"equivalent\": false,\n  \"score\": 0.0,\n  \"reason\": \"The ranking order is incorrect: OUTPUT has 'b > a > d > c' but GOLD requires 'b > d > a > c'; positions of 'a' and 'd' are swapped.\"\n}\n```"
+}

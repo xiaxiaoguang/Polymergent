@@ -1,0 +1,34 @@
+id: polyreal_490
+category: PropQA
+gold: ["b", "d", "c", "a"]
+parsed: ["d", "a", "b", "c"]
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer ranking question.
+Think step by step if needed, then give the ordered list.
+
+Question: When developing flexible thermoelectric materials for wearable devices, the mechanical stretchability of the material is as important as its thermoelectric performance. Please analyze the stretchability of the following different gel matrices. Rank the following four systems in order of their stretchability from high to low. 
+ a: [Fe(CN)6]3-/[Fe(CN)6]4- KCl/Gelatin 
+ b: Fe3+/ Fe2+ HCl/PVA 
+ c: [Fe(CN)6]3-/[Fe(CN)6]4- PVA 
+ d: Fe3+/ Fe2+ PVA/gelatin/Binary Solvent
+
+Put the final ranking inside <solution>...</solution>.
+Use either JSON list form ["a", "b", "c"] or a > b > c.
+Order matters. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>["d", "a", "b", "c"]</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "d > a > b > c",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The output ranking differs from the gold ranking order.",
+  "raw": "{\"parsed\":\"d > a > b > c\",\"equivalent\":false,\"score\":0.0,\"reason\":\"The output ranking differs from the gold ranking order.\"}"
+}

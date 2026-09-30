@@ -1,0 +1,32 @@
+id: polyreal_481
+category: PropQA
+gold: ["d", "b", "c", "a"]
+parsed: ["a", "b", "d", "c"]
+rule_score: 0.25
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer ranking question.
+Think step by step if needed, then give the ordered list.
+
+Question: The synthesis of polythiophene and its derivatives relies on efficient catalytic C-C coupling polymerization reactions. Arrange the following catalytic coupling reactions commonly used for synthesizing conjugated polymers according to the central metal element of the key organometallic reagent (or precursor) used. a: Suzuki coupling reaction b: Kumada coupling reaction c: Stille coupling reaction d: Yamamoto coupling reaction
+
+Put the final ranking inside <solution>...</solution>.
+Use either JSON list form ["a", "b", "c"] or a > b > c.
+Order matters. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+The key organometallic reagents use boron (Suzuki, B), magnesium (Kumada, Mg), nickel (Yamamoto, Ni), and tin (Stille, Sn). Ordered by atomic number of the central metal element:
+
+<solution>["a", "b", "d", "c"]</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "a > b > d > c",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The output ranks a,b,d,c, which does not match the gold ranking d,b,c,a.",
+  "raw": "{\"parsed\":\"a > b > d > c\",\"equivalent\":false,\"score\":0.0,\"reason\":\"The output ranks a,b,d,c, which does not match the gold ranking d,b,c,a.\"}"
+}

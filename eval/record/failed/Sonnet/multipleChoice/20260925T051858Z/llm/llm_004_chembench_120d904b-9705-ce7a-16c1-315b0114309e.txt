@@ -1,0 +1,45 @@
+id: chembench_120d904b-9705-ce7a-16c1-315b0114309e
+category: ProtocolQA
+gold: F
+parsed: A
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a multiple choice question about polymer science.
+Think step by step if needed, then give the final answer.
+
+Question: Which of the following monomers can be polymerized using anionic polymerization?
+Options:
+A. propylene sulfide
+B. methyl vinyl ether
+C. isobutene
+D. propiolactone
+E. Insufficient information to answer the question.
+F. n-vinylcarbazole
+
+Put the final answer inside <solution>...</solution>.
+For multiple choice, the solution body must be a single letter (A, B, C, ...), for example: <solution>C</solution>.
+Do not put extra words inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+Looking at this problem, I need to identify which monomer is characteristically polymerized via **anionic polymerization**.
+
+**Analysis of each option:**
+
+- **B. Methyl vinyl ether** — This vinyl ether has an electron-donating alkoxy group that stabilizes a cationic intermediate, making it a classic **cationic** polymerization monomer.
+
+- **C. Isobutene** — The two methyl groups create a highly stabilized tertiary carbocation upon protonation, making this the archetypal **cationic** polymerization monomer (e.g., used in butyl rubber synthesis).
+
+- **F. N-vinylcarbazole** — The carbazole group is strongly electron-donating, stabilizing cationic propagating species, so this is also a classic **cationic** polymerization monomer.
+
+- **D. Propiolactone** — β-Propiolactone is typically polymerized via **cationic** ring-opening polymerization (along with other cyclic ethers like THF and oxetane), where the ring oxygen is protonated/activated by an electrophile before ring-opening.
+
+- **A. Propylene sulfide** — Episulfides (thiiranes) are electron-rich at sulfur and readily undergo **anionic** ring-opening polymerization, where a nucleophile (e.g., thiolate) attacks the strained ring carbon, opening it to propagate the chain. This is a standard example in anionic ring-opening polymerization chemistry (analogous to how epoxides can also be anionically polymerized).
+
+**Conclusion:**
+
+Propylene sulfide is the monomer specifically classified as undergoing anionic polymerization, while the vinyl monomers with electron-donating groups (methyl vinyl ether, isobutene, N-vinylcarbazole) favor cationic mechanisms, and propiolactone is typically associated with cationic ring-opening polymerization.
+
+<solution>A

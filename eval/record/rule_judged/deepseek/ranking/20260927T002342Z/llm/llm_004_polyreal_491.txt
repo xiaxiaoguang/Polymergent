@@ -1,0 +1,34 @@
+id: polyreal_491
+category: PropQA
+gold: ["d", "b", "a", "c"]
+parsed: ["d", "b", "a", "c"]
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer ranking question.
+Think step by step if needed, then give the ordered list.
+
+Question: Young's modulus is a core mechanical indicator representing the stiffness of a material, which is crucial for evaluating the mechanical stability and flexibility of thermoelectric gels in practical applications. Rank the following four systems in order of their Young's modulus from low to high. 
+ a: Fe3+/ Fe2+ PVA 
+ b: [Fe(CN)6]3-/[Fe(CN)6]4- KCl/Gelatin 
+ c: [Fe(CN)6]3-/[Fe(CN)6]4- PVA 
+ d: [Fe(CN)6]3-/[Fe(CN)6]4- KCl
+
+Put the final ranking inside <solution>...</solution>.
+Use either JSON list form ["a", "b", "c"] or a > b > c.
+Order matters. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>["d", "b", "a", "c"]
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "[\"d\", \"b\", \"a\", \"c\"]",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "Output ranking exactly matches GOLD ranking in correct order.",
+  "raw": "```json\n{\"parsed\":\"[\\\"d\\\", \\\"b\\\", \\\"a\\\", \\\"c\\\"]\",\"equivalent\":true,\"score\":1.0,\"reason\":\"Output ranking exactly matches GOLD ranking in correct order.\"}\n```"
+}

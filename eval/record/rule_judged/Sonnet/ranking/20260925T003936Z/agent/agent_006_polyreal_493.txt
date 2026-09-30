@@ -1,0 +1,42 @@
+id: polyreal_493
+category: PropQA
+gold: ["c", "d", "a", "b"]
+parsed: ["c", "d", "a", "b"]
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer ranking question.
+Think step by step if needed, then give the ordered list.
+
+Question: In the ionic thermoelectric (i-TE) system, the Seebeck coefficient ($S_e$) is the core parameter determining its thermoelectric conversion performance, and its magnitude mainly depends on the reaction entropy ($\Delta S$) of the redox couple. In scientific practice, different combinations of redox couples and polymer matrices exhibit distinctly different $S_e$ values. Please rank the following common i-TE systems or matrices **in order of their Seebeck coefficient $S_e$ (mV K-1) from high to low**.
+ a: PVA hydrogel with Fe3+/Fe2+ redox couple 
+ b: Polyacrylamide (PAM) matrix (without active redox couple) 
+ c: KCl/gelatin composite gel with [Fe(CN)6]3-/[Fe(CN)6]4- redox couple 
+ d: PVA hydrogel with Fe3+/Fe2+ redox couple and added HCl
+
+Put the final ranking inside <solution>...</solution>.
+Use either JSON list form ["a", "b", "c"] or a > b > c.
+Order matters. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+Based on gathered evidence:
+- **c (KCl/gelatin/[Fe(CN)6]³⁻/⁴⁻)**: Giant thermopower reported (~12.7–17 mV K⁻¹), synergistic effect of KCl thermodiffusion + redox couple — highest.
+- **d (PVA/Fe³⁺/Fe²⁺ + HCl)**: HCl addition suppresses Fe³⁺ hydrolysis and enhances Seebeck coefficient relative to baseline PVA/Fe³⁺/Fe²⁺ system.
+- **a (PVA/Fe³⁺/Fe²⁺, no acid)**: Baseline value ~1.3–2.5 mV K⁻¹, lower than the acid-enhanced version.
+- **b (PAM, no redox couple)**: Without an active redox couple, thermopower relies only on ionic thermodiffusion, typically much smaller in magnitude — lowest.
+
+<solution>
+["c", "d", "a", "b"]
+</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "['c', 'd', 'a', 'b']",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "OUTPUT ranking matches GOLD exactly: c > d > a > b, with justified explanations for each material's thermopower magnitude.",
+  "raw": "```json\n{\n  \"parsed\": \"['c', 'd', 'a', 'b']\",\n  \"equivalent\": true,\n  \"score\": 1.0,\n  \"reason\": \"OUTPUT ranking matches GOLD exactly: c > d > a > b, with justified explanations for each material's thermopower magnitude.\"\n}\n```"
+}

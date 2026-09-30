@@ -1,0 +1,31 @@
+id: polymeragent_egb_bulk_bandgap_0009
+category: PropQA
+gold: 2.9556
+parsed: 2.1
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Predict the bulk bandgap of the polymer whose repeat-unit SMILES is:
+*C(=O)c1ccc(C(=O)c2ccc(*)cc2)cc1
+Report a single number in eV. Do not include the unit in the tagged answer.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>2.1
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "2.1",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "Relative error = |2.1 - 2.9556| / 2.9556 = 0.289, which exceeds tolerance of 0.15.",
+  "raw": "```json\n{\n  \"parsed\": \"2.1\",\n  \"equivalent\": false,\n  \"score\": 0.0,\n  \"reason\": \"Relative error = |2.1 - 2.9556| / 2.9556 = 0.289, which exceeds tolerance of 0.15.\"\n}\n```"
+}

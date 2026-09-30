@@ -1,0 +1,31 @@
+id: polymeragent_eea_electron_affinity_0006
+category: PropQA
+gold: 3.9759
+parsed: 2.45
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Predict the electron affinity of the polymer whose repeat-unit SMILES is:
+*C(=O)c1ccc(C(=S)c2ccc(*)s2)cc1
+Report a single number in eV. Do not include the unit in the tagged answer.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>2.45
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "2.45",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "Relative error is (2.45 - 3.9759) / 3.9759 = -0.384 or 38.4%, which exceeds the tolerance of 15%.",
+  "raw": "```json\n{\n  \"parsed\": \"2.45\",\n  \"equivalent\": false,\n  \"score\": 0.0,\n  \"reason\": \"Relative error is (2.45 - 3.9759) / 3.9759 = -0.384 or 38.4%, which exceeds the tolerance of 15%.\"\n}\n```"
+}

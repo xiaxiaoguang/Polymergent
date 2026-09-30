@@ -42,11 +42,11 @@ from polymer.utils import (
     should_skip_message,
     textify_api_dict,
 )
-RC_LIMIT = 50
+RC_LIMIT = 40
 fields = [
         "polymer_informatics",
         "polymer_science",
-        "polymer_conversation",
+        # "polymer_conversation",
         "search",
     ]
 
@@ -1080,152 +1080,123 @@ class A1:
 
         # Base prompt
         prompt_modifier = """
-You are a helpful chemistry assistant assigned with the task of problem-solving.
-To achieve this, you will be using an interactive coding environment equipped with a variety of tool functions, data, and softwares to assist you throughout the process.
+You are a chemistry assistant. Help the user solve chemistry, materials, and related lab or data problems using reasoning and the interactive environment when it helps.
 
-Given a task, make a plan first. The plan should be a numbered list of steps that you will take to solve the task. Be specific and detailed.
-Format your plan as a checklist with empty checkboxes like this:
+You will use an interactive coding environment with tool functions, data, and software. Choose the resource that best fits the current step. When custom resources are present, consider them early because they were added for this task; default resources remain fully available.
+
+Given a task, make a short plan before acting when the task is non-trivial. The plan should be a numbered list of steps. Be specific enough to execute.
+
+Format the plan as a checklist when tracking progress is useful:
 1. [ ] First step
 2. [ ] Second step
 3. [ ] Third step
 
 Follow the plan step by step. After completing each step, update the checklist by replacing the empty checkbox with a checkmark:
-1. [✓] First step (completed)
+1. [✓] First step
 2. [ ] Second step
 3. [ ] Third step
 
 If a step fails or needs modification, mark it with an X and explain why:
-1. [✓] First step (completed)
+1. [✓] First step
 2. [✗] Second step (failed because...)
 3. [ ] Modified second step
 4. [ ] Third step
 
-Always show the updated plan after each step so the user can track progress.
+Show the updated plan when the plan itself has changed so the user can track progress. Do not let the checklist replace reasoning.
 
-At each turn, you should first provide your thinking and reasoning given the conversation history.
+At each turn, first reason from the conversation history: what is known, what is missing, what to do next.
 After that, you have two options:
-
 1) Interact with a programming environment and receive the corresponding output within <observe></observe>. Your code should be enclosed using "<execute>" tag, for example: <execute> print("Hello World!") </execute>. IMPORTANT: You must end the code block with </execute> tag.
    - For Python code (default): <execute> print("Hello World!") </execute>
    - For R code: <execute> #!R\nlibrary(ggplot2)\nprint("Hello from R") </execute>
    - For Bash scripts and commands: <execute> #!BASH\necho "Hello from Bash"\nls -la </execute>
    - For CLI softwares, use Bash scripts.
+2) When the task is ready to answer, provide a solution that adheres to the required format for the given task. Your solution should be enclosed using "<solution>" tag, for example: The answer is <solution> A </solution>. IMPORTANT: You must end the solution block with </solution> tag.
 
-2) When you think it is ready, directly provide a solution that adheres to the required format for the given task to the user. Your solution should be enclosed using "<solution>" tag, for example: The answer is <solution> A </solution>. IMPORTANT: You must end the solution block with </solution> tag.
-
-You have many chances to interact with the environment to receive the observation. So you can decompose your code into multiple steps.
-Don't overcomplicate the code. Keep it simple and easy to understand.
-When writing the code, please print out the steps and results in a clear and concise manner, like a research log.
-When calling the existing python functions in the function dictionary, YOU MUST SAVE THE OUTPUT and PRINT OUT the result.
-For example, result = understand_scRNA(XXX) print(result)
+You have many chances to interact with the environment. Decompose code across turns when that reduces error.
+Keep code readable and inspectable.
+When writing code, print steps and results clearly enough that a later turn can continue from them.
+When calling existing python functions in the function dictionary, save the output and print the result.
+For example, result = understand_scRNA(XXX)
+print(result)
 Otherwise the system will not be able to know what has been done.
-
 For R code, use the #!R marker at the beginning of your code block to indicate it's R code.
-For Bash scripts and commands, use the #!BASH marker at the beginning of your code block. This allows for both simple commands and multi-line scripts with variables, loops, conditionals, loops, and other Bash features.
-
-In each response, you must include EITHER <execute> or <solution> tag. Not both at the same time. Do not respond with messages without any tags. No empty messages.
+For Bash scripts and commands, use the #!BASH marker at the beginning of your code block. This allows for both simple commands and multi-line scripts with variables, loops, conditionals, and other Bash features.
+In each response, include EITHER <execute> or <solution> tag. Not both at the same time.
 """
-
         # Add self-critic instructions if needed
         if self_critic:
             prompt_modifier += """
-You may or may not receive feedbacks from human. If so, address the feedbacks by following the same procedure of multiple rounds of thinking, execution, and then coming up with a new solution.
+You may or may not receive feedback from a human. If so, treat it as new information. Address it by the same procedure: reason, update the plan if needed, execute or solve.
 """
-
         # Add protocol generation instructions
         prompt_modifier += """
 PROTOCOL GENERATION:
-If the user requests an experimental protocol, use web_search_claude() to generate an accurate protocol. Include details such as reagents (with catalog numbers if available), equipment specifications, replicate requirements, error handling, and troubleshooting - but ONLY include information found in these resources. Do not make up specifications, catalog numbers, or equipment details. Prioritize accuracy over completeness.
+If the user requests an experimental protocol, ground the protocol in available documents, data, and search results. Include reagents (with catalog numbers if available), equipment specifications, replicate requirements, error handling, and troubleshooting only when those details are supported by the resources used. Do not invent specifications, catalog numbers, or equipment details. If a detail is unknown, say so.
 """
-
         # Add custom resources section first (highlighted)
         has_custom_resources = any(
             [custom_tools_formatted, custom_data_formatted, custom_software_formatted, know_how_formatted]
         )
-
         if has_custom_resources:
             prompt_modifier += """
-
-PRIORITY CUSTOM RESOURCES
+CUSTOM RESOURCES
 ===============================
-IMPORTANT: The following custom resources have been specifically added for your use.
-    PRIORITIZE using these resources as they are directly relevant to your task.
-    Always consider these FIRST and in the meantime using default resources.
-
+The following custom resources were added for this task.
+    Consider them early when they fit the current step.
+    Default resources remain available.
 """
-
             if know_how_formatted:
                 prompt_modifier += """
 📚 KNOW-HOW DOCUMENTS (BEST PRACTICES & PROTOCOLS - ALREADY LOADED):
 {know_how_docs}
-
-IMPORTANT: These documents are ALREADY AVAILABLE in your context. You do NOT need to
-retrieve them or "review" them as a separate step. You can DIRECTLY reference and use
-the information from these documents to answer questions, provide protocols, suggest
-parameters, and offer troubleshooting guidance.
-
-These documents contain expert knowledge, protocols, and troubleshooting guidance.
-Reference them directly for experimental design, methodology, and problem-solving.
-
+These documents are ALREADY AVAILABLE in context. You do NOT need to
+retrieve them or review them as a separate step. Reference them directly
+for experimental design, methodology, parameters, and troubleshooting.
 """
-
             if custom_tools_formatted:
                 prompt_modifier += """
-🔧 CUSTOM TOOLS (USE THESE FIRST):
+🔧 CUSTOM TOOLS:
 {custom_tools}
-
 """
-
             if custom_data_formatted:
                 prompt_modifier += """
-📊 CUSTOM DATA (PRIORITIZE THESE DATASETS):
+📊 CUSTOM DATA:
 {custom_data}
-
 """
-
             if custom_software_formatted:
                 prompt_modifier += """
-⚙️ CUSTOM SOFTWARE (USE THESE LIBRARIES):
+⚙️ CUSTOM SOFTWARE:
 {custom_software}
-
 """
-
             prompt_modifier += """===============================
 """
-
         # Add environment resources
         prompt_modifier += """
-
 Environment Resources:
-
 - Function Dictionary:
 {function_intro}
 ---
 {tool_desc}
 ---
-
 {import_instruction}
-
 - Chemical data lake
-You can access a chemical data lake at the following path: {data_lake_path}.
+You can access a chemical data lake at the following path: {data_lake_path} (can be browsed) and raw data file in : {data_lake2_path} (not iterate through raw folder).
 {data_lake_intro}
 Each item is listed with its description to help you understand its contents.
 ----
 {data_lake_content}
 ----
-
 - Software Library:
 {library_intro}
 Each library is listed with its description to help you understand its functionality.
 ----
 {library_content_formatted}
 ----
-
 - Note on using R packages and Bash scripts:
   - R packages: Use subprocess.run(['Rscript', '-e', 'your R code here']) in Python, or use the #!R marker in your execute block.
   - Bash scripts and commands: Use the #!BASH marker in your execute block for both simple commands and complex shell scripts with variables, loops, conditionals, etc.
-        """
-
+"""
         # Set appropriate text based on whether this is initial configuration or after retrieval
         if is_retrieval:
             function_intro = "Based on your query, I've identified the following most relevant functions that you can use in your code:"
@@ -1250,6 +1221,7 @@ Each library is listed with its description to help you understand its functiona
             "tool_desc": textify_api_dict(tool_desc) if isinstance(tool_desc, dict) else tool_desc,
             "import_instruction": import_instruction,
             "data_lake_path": self.path + "/data_lake",
+            "data_lake2_path" : self.path + "/data_lake2",
             "data_lake_intro": data_lake_intro,
             "data_lake_content": data_lake_content_formatted,
             "library_intro": library_intro,
@@ -1397,10 +1369,12 @@ Each library is listed with its description to help you understand its functiona
             custom_software=custom_software if custom_software else None,
             know_how_docs=know_how_docs if know_how_docs else None,
         )
+        # print(self.system_prompt)
+
         def generate(state: AgentState) -> AgentState:
             remaining = self._remaining_graph_steps(state)
-            warn_window = RC_LIMIT // 10
-
+            warn_window = RC_LIMIT//2+3
+            print(remaining)
             # Exhausted budget: do not invoke LLM again (stops infinite tool loops).
             if remaining <= 0:
                 print(f"⛔ graph step budget exhausted (max_graph_steps={RC_LIMIT})")
@@ -1455,7 +1429,7 @@ Each library is listed with its description to help you understand its functiona
             runtime_messages = list(state["messages"])
             if remaining <= warn_window:
                 hint = self._build_convergence_hint(remaining, warn_window)
-                # print(f"⚠️ convergence hint injected (remaining_steps={remaining})")
+                print(f"⚠️ convergence hint injected (remaining_steps={remaining})")
                 runtime_messages = runtime_messages + [HumanMessage(content=hint)]
 
             messages = [system_message] + runtime_messages
@@ -1543,19 +1517,7 @@ Each library is listed with its description to help you understand its functiona
                     for m in state["messages"]
                     if isinstance(m, AIMessage) and "There are no tags" in m.content
                 )
-                if error_count >= 2 or remaining <= warn_window:
-                    print("Detected parsing errors near step limit, ending conversation")
-                    state["next_step"] = "end"
-                    state["messages"].append(
-                        AIMessage(
-                            content=(
-                                "<solution>Execution terminated due to parsing errors "
-                                "near the step limit.</solution>"
-                            )
-                        )
-                    )
-                else:
-                    state["messages"].append(
+                state["messages"].append(
                         HumanMessage(
                             content=(
                                 "Each response must include thinking process followed by either "
@@ -1564,12 +1526,13 @@ Each library is listed with its description to help you understand its functiona
                             )
                         )
                     )
-                    state["next_step"] = "generate"
+                state["next_step"] = "generate"
             return state
         
+
         def execute(state: AgentState) -> AgentState:
+            from polymer.agent.helper import check_code_policy,_compact_execution_output
             last_message = state["messages"][-1].content
-            # Only add the closing tag if it's not already there
             if "<execute>" in last_message and "</execute>" not in last_message:
                 last_message += "</execute>"
 
@@ -1577,45 +1540,46 @@ Each library is listed with its description to help you understand its functiona
             if execute_match:
                 code = execute_match.group(1)
 
-                # Set timeout duration (10 minutes = 600 seconds)
+                violations = check_code_policy(code)
+                if violations:
+                    msg = (
+                        "Execution blocked by isolation policy:\n- "
+                        + "\n- ".join(dict.fromkeys(violations))
+                        + "\nUse allowed workspace paths only. "
+                          "Internet must go through dedicated tools, not execute()."
+                    )
+                    state["messages"].append(AIMessage(content=f"<observation>{msg}</observation>"))
+                    return state
+
                 timeout = self.timeout_seconds
 
-                # Check if the code is R code
                 if (
                     code.strip().startswith("#!R")
                     or code.strip().startswith("# R code")
                     or code.strip().startswith("# R script")
                 ):
-                    # Remove the R marker and run as R code
                     r_code = re.sub(r"^#!R|^# R code|^# R script", "", code, count=1).strip()
                     result = run_with_timeout(run_r_code, [r_code], timeout=timeout)
-                # Check if the code is a Bash script or CLI command
                 elif (
                     code.strip().startswith("#!BASH")
                     or code.strip().startswith("# Bash script")
                     or code.strip().startswith("#!CLI")
                 ):
-                    # Handle both Bash scripts and CLI commands with the same function
                     if code.strip().startswith("#!CLI"):
-                        # For CLI commands, extract the command and run it as a simple bash script
                         cli_command = re.sub(r"^#!CLI", "", code, count=1).strip()
-                        # Remove any newlines to ensure it's a single command
                         cli_command = cli_command.replace("\n", " ")
                         result = run_with_timeout(run_bash_script, [cli_command], timeout=timeout)
                     else:
-                        # For Bash scripts, remove the marker and run as a bash script
-                        bash_script = re.sub(r"^#!BASH|^# Bash script", "", code, count=1).strip()
+                        bash_script = re.sub(
+                            r"^#!BASH|^# Bash script", "", code, count=1
+                        ).strip()
                         result = run_with_timeout(run_bash_script, [bash_script], timeout=timeout)
-                # Otherwise, run as Python code
                 else:
-                    # Clear any previous plots before execution
                     self._clear_execution_plots()
-
-                    # Inject custom functions into the Python execution environment
                     self._inject_custom_functions_to_repl()
                     result = run_with_timeout(run_python_repl, [code], timeout=timeout)
 
-                    # Plots are now captured directly in the execution entry above
+                result = _compact_execution_output(result if isinstance(result, str) else str(result))
 
                 if len(result) > 10000:
                     result = (
@@ -1623,34 +1587,27 @@ Each library is listed with its description to help you understand its functiona
                         + result[:10000]
                     )
 
-                # Store the execution result with the triggering message
                 if not hasattr(self, "_execution_results"):
                     self._execution_results = []
 
-                # Get any plots that were generated during this execution
                 execution_plots = []
                 try:
                     from polymer.tool.support_tools import get_captured_plots
-
-                    current_plots = get_captured_plots()
-                    execution_plots = current_plots.copy()
+                    execution_plots = get_captured_plots().copy()
                 except Exception as e:
                     print(f"Warning: Could not capture plots from execution: {e}")
-                    execution_plots = []
 
-                # Store the execution result with metadata
-                execution_entry = {
-                    "triggering_message": last_message,  # The AI message that contained <execute>
-                    "images": execution_plots,  # Base64 encoded images from this execution
+                self._execution_results.append({
+                    "triggering_message": last_message,
+                    "images": execution_plots,
                     "timestamp": datetime.now().isoformat(),
-                }
-                self._execution_results.append(execution_entry)
+                })
 
-                observation = f"\n<observation>{result}</observation>"
-                state["messages"].append(AIMessage(content=observation.strip()))
+                state["messages"].append(
+                    AIMessage(content=f"\n<observation>{result}</observation>".strip())
+                )
 
-            return state
-
+            return state        
         def routing_function(
             state: AgentState,
         ) -> Literal["execute", "generate", "end"]:
@@ -1774,7 +1731,6 @@ Each library is listed with its description to help you understand its functiona
         if hasattr(self, "_custom_data") and self._custom_data:
             for name, info in self._custom_data.items():
                 data_lake_descriptions.append({"name": name, "description": info["description"]})
-        # breakpoint()
         # 3. Libraries with descriptions - use library_content_dict directly
         library_descriptions = []
         for lib_name, lib_desc in self.library_content_dict.items():
@@ -1868,13 +1824,15 @@ Each library is listed with its description to help you understand its functiona
         if self.use_tool_retriever:
             selected_resources_names = self._prepare_resources_for_retrieval(prompt)
             self.update_system_prompt_with_selected_resources(selected_resources_names)
-
+ 
         inputs = {"messages": [HumanMessage(content=prompt)], "next_step": None}
-        config = {"recursion_limit": RC_LIMIT, "configurable": {"thread_id": 42}}
+        config = {"recursion_limit": RC_LIMIT*2, "configurable": {"thread_id": 42}}
         self.log = []
-
+        # print(self.system_prompt)
+        # breakpoint()
         # Store the final conversation state for markdown generation
         final_state = None
+        
         from polymer.tool.search import reset_search_budget
         reset_search_budget()
         
@@ -1909,7 +1867,7 @@ Each library is listed with its description to help you understand its functiona
             self.update_system_prompt_with_selected_resources(selected_resources_names)
 
         inputs = {"messages": [HumanMessage(content=prompt)], "next_step": None}
-        config = {"recursion_limit": RC_LIMIT, "configurable": {"thread_id": 42}}
+        config = {"recursion_limit": RC_LIMIT*2, "configurable": {"thread_id": 42}}
         self.log = []
 
         # Store the final conversation state for markdown generation
@@ -2825,7 +2783,7 @@ Each library is listed with its description to help you understand its functiona
 
             # Prepare inputs for the agent
             inputs = {"messages": agent_messages, "next_step": None}
-            config = {"recursion_limit": RC_LIMIT, "configurable": {"thread_id": thread_id}}
+            config = {"recursion_limit": RC_LIMIT*2, "configurable": {"thread_id": thread_id}}
 
             # Stream the agent's responses
             t = time()

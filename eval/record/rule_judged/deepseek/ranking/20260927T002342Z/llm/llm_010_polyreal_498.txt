@@ -1,0 +1,34 @@
+id: polyreal_498
+category: PropQA
+gold: ["c", "b", "d", "a"]
+parsed: b > c > a > d
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer ranking question.
+Think step by step if needed, then give the ordered list.
+
+Question: The relative Carnot cycle efficiency is a key indicator for measuring the ratio of the actual energy conversion efficiency of thermoelectric devices to the theoretical maximum efficiency (Carnot efficiency), directly reflecting the thermodynamic perfection and energy loss of the system. In thermoelectrochemical cells (TECs) based on the $Fe^{2+}/Fe^{3+}$ redox couple, the concentration of the couple, the choice of counter-ion (such as $ClO_4^-$ vs $Cl^-$), and the supporting electrolyte (such as HCl vs KCl) have a decisive impact on this efficiency. Based on existing experimental data, please rank the following four electrolyte systems in order of their relative Carnot cycle efficiency (%) from high to low.
+ a: 0.5 M $FeCl_2/FeCl_3$ + 1.0 M HCl 
+ b: 1.5 M $Fe(ClO_4)_2/Fe(ClO_4)_3$ + 0.1 M HCl 
+ c: 1.0 M $Fe(ClO_4)_2/Fe(ClO_4)_3$ + 0.1 M HCl 
+ d: 0.5 M $Fe(ClO_4)_2/Fe(ClO_4)_3$ + 0.1 M KCl
+
+Put the final ranking inside <solution>...</solution>.
+Use either JSON list form ["a", "b", "c"] or a > b > c.
+Order matters. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>b > c > a > d
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "b > c > a > d",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "Ranking order does not match GOLD: OUTPUT is [b,c,a,d] but GOLD requires [c,b,d,a].",
+  "raw": "```json\n{\"parsed\":\"b > c > a > d\",\"equivalent\":false,\"score\":0.0,\"reason\":\"Ranking order does not match GOLD: OUTPUT is [b,c,a,d] but GOLD requires [c,b,d,a].\"}\n```"
+}

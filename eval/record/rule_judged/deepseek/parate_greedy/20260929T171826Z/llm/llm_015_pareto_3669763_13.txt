@@ -1,0 +1,29 @@
+id: pareto_3669763_13
+category: KnowledgeQA
+gold: 3.090
+parsed: 3.000
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Polymer reaction_id=3669763, pSMILES `*C(C(=O)c1ccc(Cl)cc1Cl)C(*)c1cc(Cl)ccc1OC`. Features for conformer_1, dipole=1.440, polarizability=262.9, HOMO eV=-5.122, HOMO-1 eV=-5.549, min q=-0.240, chi_water=1.425. Predict the TDDFT T1 energy in eV, rounded to 3 decimals.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>3.000
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "3.000",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The predicted value 3.000 is within 15% relative error of the gold value 3.090.",
+  "raw": "{\"parsed\":\"3.000\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The predicted value 3.000 is within 15% relative error of the gold value 3.090.\"}"
+}

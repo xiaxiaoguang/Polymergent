@@ -1,0 +1,39 @@
+id: polymeragent_egb_bulk_bandgap_0000
+category: PropQA
+gold: 1.4146
+parsed: 2.65
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Predict the bulk bandgap of the polymer whose repeat-unit SMILES is:
+*C(=O)C(=S)OC(*)=S
+Report a single number in eV. Do not include the unit in the tagged answer.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+Based on the systematic oligomer extension (n=1 to n=4), the HOMO-LUMO gap converges rapidly:
+- n=1: 3.22 eV
+- n=2: 2.71 eV
+- n=3: 2.65 eV
+- n=4: 2.65 eV
+
+The differences shrink dramatically (0.51 → 0.06 → 0.005 eV), indicating strong convergence by n=3-4. The 1/n extrapolation using the most converged points (n=3,4) gives an intercept of ~2.63 eV, consistent with the direct n=4 value of 2.65 eV. This represents the bulk (infinite-chain) bandgap estimate at the DFT/B3LYP/STO-3G screening level.
+
+<solution>2.65</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "2.65",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "OUTPUT predicts 2.65 eV but GOLD is 1.4146; relative error = (2.65-1.4146)/1.4146 = 0.874 >> 0.15 tolerance.",
+  "raw": "```json\n{\n  \"parsed\": \"2.65\",\n  \"equivalent\": false,\n  \"score\": 0.0,\n  \"reason\": \"OUTPUT predicts 2.65 eV but GOLD is 1.4146; relative error = (2.65-1.4146)/1.4146 = 0.874 >> 0.15 tolerance.\"\n}\n```"
+}

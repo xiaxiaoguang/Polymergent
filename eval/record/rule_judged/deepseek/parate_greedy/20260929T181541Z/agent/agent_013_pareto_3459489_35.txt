@@ -1,0 +1,29 @@
+id: pareto_3459489_35
+category: KnowledgeQA
+gold: C
+parsed: C
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Polymer reaction_id=3459489, pSMILES `*Nc1cc(C(C)=O)cc(C)c1NC(=O)C(CC)C(*)=O`. Features for conformer_12, dipole=2.797, polarizability=244.1, HOMO eV=-4.578, HOMO-1 eV=-5.226, min q=-0.286, chi_water=1.224. Which solvent is expected to be the best processing medium (lowest Flory-Huggins chi) among water, ethanol, and chloroform? Answer with A, B, C, or D.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>C</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "C",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The output letter C matches the gold answer C.",
+  "raw": "{\"parsed\":\"C\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The output letter C matches the gold answer C.\"}"
+}

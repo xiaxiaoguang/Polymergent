@@ -1,0 +1,34 @@
+id: polyreal_489
+category: PropQA
+gold: ["b", "d", "a", "c"]
+parsed: ["d", "b", "c", "a"]
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer ranking question.
+Think step by step if needed, then give the ordered list.
+
+Question: In the study of ionic thermoelectric gels (i-TE Gels), the choice of matrix has a decisive impact on the overall thermoelectric conversion efficiency. Please analyze the experimental data below and rank the following four systems in order of their thermoelectric conversion efficiency from highest to lowest. 
+ a: Fe3+/ Fe2+ PVA 
+ b: [Fe(CN)6]3-/[Fe(CN)6]4- KCl/Gelatin 
+ c: Fe3+/ Fe2+ HCl/PVA 
+ d: Fe3+/ Fe2+ Double Networks/Binary Solvent
+
+Put the final ranking inside <solution>...</solution>.
+Use either JSON list form ["a", "b", "c"] or a > b > c.
+Order matters. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>["d", "b", "c", "a"]
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "[\"d\", \"b\", \"c\", \"a\"]",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "Ranking order does not match: OUTPUT is \"d > b > c > a\" but GOLD requires \"b > a > c > d\".",
+  "raw": "```json\n{\"parsed\":\"[\\\"d\\\", \\\"b\\\", \\\"c\\\", \\\"a\\\"]\",\"equivalent\":false,\"score\":0.0,\"reason\":\"Ranking order does not match: OUTPUT is \\\"d > b > c > a\\\" but GOLD requires \\\"b > a > c > d\\\".\"}\n```"
+}

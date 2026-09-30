@@ -1,0 +1,42 @@
+id: polyreal_498
+category: PropQA
+gold: ["c", "b", "d", "a"]
+parsed: ["b", "c", "d", "a"]
+rule_score: 0.5
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer ranking question.
+Think step by step if needed, then give the ordered list.
+
+Question: The relative Carnot cycle efficiency is a key indicator for measuring the ratio of the actual energy conversion efficiency of thermoelectric devices to the theoretical maximum efficiency (Carnot efficiency), directly reflecting the thermodynamic perfection and energy loss of the system. In thermoelectrochemical cells (TECs) based on the $Fe^{2+}/Fe^{3+}$ redox couple, the concentration of the couple, the choice of counter-ion (such as $ClO_4^-$ vs $Cl^-$), and the supporting electrolyte (such as HCl vs KCl) have a decisive impact on this efficiency. Based on existing experimental data, please rank the following four electrolyte systems in order of their relative Carnot cycle efficiency (%) from high to low.
+ a: 0.5 M $FeCl_2/FeCl_3$ + 1.0 M HCl 
+ b: 1.5 M $Fe(ClO_4)_2/Fe(ClO_4)_3$ + 0.1 M HCl 
+ c: 1.0 M $Fe(ClO_4)_2/Fe(ClO_4)_3$ + 0.1 M HCl 
+ d: 0.5 M $Fe(ClO_4)_2/Fe(ClO_4)_3$ + 0.1 M KCl
+
+Put the final ranking inside <solution>...</solution>.
+Use either JSON list form ["a", "b", "c"] or a > b > c.
+Order matters. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+Based on the known chemistry of Fe²⁺/Fe³⁺ thermoelectrochemical cells:
+
+- **Counter-ion effect:** ClO₄⁻ is weakly coordinating and preserves the [Fe(H₂O)₆]³⁺/[Fe(H₂O)₆]²⁺ solvation entropy difference, giving much larger Seebeck coefficients (~1.4–1.7 mV/K) than Cl⁻, which complexes Fe³⁺ and lowers Seebeck (~1.0 mV/K). Thus the perchlorate systems (b, c, d) outperform the chloride system (a).
+- **Supporting electrolyte effect:** HCl suppresses Fe³⁺ hydrolysis and supplies highly mobile H⁺, lowering internal resistance, whereas KCl provides less conductive K⁺ and introduces Cl⁻ without acid stabilization. Thus the HCl-supported perchlorate systems (b, c) outperform the KCl-supported one (d).
+- **Concentration effect:** For Fe(ClO₄)₂/Fe(ClO₄)₃ with HCl, increasing concentration up to 1.5 M raises charge-carrier density and conductivity with only modest Seebeck loss, increasing power output and relative Carnot efficiency. So 1.5 M (b) > 1.0 M (c).
+
+Ranking: **b > c > d > a**
+
+<solution>["b", "c", "d", "a"]</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "b > c > d > a",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The output ranks b ahead of c, while the gold ranking requires c before b.",
+  "raw": "{\"parsed\":\"b > c > d > a\",\"equivalent\":false,\"score\":0.0,\"reason\":\"The output ranks b ahead of c, while the gold ranking requires c before b.\"}"
+}

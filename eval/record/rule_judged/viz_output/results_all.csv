@@ -1,0 +1,11 @@
+agent,task,experiment,run,n,accuracy,mean_score,seconds,timestamp_utc,path
+Sonnet,dieletric,20260928T033242Z,agent,7,0.5714285714285714,0.5714285714285714,1462.22,2026-09-28T03:32:45.147481+00:00,/home/hcao5/workspace/polymer/eval/record/rule_judged/Sonnet/dieletric/20260928T033242Z/eval_results.json
+Sonnet,dieletric,20260928T032417Z,llm,10,0.0,0.0,23.93,2026-09-28T03:24:19.815406+00:00,/home/hcao5/workspace/polymer/eval/record/rule_judged/Sonnet/dieletric/20260928T032417Z/eval_results.json
+Sonnet,eea,20260928T033218Z,agent,10,0.2,0.2,1632.59,2026-09-28T03:32:20.497661+00:00,/home/hcao5/workspace/polymer/eval/record/rule_judged/Sonnet/eea/20260928T033218Z/eval_results.json
+Sonnet,eea,20260928T032948Z,llm,10,0.0,0.0,27.21,2026-09-28T03:29:51.073127+00:00,/home/hcao5/workspace/polymer/eval/record/rule_judged/Sonnet/eea/20260928T032948Z/eval_results.json
+Sonnet,egbbulk,20260928T051409Z,agent,10,0.4,0.4,4833.3,2026-09-28T05:14:12.087552+00:00,/home/hcao5/workspace/polymer/eval/record/rule_judged/Sonnet/egbbulk/20260928T051409Z/eval_results.json
+Sonnet,egbbulk,20260928T051338Z,llm,10,0.3,0.3,28.22,2026-09-28T05:13:41.092354+00:00,/home/hcao5/workspace/polymer/eval/record/rule_judged/Sonnet/egbbulk/20260928T051338Z/eval_results.json
+Sonnet,ranking,20260925T003936Z,agent,10,0.6,0.425,1268.59,2026-09-25T00:39:39.002063+00:00,/home/hcao5/workspace/polymer/eval/record/rule_judged/Sonnet/ranking/20260925T003936Z/eval_results.json
+Sonnet,ranking,20260925T004414Z,llm,10,0.5,0.4,47.63,2026-09-25T00:44:16.123223+00:00,/home/hcao5/workspace/polymer/eval/record/rule_judged/Sonnet/ranking/20260925T004414Z/eval_results.json
+deepseek,ranking,20260927T160652Z,agent,14,0.5714285714285714,0.48214285714285715,4006.62,2026-09-27T16:06:54.978202+00:00,/home/hcao5/workspace/polymer/eval/record/rule_judged/deepseek/ranking/20260927T160652Z/eval_results.json
+deepseek,ranking,20260927T002342Z,llm,14,0.5714285714285714,0.42857142857142855,57.54,2026-09-27T00:23:44.126794+00:00,/home/hcao5/workspace/polymer/eval/record/rule_judged/deepseek/ranking/20260927T002342Z/eval_results.json

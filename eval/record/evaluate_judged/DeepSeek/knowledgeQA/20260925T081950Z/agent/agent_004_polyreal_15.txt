@@ -1,0 +1,47 @@
+id: polyreal_15
+category: KnowledgeQA
+gold: The main advantages of the physical composite method are:
+1. **Simple and quick process**: Compared to chemical methods that require complex chemical reactions, purification, and post-treatment, the preparation process of physical composites (such as solution blending, melt blending) is generally simpler, faster, and can be synchronized with material forming processes (such as extrusion, injection molding).
+2. **High versatility**: This method imposes fewer constraints on the chemical structure of functional components and polymer matrices. It does not require reactive functional groups between the two, allowing for a wide range of polymer matrices to be selected, facilitating the use of the excellent properties of existing commercial polymers.
+
+A major disadvantage of the physical composite method is the **low degree of bonding between functional components and the polymer matrix**. There are no strong chemical bonds between them, relying mainly on weak interactions such as van der Waals forces. This leads to instability in functional performance, as small molecular functional components can easily **leach or migrate** out of the polymer matrix during use (for example, being extracted by solvents or seeping to the material surface), resulting in a gradual decline or even loss of the material's functionality.
+parsed: Main advantages of the physical composite method over chemical bonding methods:
+
+1. Preparation process: It is simpler and milder—usually only requires physical mixing/blending, melt processing, or solution casting—without complex chemical reactions, catalysts/initiators, strict anhydrous/oxygen-free conditions, or lengthy purification. This makes it faster, lower cost, easier to scale up, and avoids reaction byproducts or residual monomers/contaminants.
+
+2. Material selection: It is much more flexible because the functional component does not need suitable reactive groups or chemical compatibility with the polymer. A wide range of functional substances—including thermally sensitive, chemically unstable, insoluble, or inactive organic/inorganic species such as dyes, drugs, enzymes, nanoparticles, and conductive fillers—can be incorporated directly, and their amount can be adjusted easily.
+
+One major disadvantage is that the functional component is only physically dispersed or weakly bound in the polymer matrix, so the interfacial bonding is weak. Under heat, solvents, mechanical stress, or long-term use, the functional additive may migrate, aggregate, phase-separate, or leach out, causing the material’s functional performance to decline or be lost over time.
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Compared to the preparation of functional polymers through chemical bonding, the physical composite method has its unique advantages and disadvantages. Please elaborate on the main advantages of the physical composite method in terms of the preparation process and material selection compared to chemical methods. Also, point out one major disadvantage of this method and how this disadvantage affects the stability of the material's functional performance.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>
+Main advantages of the physical composite method over chemical bonding methods:
+
+1. Preparation process: It is simpler and milder—usually only requires physical mixing/blending, melt processing, or solution casting—without complex chemical reactions, catalysts/initiators, strict anhydrous/oxygen-free conditions, or lengthy purification. This makes it faster, lower cost, easier to scale up, and avoids reaction byproducts or residual monomers/contaminants.
+
+2. Material selection: It is much more flexible because the functional component does not need suitable reactive groups or chemical compatibility with the polymer. A wide range of functional substances—including thermally sensitive, chemically unstable, insoluble, or inactive organic/inorganic species such as dyes, drugs, enzymes, nanoparticles, and conductive fillers—can be incorporated directly, and their amount can be adjusted easily.
+
+One major disadvantage is that the functional component is only physically dispersed or weakly bound in the polymer matrix, so the interfacial bonding is weak. Under heat, solvents, mechanical stress, or long-term use, the functional additive may migrate, aggregate, phase-separate, or leach out, causing the material’s functional performance to decline or be lost over time.
+</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "Advantages: simple/quick process, high versatility/material selection; Disadvantage: weak interfacial bonding leading to migration/leaching and performance decline",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The output covers the same key advantages (simple process, broad material compatibility) and the same major disadvantage (weak physical bonding causing leaching/migration and functional loss).",
+  "raw": "{\"parsed\":\"Advantages: simple/quick process, high versatility/material selection; Disadvantage: weak interfacial bonding leading to migration/leaching and performance decline\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The output covers the same key advantages (simple process, broad material compatibility) and the same major disadvantage (weak physical bonding causing leaching/migration and functional loss).\"}"
+}

@@ -1,0 +1,34 @@
+id: polyreal_497
+category: PropQA
+gold: ["d", "c", "b", "a"]
+parsed: c > d > a > b
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer ranking question.
+Think step by step if needed, then give the ordered list.
+
+Question: The short-circuit current ($I_{sc}$) is an important indicator of the maximum output current capability of thermoelectrochemical cells (TECs). It is closely related to various factors such as the ionic conductivity, charge transfer resistance, and Seebeck coefficient of the system. In studies of TECs based on the $Fe^{2+}/Fe^{3+}$ redox couple, the concentration of the redox couple, the type of anion (e.g., $ClO_4^-$ vs $Cl^-$), and the supporting electrolyte (e.g., HCl vs KCl) all have a significant impact on $I_{sc}$. Based on relevant experimental data, please rank the following four $Fe^{2+}/Fe^{3+}$ redox couple TEC systems in order of their short-circuit current $I$ (A m-2) from high to low.
+ a: 1.0 M $FeCl_2/FeCl_3$ + 0.1 M HCl 
+ b: 0.5 M $Fe(ClO_4)_2/Fe(ClO_4)_3$ + 0.1 M KCl 
+ c: 1.5 M $Fe(ClO_4)_2/Fe(ClO_4)_3$ + 0.1 M HCl 
+ d: 1.0 M $Fe(ClO_4)_2/Fe(ClO_4)_3$ + 0.1 M HCl
+
+Put the final ranking inside <solution>...</solution>.
+Use either JSON list form ["a", "b", "c"] or a > b > c.
+Order matters. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>c > d > a > b
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "c > d > a > b",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The ranking order is reversed; GOLD is [d, c, b, a] but OUTPUT is [c, d, a, b], which represents a different ordering.",
+  "raw": "```json\n{\n  \"parsed\": \"c > d > a > b\",\n  \"equivalent\": false,\n  \"score\": 0.0,\n  \"reason\": \"The ranking order is reversed; GOLD is [d, c, b, a] but OUTPUT is [c, d, a, b], which represents a different ordering.\"\n}\n```"
+}

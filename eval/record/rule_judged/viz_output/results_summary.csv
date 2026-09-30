@@ -1,0 +1,11 @@
+agent,task,run,experiments,accuracy_mean,accuracy_std,score_mean,score_std
+Sonnet,dieletric,agent,1,0.5714285714285714,0.0,0.5714285714285714,0.0
+Sonnet,dieletric,llm,1,0.0,0.0,0.0,0.0
+Sonnet,eea,agent,1,0.2,0.0,0.2,0.0
+Sonnet,eea,llm,1,0.0,0.0,0.0,0.0
+Sonnet,egbbulk,agent,1,0.4,0.0,0.4,0.0
+Sonnet,egbbulk,llm,1,0.3,0.0,0.3,0.0
+Sonnet,ranking,agent,1,0.6,0.0,0.425,0.0
+Sonnet,ranking,llm,1,0.5,0.0,0.4,0.0
+deepseek,ranking,agent,1,0.5714285714285714,0.0,0.48214285714285715,0.0
+deepseek,ranking,llm,1,0.5714285714285714,0.0,0.42857142857142855,0.0

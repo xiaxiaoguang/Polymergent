@@ -1,0 +1,31 @@
+id: polymeragent_eps_dielectric_constant_0009
+category: PropQA
+gold: 5.05
+parsed: 3.36
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Predict the dielectric constant of the polymer whose repeat-unit SMILES is:
+*C(=O)c1ccc(OC(*)=S)cc1
+Report a single number in dimensionless. Do not include the unit in the tagged answer.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>3.36
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "3.36",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "Relative error = |3.36 - 5.05| / 5.05 = 0.335, which exceeds the tolerance of 0.15.",
+  "raw": "```json\n{\n  \"parsed\": \"3.36\",\n  \"equivalent\": false,\n  \"score\": 0.0,\n  \"reason\": \"Relative error = |3.36 - 5.05| / 5.05 = 0.335, which exceeds the tolerance of 0.15.\"\n}\n```"
+}

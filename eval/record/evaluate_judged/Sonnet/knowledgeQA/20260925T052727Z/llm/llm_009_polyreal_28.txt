@@ -1,0 +1,59 @@
+id: polyreal_28
+category: KnowledgeQA
+gold: According to the content, polymer reagents can be mainly divided into the following three types:
+1. **Polymeric Oxidation/Reduction Reagents**: The function of these reagents is to act as oxidizing or reducing agents in chemical reactions, achieving the oxidation or reduction of substrate molecules. For example, polymeric peracids can oxidize olefins, while polymeric borohydrides can reduce ketones. They function by providing or accepting electrons/atoms.
+
+2. **Polymeric Transfer Reagents**: The function of these reagents is to transfer a specific chemical group to the substrate molecule in a reaction. For instance, polymer-supported Wittig reagents can convert carbonyl compounds into olefins (achieving methylene transfer), and polymeric acylation reagents can transfer acyl groups to substrates.
+
+3. **Polymeric Chiral Reagents**: These reagents contain chiral centers or chiral structures themselves, and their main function is to induce or resolve chiral products in reactions. They are often used in asymmetric synthesis, such as in chiral alkylation reactions, by creating a chiral microenvironment that allows the reaction to stereoselectively produce a specific enantiomer.
+parsed: Polymer reagents are mainly classified into three application types:
+
+1. Polymer stoichiometric (reactive) reagents – the polymer's functional groups react directly and are consumed in the reaction (used in stoichiometric amounts like ordinary reagents); the polymeric nature allows the spent reagent/byproduct to be removed by simple filtration, simplifying purification.
+
+2. Polymer catalysts – the polymer carries catalytically active sites (acid/base groups, supported metal complexes, immobilized enzymes, etc.) that promote reactions without being consumed; they combine the efficiency of homogeneous catalysis with the ease of separation and reusability of heterogeneous catalysis.
+
+3. Polymer carrier (support/scavenger) reagents – the polymer serves as an insoluble support to anchor, protect, transport, or selectively capture substrates, intermediates, or impurities (e.g., solid-phase synthesis supports, protecting groups, scavenger resins); the polymer itself does not take part in the key bond-forming step but enables easy isolation of products or removal of unwanted species by filtration/washing.
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: The research and application of polymer reagents require their proper classification. List the three main application types of polymer reagents and briefly describe the functional characteristics of each type.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+# Three Main Application Types of Polymer Reagents
+
+**1. Polymer Stoichiometric Reagents (高分子化学计量试剂)**
+These are polymers bearing reactive functional groups that participate directly in a chemical transformation, being consumed in stoichiometric amounts just like conventional small-molecule reagents. Their key advantage is that after the reaction, the polymer-bound byproduct (or excess reagent) can be simply removed by filtration, greatly simplifying product purification and avoiding contamination of the product with reagent residues.
+
+**2. Polymer Catalysts (高分子催化剂)**
+These polymers contain catalytically active groups (or supported metal complexes/enzymes) that accelerate a reaction without being consumed. They combine the high activity/selectivity of homogeneous catalysts with the easy recovery and reusability of heterogeneous catalysts, since the catalyst is insoluble (or easily separable) and can be filtered off and reused for multiple reaction cycles.
+
+**3. Polymer Carrier (Support) Reagents / Scavengers (高分子载体试剂)**
+These polymers serve as an insoluble support to anchor, protect, transport, or selectively capture a substrate, reactive intermediate, or impurity (e.g., in solid-phase synthesis, protecting-group chemistry, or scavenging of excess reagents/byproducts). The functional characteristic is that the polymer itself does not undergo the key bond-forming reaction but facilitates separation, purification, or stepwise synthesis by allowing simple physical isolation (filtration/washing) of the polymer-bound species from solution-phase components.
+
+<solution>
+Polymer reagents are mainly classified into three application types:
+
+1. Polymer stoichiometric (reactive) reagents – the polymer's functional groups react directly and are consumed in the reaction (used in stoichiometric amounts like ordinary reagents); the polymeric nature allows the spent reagent/byproduct to be removed by simple filtration, simplifying purification.
+
+2. Polymer catalysts – the polymer carries catalytically active sites (acid/base groups, supported metal complexes, immobilized enzymes, etc.) that promote reactions without being consumed; they combine the efficiency of homogeneous catalysis with the ease of separation and reusability of heterogeneous catalysis.
+
+3. Polymer carrier (support/scavenger) reagents – the polymer serves as an insoluble support to anchor, protect, transport, or selectively capture substrates, intermediates, or impurities (e.g., solid-phase synthesis supports, protecting groups, scavenger resins); the polymer itself does not take part in the key bond-forming step but enables easy isolation of products or removal of unwanted species by filtration/washing.
+
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "Three types: (1) Polymer stoichiometric/reactive reagents - functional groups consumed in stoichiometric amounts, byproducts removed by filtration; (2) Polymer catalysts - catalytically active groups promote reactions without consumption, combine homogeneous activity with heterogeneous recyclability; (3) Polymer carrier/support/scavenger reagents - insoluble support for anchoring substrates/intermediates/impurities, enable separation by filtration without participating in key bond formation",
+  "equivalent": false,
+  "score": 0.25,
+  "reason": "OUTPUT categorizes polymer reagents by APPLICATION TYPE (stoichiometric vs. catalytic vs. support role), while GOLD categorizes by CHEMICAL FUNCTION (oxidation/reduction vs. group transfer vs. chiral induction); these are fundamentally different classification schemes with minimal overlap.",
+  "raw": "```json\n{\n  \"parsed\": \"Three types: (1) Polymer stoichiometric/reactive reagents - functional groups consumed in stoichiometric amounts, byproducts removed by filtration; (2) Polymer catalysts - catalytically active groups promote reactions without consumption, combine homogeneous activity with heterogeneous recyclability; (3) Polymer carrier/support/scavenger reagents - insoluble support for anchoring substrates/intermediates/impurities, enable separation by filtration without participating in key bond formation\",\n  \"equivalent\": false,\n  \"score\": 0.25,\n  \"reason\": \"OUTPUT categorizes polymer reagents by APPLICATION TYPE (stoichiometric vs. catalytic vs. support role), while GOLD categorizes by CHEMICAL FUNCTION (oxidation/reduction vs. group transfer vs. chiral induction); these are fundamentally different classification schemes with minimal overlap.\"\n}\n```"
+}

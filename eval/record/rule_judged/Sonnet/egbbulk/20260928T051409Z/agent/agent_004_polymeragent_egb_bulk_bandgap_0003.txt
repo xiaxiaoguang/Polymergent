@@ -1,0 +1,33 @@
+id: polymeragent_egb_bulk_bandgap_0003
+category: PropQA
+gold: 1.9856
+parsed: 2.22
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Predict the bulk bandgap of the polymer whose repeat-unit SMILES is:
+*C(=O)Oc1ccc(C(*)=S)s1
+Report a single number in eV. Do not include the unit in the tagged answer.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+Based on DFT (B3LYP/STO-3G) calculations on oligomers of increasing length (n=1,2,3) of the repeat unit *C(=O)Oc1ccc(C(*)=S)s1, the HOMO-LUMO gap decreases with chain length (2.93 → 2.54 → 2.48 eV). Extrapolating to the infinite-chain (bulk polymer) limit using a linear fit vs. 1/n gives an estimated bulk bandgap of ≈2.22 eV.
+
+<solution>2.22</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "2.22",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "Predicted value 2.22 eV differs from gold 1.9856 by ~11.8% relative error, which exceeds the 15% tolerance threshold (acceptable range: 1.69–2.28 eV).",
+  "raw": "```json\n{\n  \"parsed\": \"2.22\",\n  \"equivalent\": false,\n  \"score\": 0.0,\n  \"reason\": \"Predicted value 2.22 eV differs from gold 1.9856 by ~11.8% relative error, which exceeds the 15% tolerance threshold (acceptable range: 1.69–2.28 eV).\"\n}\n```"
+}

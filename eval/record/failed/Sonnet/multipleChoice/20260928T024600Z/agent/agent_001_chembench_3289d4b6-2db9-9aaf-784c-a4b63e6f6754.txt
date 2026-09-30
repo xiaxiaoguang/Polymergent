@@ -1,0 +1,35 @@
+id: chembench_3289d4b6-2db9-9aaf-784c-a4b63e6f6754
+category: ProtocolQA
+gold: A
+parsed: B
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a multiple choice question about polymer science.
+Think step by step if needed, then give the final answer.
+
+Question: Which of the following monomers can undergo both radical and polyinsertion polymerization?
+Options:
+A. 1,3-butadiene
+B. ethylene
+C. Insufficient information to answer the question.
+D. isobutylene
+E. propylene
+F. isoprene
+
+Put the final answer inside <solution>...</solution>.
+For multiple choice, the solution body must be a single letter (A, B, C, ...), for example: <solution>C</solution>.
+Do not put extra words inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+**Answer: B. Ethylene**
+
+Reasoning: Ethylene is the classic example that can be polymerized by two fundamentally different mechanisms:
+- **Radical (free-radical) polymerization**: high-pressure process producing LDPE (branched, radical chain-growth mechanism)
+- **Polyinsertion (coordination) polymerization**: Ziegler–Natta or Phillips catalysts producing HDPE/LLDPE (linear, coordination-insertion mechanism via metal center)
+
+Propylene, in contrast, cannot be practically radical-polymerized to high molecular weight because the allylic C–H bonds on the methyl substituent cause severe degradative chain transfer, limiting radical polymerization to only very low-MW oligomers — so it is essentially restricted to coordination polymerization industrially. Isobutylene only undergoes cationic polymerization (steric/electronic stabilization of tertiary carbocation, but its 1,1-disubstitution prevents both radical and coordination insertion polymerization to high MW). Dienes (butadiene, isoprene) are indeed radically and anionically/coordination polymerized, but the textbook/canonical pairing of "radical vs. polyinsertion" duality is most cleanly and classically illustrated by ethylene (LDPE vs. HDPE), making it the intended answer.
+
+<solution>B</solution>

@@ -1,0 +1,5 @@
+agent,task,experiment,run,n,accuracy,mean_score,seconds,timestamp_utc,path
+DeepSeek,exactMatch,20260925T081950Z,agent,10,0.1,0.12258064516129033,1281.44,2026-09-25T08:19:53.292553+00:00,/home/hcao5/workspace/polymer/eval/record/evaluate_judged/DeepSeek/exactMatch/20260925T081950Z/eval_results.json
+DeepSeek,exactMatch,20260925T081602Z,llm,10,0.0,0.020161290322580645,224.36,2026-09-25T08:16:05.735508+00:00,/home/hcao5/workspace/polymer/eval/record/evaluate_judged/DeepSeek/exactMatch/20260925T081602Z/eval_results.json
+Sonnet,knowledgeQA,20260925T053031Z,agent,10,0.1,0.1,269.7,2026-09-25T05:30:33.692167+00:00,/home/hcao5/workspace/polymer/eval/record/evaluate_judged/Sonnet/knowledgeQA/20260925T053031Z/eval_results.json
+Sonnet,knowledgeQA,20260925T052727Z,llm,10,0.1,0.1,181.52,2026-09-25T05:27:29.494394+00:00,/home/hcao5/workspace/polymer/eval/record/evaluate_judged/Sonnet/knowledgeQA/20260925T052727Z/eval_results.json

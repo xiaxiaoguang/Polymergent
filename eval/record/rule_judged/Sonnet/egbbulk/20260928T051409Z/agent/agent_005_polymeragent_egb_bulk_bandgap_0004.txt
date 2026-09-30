@@ -1,0 +1,48 @@
+id: polymeragent_egb_bulk_bandgap_0004
+category: PropQA
+gold: 2.5479
+parsed: 4.2
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Predict the bulk bandgap of the polymer whose repeat-unit SMILES is:
+*C(=O)c1ccc(-c2ccc(-c3ccc(*)cc3)cc2)cc1
+Report a single number in eV. Do not include the unit in the tagged answer.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+## Summary
+
+**Plan:**
+1. [✓] Compute repeat-unit descriptors and run DFT HOMO-LUMO on the monomer (capped)
+2. [✓] Build oligomers (n=1,2,3) and run DFT to see gap convergence trend
+3. [✓] Extrapolate to bulk polymer limit (n→∞) using 1/n scaling
+4. [✓] Cross-check with literature search (inconclusive, use computed extrapolation)
+
+**Results:**
+- n=1 (monomer): gap = 4.82 eV
+- n=2 (dimer): gap = 4.47 eV
+- n=3 (trimer): gap = 4.39 eV
+
+Linear extrapolation vs 1/n (standard approach for conjugated oligomer→polymer gap convergence) gives a bulk limit of **~4.17–4.24 eV** (linear regression: 4.17 eV; two-point n=2,3: 4.24 eV).
+
+This aromatic ketone-linked polyphenylene (structurally related to PEEK-type/poly(p-phenylene) systems) is consistent with reported polyphenylene bandgaps (>3 eV, often 3.5–4.5 eV range for wide-bandgap aromatic polymers), supporting this computational estimate.
+
+<solution>4.2</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "4.2",
+  "equivalent": false,
+  "score": 0.12,
+  "reason": "Relative error = |4.2 - 2.5479| / 2.5479 ≈ 0.648, which far exceeds the tolerance of 0.15; the predicted value is ~65% too high.",
+  "raw": "```json\n{\n  \"parsed\": \"4.2\",\n  \"equivalent\": false,\n  \"score\": 0.12,\n  \"reason\": \"Relative error = |4.2 - 2.5479| / 2.5479 ≈ 0.648, which far exceeds the tolerance of 0.15; the predicted value is ~65% too high.\"\n}\n```"
+}

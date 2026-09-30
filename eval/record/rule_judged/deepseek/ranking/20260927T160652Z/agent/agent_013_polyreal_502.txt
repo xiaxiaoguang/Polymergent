@@ -1,0 +1,34 @@
+id: polyreal_502
+category: PropQA
+gold: ["b", "c", "d", "a"]
+parsed: ["b", "c", "d", "a"]
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer ranking question.
+Think step by step if needed, then give the ordered list.
+
+Question: The construction of biomimetic structural materials (such as nacre-like materials) is a research hotspot in the field of high-performance polymer composites. By synergistically assembling graphene oxide (GO) with two-dimensional nanosheets like MXene, and combining strategies such as chemical reduction (e.g., HI method) and polymer cross-linking (e.g., PSE-AP), the tensile strength of the materials can be significantly enhanced. Based on the mechanical performance data measured in related studies, please rank the following four composite material systems in order of their **tensile strength (MPa) from high to low**.
+ a: rGO system prepared by reducing GO with HI 
+ b: System composed of GO, MXene, and PSE-AP, treated with capillary drying and HI reduction (CПBMG) 
+ c: System composed of GO and MXene, treated with capillary drying and HI reduction (CMG) 
+ d: System of GO reduced with HI and cross-linked with PSE-AP (ПBG)
+
+Put the final ranking inside <solution>...</solution>.
+Use either JSON list form ["a", "b", "c"] or a > b > c.
+Order matters. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>["b", "c", "d", "a"]</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "b, c, d, a",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The output exactly matches the gold ranking order.",
+  "raw": "{\"parsed\":\"b, c, d, a\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The output exactly matches the gold ranking order.\"}"
+}

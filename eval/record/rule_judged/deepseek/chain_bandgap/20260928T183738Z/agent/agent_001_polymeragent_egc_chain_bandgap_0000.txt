@@ -1,0 +1,31 @@
+id: polymeragent_egc_chain_bandgap_0000
+category: PropQA
+gold: 5.3057
+parsed: 7.8106
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Predict the chain bandgap of the polymer whose repeat-unit SMILES is:
+*/C=C\C(C#N)C*
+Report a single number in eV. Do not include the unit in the tagged answer.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>7.8106</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "7.8106",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The predicted value 7.8106 differs from the gold value 5.3057 by about 47.2%, exceeding the 15% tolerance.",
+  "raw": "{\"parsed\":\"7.8106\",\"equivalent\":false,\"score\":0.0,\"reason\":\"The predicted value 7.8106 differs from the gold value 5.3057 by about 47.2%, exceeding the 15% tolerance.\"}"
+}

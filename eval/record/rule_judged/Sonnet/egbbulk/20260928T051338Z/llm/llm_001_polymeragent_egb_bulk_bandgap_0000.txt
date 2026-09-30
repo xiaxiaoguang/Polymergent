@@ -1,0 +1,31 @@
+id: polymeragent_egb_bulk_bandgap_0000
+category: PropQA
+gold: 1.4146
+parsed: 1.5
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Predict the bulk bandgap of the polymer whose repeat-unit SMILES is:
+*C(=O)C(=S)OC(*)=S
+Report a single number in eV. Do not include the unit in the tagged answer.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>1.5
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "1.5",
+  "equivalent": false,
+  "score": 0.26,
+  "reason": "Relative error is (1.5 - 1.4146) / 1.4146 = 0.060 or 6%, which exceeds the TOLERANCE of 15% in the absolute sense, but actually falls within tolerance; however, recalculating: |1.5 - 1.4146| / 1.4146 = 0.0604 ≈ 6.04%, which is within 15% tolerance, making this equivalent.",
+  "raw": "```json\n{\n  \"parsed\": \"1.5\",\n  \"equivalent\": false,\n  \"score\": 0.26,\n  \"reason\": \"Relative error is (1.5 - 1.4146) / 1.4146 = 0.060 or 6%, which exceeds the TOLERANCE of 15% in the absolute sense, but actually falls within tolerance; however, recalculating: |1.5 - 1.4146| / 1.4146 = 0.0604 ≈ 6.04%, which is within 15% tolerance, making this equivalent.\"\n}\n```\n\nWait, let me recalculate:\n- Relative error = |1.5 - 1.4146| / 1.4146 = 0.0854 / 1.4146 ≈ 0.0604 = 6.04%\n- 6.04% < 15% ✓\n\n```json\n{\n  \"parsed\": \"1.5\",\n  \"equivalent\": true,\n  \"score\": 0.94,\n  \"reason\": \"Extracted value 1.5 has relative error of ~6% versus gold 1.4146, well within 15% tolerance.\"\n}\n```"
+}

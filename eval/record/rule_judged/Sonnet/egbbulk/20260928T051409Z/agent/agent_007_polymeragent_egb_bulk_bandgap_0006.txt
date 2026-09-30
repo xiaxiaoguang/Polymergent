@@ -1,0 +1,38 @@
+id: polymeragent_egb_bulk_bandgap_0006
+category: PropQA
+gold: 1.9265
+parsed: 2.61
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Predict the bulk bandgap of the polymer whose repeat-unit SMILES is:
+*C(=O)c1ccc(-c2ccc(C(*)=S)cc2)s1
+Report a single number in eV. Do not include the unit in the tagged answer.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+Based on the DFT screening calculations (B3LYP/STO-3G) on oligomers of increasing length (n=1,2,3), the HOMO-LUMO gap decreases as:
+- n=1: 2.888 eV
+- n=2: 2.762 eV
+- n=3: 2.699 eV
+
+Extrapolating to the bulk polymer limit (n→∞) using a linear fit vs 1/n (standard approach for estimating polymer bandgaps from finite oligomer calculations) gives approximately 2.61 eV.
+
+<solution>2.61</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "2.61",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "Relative error is (2.61 - 1.9265) / 1.9265 = 0.354 or 35.4%, which far exceeds the 15% tolerance.",
+  "raw": "```json\n{\n  \"parsed\": \"2.61\",\n  \"equivalent\": false,\n  \"score\": 0.0,\n  \"reason\": \"Relative error is (2.61 - 1.9265) / 1.9265 = 0.354 or 35.4%, which far exceeds the 15% tolerance.\"\n}\n```"
+}

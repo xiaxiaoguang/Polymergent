@@ -1,0 +1,39 @@
+id: chembench_5f6b3a11-10c6-b875-4ddc-e7ddca524165
+category: ProtocolQA
+gold: B
+parsed: E
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a multiple choice question about polymer science.
+Think step by step if needed, then give the final answer.
+
+Question: Which of the following characteristics are typical of Reversible-Deactivation Radical Polymerization (RDRP)?
+Options:
+A. Linear increase of the degree of polymerization ($X_n$) with conversion
+B. First order kinetics with respect to monomer
+C. Insufficient information to answer the question.
+D. Formation of dead polymer chains more than active polymer chains
+E. Narrow molecular weight distribution
+
+Put the final answer inside <solution>...</solution>.
+For multiple choice, the solution body must be a single letter (A, B, C, ...), for example: <solution>C</solution>.
+Do not put extra words inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+Looking at this question, I need to consider the hallmark features that define RDRP (ATRP, RAFT, NMP) versus conventional free radical polymerization.
+
+**Key criteria for RDRP (per Matyjaszewski/Braunecker's classic criteria for controlled/living radical polymerization):**
+- Linear increase of Xn (or Mn) with conversion — reflects that chains are all initiated early and grow simultaneously (A is true)
+- Semi-logarithmic first-order kinetic plot with respect to monomer, reflecting a low, steady-state concentration of active radicals maintained by the persistent radical effect / dynamic equilibrium (B is true)
+- **Narrow molecular weight distribution (low PDI)** — this is the most iconic, most frequently cited, and most experimentally diagnostic feature of RDRP, arising directly from the fast/dynamic exchange between active and dormant chains, which equalizes chain growth probability across all chains (E is true and is the single most universally used "test" for whether a polymerization is controlled/living-radical in nature)
+
+Regarding D: RDRP is specifically designed to **suppress** irreversible termination (dead chain formation) relative to conventional FRP — the vast majority of chains exist in the **dormant** state (not "dead"), with termination events minimized (typically only a few percent of chains). So D describes conventional FRP behavior, not the defining/typical behavior of RDRP — it is not a "typical characteristic" used to identify RDRP.
+
+C is not appropriate since there is sufficient literature-based information to answer definitively.
+
+Since a single answer is required, the most classic, unambiguous, and universally cited hallmark of RDRP is the narrow molecular weight distribution.
+
+<solution>E</solution>

@@ -1,0 +1,29 @@
+id: pareto_3995233_13
+category: KnowledgeQA
+gold: 2.928
+parsed: 3.315
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Polymer reaction_id=3995233, pSMILES `*C=CCN(C*)C(=O)c1ccc2ccccc2c1`. Features for conformer_5, dipole=1.771, polarizability=232.6, HOMO eV=-5.190, HOMO-1 eV=-5.465, min q=-0.319, chi_water=1.236. Predict the TDDFT T1 energy in eV, rounded to 3 decimals.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>3.315</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "3.315",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "Relative error is approximately 0.132, within the 0.15 tolerance.",
+  "raw": "{\"parsed\":\"3.315\",\"equivalent\":true,\"score\":1.0,\"reason\":\"Relative error is approximately 0.132, within the 0.15 tolerance.\"}"
+}

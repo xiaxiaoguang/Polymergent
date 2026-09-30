@@ -1,0 +1,5 @@
+agent,task,run,experiments,accuracy_mean,accuracy_std,score_mean,score_std
+DeepSeek,exactMatch,agent,1,0.1,0.0,0.12258064516129033,0.0
+DeepSeek,exactMatch,llm,1,0.0,0.0,0.020161290322580645,0.0
+Sonnet,knowledgeQA,agent,1,0.1,0.0,0.1,0.0
+Sonnet,knowledgeQA,llm,1,0.1,0.0,0.1,0.0

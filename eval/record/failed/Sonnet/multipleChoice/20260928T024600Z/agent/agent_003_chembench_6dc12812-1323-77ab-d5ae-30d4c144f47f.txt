@@ -1,0 +1,25 @@
+id: chembench_6dc12812-1323-77ab-d5ae-30d4c144f47f
+category: StructQA
+gold: B
+parsed: C
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a multiple choice question about polymer science.
+Think step by step if needed, then give the final answer.
+
+Question: How can the molecular structure of elastomers be characterized?
+Options:
+A. Insufficient information to answer the question.
+B. closely cross-linked
+C. widely cross-linked
+D. not cross-linked
+
+Put the final answer inside <solution>...</solution>.
+For multiple choice, the solution body must be a single letter (A, B, C, ...), for example: <solution>C</solution>.
+Do not put extra words inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>C</solution>

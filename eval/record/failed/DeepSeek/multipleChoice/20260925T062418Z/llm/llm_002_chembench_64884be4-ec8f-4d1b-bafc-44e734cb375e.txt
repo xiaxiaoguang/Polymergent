@@ -1,0 +1,25 @@
+id: chembench_64884be4-ec8f-4d1b-bafc-44e734cb375e
+category: ProtocolQA
+gold: B
+parsed: D
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a multiple choice question about polymer science.
+Think step by step if needed, then give the final answer.
+
+Question: In which of the following solvents is the cationic polymerization of styrene fastest?
+Options:
+A. pentane
+B. water
+C. Insufficient information to answer the question.
+D. 2-dichloroethane
+
+Put the final answer inside <solution>...</solution>.
+For multiple choice, the solution body must be a single letter (A, B, C, ...), for example: <solution>C</solution>.
+Do not put extra words inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>D

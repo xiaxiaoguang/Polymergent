@@ -1,4 +1,4 @@
-name: polymer
+name: polymer2
 channels:
   - conda-forge
   - bioconda
@@ -6,6 +6,7 @@ dependencies:
   # --- 层 0 ---
   - python=3.11
   - pip
+  - git            # 新增：pip 装 GitHub 仓库（pysimm / RadonPy）需要
 
   # --- 层 1–4：数值底座，禁止再走 pip ---
   - numpy=1.26.*
@@ -46,7 +47,19 @@ dependencies:
   - pyscf
   - nglview
   # 需要 packmol-memgen 再打开下一行
-  - ambertools
+  - ambertools     # 同时提供 CLI: antechamber / parmchk2 / tleap
+
+  # --- 新增（conda-forge）：力场 / 输出解析 / 单位 / MD 引擎 ---
+  - openff-toolkit          # SMIRNOFF 力场 (Sage)，单体/小分子
+  - openff-interchange      # OpenFF 体系 -> LAMMPS/GROMACS/OpenMM
+  - openff-forcefields      # Sage 力场文件
+  - openmmforcefields       # GAFF / OpenFF 参数生成给 OpenMM
+  - cclib                   # 解析 QM 输出日志
+  - pint                    # 单位，避免 MD 单位错误
+  - gromacs                 # CLI: gmx（配合 polyply / Martini）
+
+  # --- 新增（可选，体积大 / 容易和上面冲突；确认主环境能 solve 后再打开）---
+  # - psi4                  # QM 引擎；RadonPy 依赖它
 
   - pip:
       # --- LLM / agent：不要写 numpy/scipy/pandas ---
@@ -73,3 +86,14 @@ dependencies:
       - chemicals
       - CoolProp
       - py3Dmol
+
+      # --- 新增：聚合物专用 / ML（PyPI）---
+      - polyply                 # GROMACS 聚合物拓扑 + 坐标 (CLI: polyply)
+      - pysoftk                 # 聚合物库自动生成
+      - psmiles                 # PSMILES 规范化；polyBERT 指纹需 psmiles[polybert]
+      - chemprop                # D-MPNN 性质预测（会拉 torch，体积大）
+
+      # --- 新增（可选，GitHub 安装，非 PyPI 稳定发布；需要时取消注释）---
+      # - git+https://github.com/polysimtools/pysimm     # 需要 lammps
+      # - git+https://github.com/RadonPy/RadonPy         # 需要 psi4 + lammps python 模块
+      # - polyid                                          # TensorFlow 旧栈，容易冲突

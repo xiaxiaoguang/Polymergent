@@ -1,0 +1,26 @@
+id: chembench_d82106cb-ba3d-8a04-db1d-bb253ad797bc
+category: KnowledgeQA
+gold: D
+parsed: E
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a multiple choice question about polymer science.
+Think step by step if needed, then give the final answer.
+
+Question: Given that \pu{20.00 cm^3} of the sample solution was mixed with \pu{40.00 cm^3} of \pu{0.100 mol dm^{-3}} \ce{NaOH} solution and boiled for \pu{1 h} under reflux, and after hydrolysis, the excess \ce{NaOH} was titrated with \pu{0.100 mol dm^{-3}} \ce{HCl}, and \pu{18.50 cm^3} of \ce{HCl} was required to neutralize the remaining \ce{NaOH}, what is the mass of compound B (a dimer of lactic acid) in the sample (in grams)?
+Options:
+A. 0.1523
+B. 0.1905
+C. 0.2000
+D. 0.1701
+E. Insufficient information to answer the question.
+
+Put the final answer inside <solution>...</solution>.
+For multiple choice, the solution body must be a single letter (A, B, C, ...), for example: <solution>C</solution>.
+Do not put extra words inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>E

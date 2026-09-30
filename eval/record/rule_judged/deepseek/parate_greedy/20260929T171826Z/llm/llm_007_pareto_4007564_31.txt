@@ -1,0 +1,29 @@
+id: pareto_4007564_31
+category: KnowledgeQA
+gold: -1.901
+parsed: -2.042
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Polymer reaction_id=4007564, pSMILES `*Nc1nc(NC(=O)Nc2ccc(Oc3ccc(NC(*)=O)cc3)cc2)c(C(=O)OC)nc1Br`. Features for conformer_12, dipole=3.030, polarizability=416.8, HOMO eV=-4.795, HOMO-1 eV=-5.035, min q=-0.303, chi_water=0.823. Predict LUMO in eV for this conformer, rounded to 3 decimals.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>-2.042
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "-2.042",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The predicted value -2.042 has a relative error of about 7.4% from the gold -1.901, within the 0.15 tolerance.",
+  "raw": "{\"parsed\":\"-2.042\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The predicted value -2.042 has a relative error of about 7.4% from the gold -1.901, within the 0.15 tolerance.\"}"
+}

@@ -7,14 +7,28 @@ from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage
 
 if TYPE_CHECKING:
-    from polymer.config import PolymerConfig
+    from polymer.config import PolymerConfig, default_config
 
-SourceType = Literal["OpenAI", "AzureOpenAI", "Anthropic", "Ollama", "Gemini", "Bedrock", "Groq", "Custom"]
+SourceType = Literal[
+    "OpenAI",
+    "AzureOpenAI",
+    "Anthropic",
+    "Ollama",
+    "Gemini",
+    "Bedrock",
+    "Groq",
+    "DeepSeek",
+    "Custom",
+]
 ALLOWED_SOURCES: set[str] = set(SourceType.__args__)
 
 # Output budget per call (thinking + visible text). Claude Opus 5 / Sonnet 5 think by default,
 # so the old 8192 cap could be spent on thinking before any <execute> block is written.
-ANTHROPIC_MAX_TOKENS = 40000
+ANTHROPIC_MAX_TOKENS = 60000
+# DeepSeek V4 Flash/Pro also think by default; give the same headroom so stop tokens
+# like </execute> are reached after reasoning, not truncated mid-thought.
+DEEPSEEK_MAX_TOKENS = 60000
+DEEPSEEK_DEFAULT_BASE_URL = "https://api.deepseek.com"
 
 
 # ---------------------------------------------------------------------------
@@ -31,6 +45,19 @@ def _claude_rejects_sampling(model: str) -> bool:
     """Claude Opus 4.7+, Sonnet 5+, and 5.x models return 400 for non-default temperature/top_p/top_k.
     Older Claude models accept them, but omitting is always safe, so we omit for every Claude model."""
     return "claude" in model.lower()
+
+
+def _is_deepseek_model(model: str) -> bool:
+    """Official API ids (deepseek-flash, deepseek-v4-pro, deepseek-chat) and OpenRouter-style prefixes."""
+    name = model.lower()
+    return name.startswith("deepseek") or name.startswith("deepseek/")
+
+
+def _normalize_deepseek_model(model: str) -> str:
+    """deepseek/deepseek-flash → deepseek-flash for the official DeepSeek endpoint."""
+    if model.lower().startswith("deepseek/"):
+        return model.split("/", 1)[1]
+    return model
 
 
 def _normalize_agent_messages(messages: list[BaseMessage]) -> list[BaseMessage]:
@@ -82,46 +109,41 @@ def get_llm(
 ) -> BaseChatModel:
     """
     Get a language model instance based on the specified model name and source.
-    This function supports models from OpenAI, Azure OpenAI, Anthropic, Ollama, Gemini, Bedrock, and custom model serving.
+    This function supports models from OpenAI, Azure OpenAI, Anthropic, Ollama, Gemini,
+    Bedrock, Groq, DeepSeek, and custom model serving.
     Args:
         model (str): The model name to use
         temperature (float): Temperature for models that still accept it. Ignored for Claude models and
                              OpenAI reasoning models (gpt-5+, o-series), which reject non-default values.
         stop_sequences (list): Sequences that will stop generation (not supported by OpenAI's Responses API;
-                               A1 halts client-side for those models)
-        source (str): Source provider: "OpenAI", "AzureOpenAI", "Anthropic", "Ollama", "Gemini", "Bedrock", or "Custom"
+                               A1 halts client-side for those models). DeepSeek Chat Completions does support `stop`.
+        source (str): Source provider: "OpenAI", "AzureOpenAI", "Anthropic", "Ollama", "Gemini",
+                      "Bedrock", "Groq", "DeepSeek", or "Custom"
                       If None, will attempt to auto-detect from model name
         base_url (str): The base URL for custom model serving (e.g., "http://localhost:8000/v1"), default is None
         api_key (str): The API key for the custom llm
         config (PolymerConfig): Optional configuration object. If provided, unspecified parameters will use config values
-        reasoning_effort (str): Optional effort for Claude ("low" | "medium" | "high" | "xhigh" | "max") or
-                                OpenAI reasoning models ("none" | "low" | "medium" | "high" | "xhigh" | "max").
+        reasoning_effort (str): Optional effort for Claude ("low" | "medium" | "high" | "xhigh" | "max"),
+                                OpenAI reasoning models ("none" | "low" | "medium" | "high" | "xhigh" | "max"),
+                                or DeepSeek V4 ("low" | "medium" | "high").
                                 Falls back to the POLYMER_REASONING_EFFORT env var; None = provider default.
     """
     # Use config values for any unspecified parameters
-    if config is not None:
-        if model is None:
-            model = config.llm_model
-        if temperature is None:
-            temperature = config.temperature
-        if source is None:
-            source = config.source
-        if base_url is None:
-            base_url = config.base_url
-        if api_key is None:
-            api_key = config.api_key or "EMPTY"
-        if reasoning_effort is None:
-            reasoning_effort = getattr(config, "reasoning_effort", None)
-
-    # Use defaults if still not specified
+    if config is None:
+        config = default_config
+    
     if model is None:
-        model = "claude-sonnet-5"
+            model = config.llm_model
     if temperature is None:
-        temperature = 0.7
+            temperature = config.temperature
+    if source is None:
+            source = config.source
+    if base_url is None:
+            base_url = config.base_url
     if api_key is None:
-        api_key = "EMPTY"
+            api_key = config.api_key or "EMPTY"
     if reasoning_effort is None:
-        reasoning_effort = os.getenv("POLYMER_REASONING_EFFORT") or None
+            reasoning_effort = getattr(config, "reasoning_effort", None)
 
     # Auto-detect source from model name if not specified
     if source is None:
@@ -133,6 +155,9 @@ def get_llm(
                 source = "Anthropic"
             elif model[:7] == "gpt-oss":
                 source = "Ollama"
+            elif _is_deepseek_model(model):
+                # Must run before the Ollama name list — "deepseek" used to match Ollama.
+                source = "DeepSeek"
             elif model[:4] == "gpt-" or re.match(r"o\d", model):
                 source = "OpenAI"
             elif model.startswith("azure-"):
@@ -154,7 +179,6 @@ def get_llm(
                     "dolphin",
                     "orca",
                     "vicuna",
-                    "deepseek",
                 ]
             ):
                 source = "Ollama"
@@ -248,6 +272,46 @@ def get_llm(
             model_kwargs=model_kwargs,
         )
 
+    elif source == "DeepSeek":
+        try:
+            from langchain_openai import ChatOpenAI
+        except ImportError:
+            raise ImportError(  # noqa: B904
+                "langchain-openai package is required for DeepSeek models. Install with: pip install -U langchain-openai"
+            )
+        ChatOpenAI = _agent_safe(ChatOpenAI)  # noqa: N806
+
+        model_id = _normalize_deepseek_model(model)
+        ds_key = os.getenv("DEEPSEEK_API_KEY") or (api_key if api_key and api_key != "EMPTY" else None)
+        if not ds_key:
+            raise ValueError(
+                "DeepSeek requires DEEPSEEK_API_KEY (or config.api_key). "
+                "Get a key at https://platform.deepseek.com/"
+            )
+        ds_base = os.getenv("DEEPSEEK_BASE_URL") or DEEPSEEK_DEFAULT_BASE_URL
+
+        # Official Chat Completions supports `stop` (up to 16 sequences). Thinking is on by
+        # default for V4; pass reasoning_effort through extra_body when set.
+        extra_body: dict = {}
+        if reasoning_effort:
+            extra_body["thinking"] = {"type": "enabled"}
+            extra_body["reasoning_effort"] = reasoning_effort
+
+        kwargs: dict = {
+            "model": model_id,
+            "api_key": ds_key,
+            "base_url": ds_base,
+            "stop_sequences": stop_sequences,
+            "max_tokens": DEEPSEEK_MAX_TOKENS,
+        }
+        # Thinking-mode sampling is constrained; only send temperature when effort is unset.
+        if not reasoning_effort:
+            kwargs["temperature"] = temperature
+        if extra_body:
+            kwargs["extra_body"] = extra_body
+
+        return ChatOpenAI(**kwargs)
+
     elif source == "Gemini":
         # If you want to use ChatGoogleGenerativeAI, you need to pass the stop sequences upon invoking the model.
         # return ChatGoogleGenerativeAI(
@@ -332,5 +396,6 @@ def get_llm(
 
     else:
         raise ValueError(
-            f"Invalid source: {source}. Valid options are 'OpenAI', 'AzureOpenAI', 'Anthropic', 'Gemini', 'Groq', 'Bedrock', or 'Ollama'"
+            f"Invalid source: {source}. Valid options are 'OpenAI', 'AzureOpenAI', 'Anthropic', "
+            f"'Gemini', 'Groq', 'DeepSeek', 'Bedrock', 'Ollama', or 'Custom'"
         )

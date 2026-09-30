@@ -1,0 +1,49 @@
+id: polyreal_4
+category: StructQA
+gold: In fuel cells, the core functions of polymer proton exchange membranes are twofold: first, to conduct protons ($H^+$), allowing them to migrate smoothly from the anode (where hydrogen is decomposed) to the cathode (where it reacts with oxygen); second, to act as a diaphragm, effectively isolating the fuel at the anode (hydrogen) from the oxidant at the cathode (oxygen), preventing direct contact and short-circuiting. Based on their function and working principle, these membranes belong to the category of ion exchange membranes, more specifically, cation exchange membranes. To achieve efficient proton conduction, this polymer material must possess specific chemical structural characteristics, namely, it must contain a large number of acidic functional groups, such as sulfonic acid groups ($-SO_3H$) or phosphoric acid groups, on its polymer backbone or side chains. These acidic groups can ionize to release mobile protons in a hydrated environment, which are then transferred within the membrane under the influence of an electric field through the 'Grotthuss mechanism' or 'vehicle mechanism', thereby imparting good proton conductivity to the membrane.
+parsed: Core functions:
+1) Conduct protons (H⁺) from the anode to the cathode.
+2) Act as a gas barrier, preventing H₂ and O₂ from mixing.
+3) Serve as an electronic insulator, forcing electrons through the external circuit.
+
+Category:
+These membranes belong to ion-exchange membranes, specifically cation-exchange membranes (polymer electrolyte membranes).
+
+Required chemical structural characteristics:
+The polymer must contain strongly acidic proton-conducting groups, typically sulfonic acid groups (–SO₃H), covalently bonded to a chemically and thermally stable backbone. It should have a hydrophobic main chain for mechanical strength and dimensional stability, plus hydrophilic ionic domains/channels that allow proton transport and retain water. The material must also have high proton conductivity, sufficient water uptake with controlled swelling, low gas permeability, and resistance to oxidative/chemical degradation in fuel-cell conditions.
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Proton exchange membranes are the core key materials in hydrogen fuel cells, and their performance directly determines the efficiency and lifespan of the cell. What are the core functions of polymer proton exchange membranes in fuel cells? To which category of adsorption separation functional polymers do these membranes belong? What chemical structural characteristics must this polymer material possess to achieve its core functions?
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>
+Core functions:
+1) Conduct protons (H⁺) from the anode to the cathode.
+2) Act as a gas barrier, preventing H₂ and O₂ from mixing.
+3) Serve as an electronic insulator, forcing electrons through the external circuit.
+
+Category:
+These membranes belong to ion-exchange membranes, specifically cation-exchange membranes (polymer electrolyte membranes).
+
+Required chemical structural characteristics:
+The polymer must contain strongly acidic proton-conducting groups, typically sulfonic acid groups (–SO₃H), covalently bonded to a chemically and thermally stable backbone. It should have a hydrophobic main chain for mechanical strength and dimensional stability, plus hydrophilic ionic domains/channels that allow proton transport and retain water. The material must also have high proton conductivity, sufficient water uptake with controlled swelling, low gas permeability, and resistance to oxidative/chemical degradation in fuel-cell conditions.
+</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "Core functions: proton conduction and gas barrier; cation-exchange membranes; acidic proton-conducting groups such as sulfonic acid on a stable polymer backbone with hydrophilic domains.",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The output covers the gold's key claims about proton conduction, fuel/oxidant separation, cation-exchange membrane category, and acidic proton-conducting structural groups, with only additional non-contradictory details.",
+  "raw": "{\"parsed\":\"Core functions: proton conduction and gas barrier; cation-exchange membranes; acidic proton-conducting groups such as sulfonic acid on a stable polymer backbone with hydrophilic domains.\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The output covers the gold's key claims about proton conduction, fuel/oxidant separation, cation-exchange membrane category, and acidic proton-conducting structural groups, with only additional non-contradictory details.\"}"
+}

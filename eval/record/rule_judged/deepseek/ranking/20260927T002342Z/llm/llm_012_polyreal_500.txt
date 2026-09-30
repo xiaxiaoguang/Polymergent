@@ -1,0 +1,34 @@
+id: polyreal_500
+category: PropQA
+gold: ["a", "c", "d", "b"]
+parsed: a > b > c > d
+rule_score: 0.25
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer ranking question.
+Think step by step if needed, then give the ordered list.
+
+Question: The development of high-performance composite materials is a frontier field in materials science. By combining graphene oxide (GO) with two-dimensional nanosheets like MXene, and employing specific processing techniques (such as confined vacuum drying, capillary drying) and chemical modifications (such as HI reduction, PSE-AP crosslinking), materials with different mechanical stiffness (Young's modulus) can be prepared. Based on relevant experimental data, please rank the following four GO/MXene-based composite material systems in order of their **Young's modulus (GPa) from high to low**.
+ a: ПBMG (GO+MXene+confined vacuum+HI+PSE-AP) 
+ b: ПBG (GO + HI+PSE-AP) 
+ c: MG(GO+MXene+confined vacuum+HI) 
+ d: CMGO(GO+MXene+capillary drying)
+
+Put the final ranking inside <solution>...</solution>.
+Use either JSON list form ["a", "b", "c"] or a > b > c.
+Order matters. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>a > b > c > d
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "a > b > c > d",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The ranking order does not match: OUTPUT is 'a > b > c > d' but GOLD requires 'a > c > d > b'.",
+  "raw": "```json\n{\n  \"parsed\": \"a > b > c > d\",\n  \"equivalent\": false,\n  \"score\": 0.0,\n  \"reason\": \"The ranking order does not match: OUTPUT is 'a > b > c > d' but GOLD requires 'a > c > d > b'.\"\n}\n```"
+}

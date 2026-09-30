@@ -1,0 +1,27 @@
+id: chembench_fe718e0e-9aca-20db-da55-403d050c0c97
+category: ProtocolQA
+gold: A
+parsed: B
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a multiple choice question about polymer science.
+Think step by step if needed, then give the final answer.
+
+Question: To double the rate of radical polymerization, how must the initiator concentration be changed?
+Options:
+A. doubled
+B. quadrupled
+C. tripled
+D. Insufficient information to answer the question.
+
+Put the final answer inside <solution>...</solution>.
+For multiple choice, the solution body must be a single letter (A, B, C, ...), for example: <solution>C</solution>.
+Do not put extra words inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+Rp ∝ [I]^(1/2), so to double Rp, [I] must be increased 4-fold (2² = 4).
+
+<solution>B</solution>

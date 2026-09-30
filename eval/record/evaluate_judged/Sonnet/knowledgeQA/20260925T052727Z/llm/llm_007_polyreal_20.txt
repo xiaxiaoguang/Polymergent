@@ -1,0 +1,73 @@
+id: polyreal_20
+category: KnowledgeQA
+gold: When designing the 'monomerization of functional components', at least the following three key factors need to be considered:
+
+1. **Retention of Functionality and Compatibility**: When introducing polymerizable groups (such as double bonds) to the functional components, the chosen chemical reactions and introduction sites must not destroy or significantly reduce the original core functions of the functional components. Additionally, there should be no adverse chemical or electronic interactions between the introduced polymerizable groups and the functional components. For example, the conditions of the polymerization reaction should not cause the functional components to decompose.
+
+2. **Introduction and Selection of Spacers**: Typically, the functional components are not directly connected to the polymerizable groups but are linked through a flexible chemical structure known as a 'spacer' (such as a methylene chain). The role of the spacer is to decouple the motion of the functional components from the polymer main chain, providing the functional components with greater mobility to fully exert their functions. It also helps to avoid excessive steric hindrance effects from bulky functional components on the polymerization reaction.
+
+3. **Reversible Protection of Important Functional Groups**: If the functional components contain reactive functional groups (such as -OH, -NH₂, -COOH) that are unstable or interfere with the polymerization under reaction conditions, they need to be chemically protected before polymerization, temporarily converting them into stable groups. After polymerization, they can be restored through deprotection reactions to ensure smooth polymerization and retention of functionality.
+parsed: When converting a functional component (dye, drug, catalyst, ligand, etc.) into a polymerizable monomer, at least the following key points must be considered:
+
+1. **Preservation of the intrinsic function of the component.**
+The chemical modification (introduction of a polymerizable group) must not destroy, weaken, or sterically/electronically interfere with the functional group's original property (e.g., its optical, electronic, catalytic, or biological activity). The site and chemistry of attachment should be chosen so that after polymerization the functional unit retains its performance.
+
+2. **Rational selection and matching of the polymerizable group.**
+The type of polymerizable moiety (e.g., acrylate, methacrylate, styrene, vinyl ether, etc.) must be compatible with the intended polymerization mechanism (radical, condensation, ROMP, etc.) and, if copolymerized with other monomers, should have a reactivity ratio close to theirs so that a controlled composition, sequence, and molecular weight can be achieved.
+
+3. **Introduction of a suitable spacer (linker) between the functional group and the polymerizable group.**
+An appropriate spacer length and flexibility reduce steric hindrance and electronic conjugation effects between the polymer backbone and the functional unit, ensuring sufficient mobility/accessibility of the functional group in the resulting polymer for it to exert its function effectively.
+
+4. **Solubility and compatibility of the resulting monomer.**
+The monomer must be sufficiently soluble in the polymerization medium and compatible with comonomers/solvents to allow homogeneous polymerization and good incorporation into the polymer chain.
+
+5. **Chemical and thermal stability of the monomer.**
+The monomer should be stable enough to survive purification, storage, and the polymerization conditions (heat, initiators, solvents) without premature degradation, side reactions, or loss of the functional group's reactivity.
+
+6. **Synthetic feasibility and efficiency of the monomerization route.**
+The synthetic route from the functional component to the monomer should be simple, high-yielding, and give a product that can be readily purified, to ensure practical, large-scale applicability.
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: In the preparation of functional polymers, polymerizing functional components is one of the core strategies. The first step in this process is to convert the functional components into polymerizable monomers. When designing the 'monomerization of functional components', multiple factors need to be comprehensively considered to ensure the final functional polymer exhibits excellent performance. List and explain at least three key considerations among them.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>
+When converting a functional component (dye, drug, catalyst, ligand, etc.) into a polymerizable monomer, at least the following key points must be considered:
+
+1. **Preservation of the intrinsic function of the component.**
+The chemical modification (introduction of a polymerizable group) must not destroy, weaken, or sterically/electronically interfere with the functional group's original property (e.g., its optical, electronic, catalytic, or biological activity). The site and chemistry of attachment should be chosen so that after polymerization the functional unit retains its performance.
+
+2. **Rational selection and matching of the polymerizable group.**
+The type of polymerizable moiety (e.g., acrylate, methacrylate, styrene, vinyl ether, etc.) must be compatible with the intended polymerization mechanism (radical, condensation, ROMP, etc.) and, if copolymerized with other monomers, should have a reactivity ratio close to theirs so that a controlled composition, sequence, and molecular weight can be achieved.
+
+3. **Introduction of a suitable spacer (linker) between the functional group and the polymerizable group.**
+An appropriate spacer length and flexibility reduce steric hindrance and electronic conjugation effects between the polymer backbone and the functional unit, ensuring sufficient mobility/accessibility of the functional group in the resulting polymer for it to exert its function effectively.
+
+4. **Solubility and compatibility of the resulting monomer.**
+The monomer must be sufficiently soluble in the polymerization medium and compatible with comonomers/solvents to allow homogeneous polymerization and good incorporation into the polymer chain.
+
+5. **Chemical and thermal stability of the monomer.**
+The monomer should be stable enough to survive purification, storage, and the polymerization conditions (heat, initiators, solvents) without premature degradation, side reactions, or loss of the functional group's reactivity.
+
+6. **Synthetic feasibility and efficiency of the monomerization route.**
+The synthetic route from the functional component to the monomer should be simple, high-yielding, and give a product that can be readily purified, to ensure practical, large-scale applicability.
+
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "Key factors for monomerization of functional components: (1) Preservation of intrinsic function and avoiding steric/electronic interference, (2) Rational selection of polymerizable group compatible with polymerization mechanism, (3) Introduction of suitable spacer/linker for mobility and reduced hindrance, (4) Solubility and compatibility of monomer, (5) Chemical and thermal stability, (6) Synthetic feasibility and efficiency",
+  "equivalent": false,
+  "score": 0.65,
+  "reason": "OUTPUT covers 6 points vs GOLD's 3 key factors; OUTPUT includes points 1 and 3 clearly matching GOLD, but GOLD's critical point 2 on 'reversible protection of important functional groups' is completely absent from OUTPUT, and points 4-6 in OUTPUT (solubility, stability, synthetic feasibility) are reasonable but not in the GOLD reference material.",
+  "raw": "```json\n{\n  \"parsed\": \"Key factors for monomerization of functional components: (1) Preservation of intrinsic function and avoiding steric/electronic interference, (2) Rational selection of polymerizable group compatible with polymerization mechanism, (3) Introduction of suitable spacer/linker for mobility and reduced hindrance, (4) Solubility and compatibility of monomer, (5) Chemical and thermal stability, (6) Synthetic feasibility and efficiency\",\n  \"equivalent\": false,\n  \"score\": 0.65,\n  \"reason\": \"OUTPUT covers 6 points vs GOLD's 3 key factors; OUTPUT includes points 1 and 3 clearly matching GOLD, but GOLD's critical point 2 on 'reversible protection of important functional groups' is completely absent from OUTPUT, and points 4-6 in OUTPUT (solubility, stability, synthetic feasibility) are reasonable but not in the GOLD reference material.\"\n}\n```"
+}

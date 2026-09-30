@@ -1,0 +1,41 @@
+id: polyreal_489
+category: PropQA
+gold: ["b", "d", "a", "c"]
+parsed: ["b", "d", "c", "a"]
+rule_score: 0.5
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer ranking question.
+Think step by step if needed, then give the ordered list.
+
+Question: In the study of ionic thermoelectric gels (i-TE Gels), the choice of matrix has a decisive impact on the overall thermoelectric conversion efficiency. Please analyze the experimental data below and rank the following four systems in order of their thermoelectric conversion efficiency from highest to lowest. 
+ a: Fe3+/ Fe2+ PVA 
+ b: [Fe(CN)6]3-/[Fe(CN)6]4- KCl/Gelatin 
+ c: Fe3+/ Fe2+ HCl/PVA 
+ d: Fe3+/ Fe2+ Double Networks/Binary Solvent
+
+Put the final ranking inside <solution>...</solution>.
+Use either JSON list form ["a", "b", "c"] or a > b > c.
+Order matters. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+Based on the available literature data and search results:
+
+- **b ([Fe(CN)₆]³⁻/[Fe(CN)₆]⁴⁻ KCl/Gelatin)** shows the record/benchmark performance for i-TE gels (giant thermopower ~17 mV K⁻¹ via synergistic thermogalvanic + thermodiffusion effects), making it the highest efficiency.
+- **d (Fe³⁺/Fe²⁺ Double Networks/Binary Solvent)** — double-network/binary-solvent engineering is a known strategy that strongly boosts ionic conductivity and Seebeck of Fe³⁺/Fe²⁺ gels beyond single-matrix/aqueous versions.
+- **c (Fe³⁺/Fe²⁺ HCl/PVA)** — HCl addition improves mechanical properties and reduces charge-transfer resistance versus plain Fe³⁺/Fe²⁺ PVA.
+- **a (Fe³⁺/Fe²⁺ PVA)** — the baseline Fe³⁺/Fe²⁺ PVA system, lowest among these.
+
+<solution>["b", "d", "c", "a"]</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "b > d > c > a",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The output ranking is b, d, c, a, but the gold ranking requires b, d, a, c; the final two entries are swapped.",
+  "raw": "{\"parsed\":\"b > d > c > a\",\"equivalent\":false,\"score\":0.0,\"reason\":\"The output ranking is b, d, c, a, but the gold ranking requires b, d, a, c; the final two entries are swapped.\"}"
+}

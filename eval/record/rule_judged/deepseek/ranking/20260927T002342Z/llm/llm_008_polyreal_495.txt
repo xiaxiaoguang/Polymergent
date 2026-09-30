@@ -1,0 +1,46 @@
+id: polyreal_495
+category: PropQA
+gold: ["c", "d", "b", "a"]
+parsed: ["d", "c", "a", "b"]
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer ranking question.
+Think step by step if needed, then give the ordered list.
+
+Question: In non-redox ionic thermoelectric (i-TE) gels, the thermopower ($S_e$) primarily arises from the differential thermophoresis (Soret effect) of cations and anions in the gel matrix under a temperature gradient. Therefore, the type and concentration of electrolytes have a decisive impact on the $S_e$ value. Based on existing experimental data of gelatin-based i-TE systems, please rank the following four electrolyte gel systems in order of their thermopower $S_e$ (mV K-1) from high to low.
+ a: Gelatin-0.8 M NaCl 
+ b: Gelatin-0.8 M KNO3 
+ c: Gelatin-0.8 M KCl 
+ d: Gelatin-0.3 M KCl
+
+Put the final ranking inside <solution>...</solution>.
+Use either JSON list form ["a", "b", "c"] or a > b > c.
+Order matters. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+Looking at this problem, I need to consider two key factors from gelatin-based ionic thermoelectric research:
+
+1. **Concentration effect**: Lower electrolyte concentration generally yields higher thermopower due to reduced ionic screening and enhanced relative contribution of differential ion thermodiffusion (Soret effect) per charge carrier.
+
+2. **Ion identity effect**: At the same concentration, different cation-anion pairs exhibit different Soret coefficients and hydration/mobility differences, affecting the net thermopower. Experimentally, KCl systems tend to show larger differential thermodiffusion between K⁺ and Cl⁻ compared to Na⁺/Cl⁻ (NaCl) or K⁺/NO₃⁻ (KNO3) pairs in gelatin matrices, due to more favorable transport number asymmetry in the gel network.
+
+Combining these effects:
+- **Gelatin-0.3M KCl (d)** benefits most from low concentration, giving the highest $S_e$.
+- **Gelatin-0.8M KCl (c)** still benefits from favorable K⁺/Cl⁻ asymmetry despite higher concentration.
+- **Gelatin-0.8M NaCl (a)** has weaker cation-anion mobility difference compared to KCl.
+- **Gelatin-0.8M KNO3 (b)** shows the weakest Soret effect due to larger, less asymmetric NO₃⁻ transport behavaior.
+
+<solution>["d", "c", "a", "b"]
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "d, c, a, b",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The model predicted [d, c, a, b] but GOLD is [c, d, b, a]; the rankings differ fundamentally in positions 1-2 and 3-4, indicating incorrect ordering despite reasonable polymer science reasoning.",
+  "raw": "```json\n{\n  \"parsed\": \"d, c, a, b\",\n  \"equivalent\": false,\n  \"score\": 0.0,\n  \"reason\": \"The model predicted [d, c, a, b] but GOLD is [c, d, b, a]; the rankings differ fundamentally in positions 1-2 and 3-4, indicating incorrect ordering despite reasonable polymer science reasoning.\"\n}\n```"
+}

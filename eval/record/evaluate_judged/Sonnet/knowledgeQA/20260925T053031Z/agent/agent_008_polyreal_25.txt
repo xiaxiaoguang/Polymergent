@@ -1,0 +1,50 @@
+id: polyreal_25
+category: KnowledgeQA
+gold: The fundamental difference between polymer reagents and polymer catalysts is that polymer reagents directly participate in stoichiometric reactions, and their chemical structure changes before and after the reaction; whereas polymer catalysts only alter the reaction rate, and theoretically, their structure and mass remain unchanged before and after the reaction.
+
+Taking the reaction of polystyrene peroxyformic acid oxidizing cyclohexene as an example, this difference is clearly demonstrated. In this reaction:
+- **Before the reaction**, the active functional group of the polymer reagent is the peroxyformic acid group (-COOOH).
+- **During the reaction**, the peroxyformic acid group transfers an oxygen atom to cyclohexene, oxidizing it to epoxycyclohexane.
+- **After the reaction**, the functional group of the polymer reagent loses this active oxygen and transforms into an ordinary carboxylic acid group (-COOH).
+
+This process shows that the polymer reagent, as one of the reactants, is consumed, and its chemical structure changes from a peroxy acid to a carboxylic acid. To be reused, it must undergo an additional chemical reaction (regeneration) to restore its original form. This is completely different from the characteristic of catalysts, which maintain their structure unchanged in cycles.
+parsed: **Fundamental difference:**
+A polymer reagent acts as a stoichiometric reactant — its reactive functional group is chemically consumed (transformed into a new, different functional group) during the reaction, just like a small‑molecule reagent, so it must be used in ≥1:1 (often excess) molar amount relative to the substrate and cannot be reused until it is chemically regenerated back to its original active form.
+
+A polymer catalyst, in contrast, only accelerates the reaction by providing an active site; its functional group participates in the reaction cycle but is regenerated to its original chemical state at the end of each catalytic turnover. It is therefore used in only a small (catalytic) amount and can be reused indefinitely without any separate regeneration step, remaining chemically unchanged after the overall reaction.
+
+**Illustration with polystyrene peroxyformic acid oxidizing cyclohexene:**
+Polystyrene‑bound peroxyformic acid (PS‑COOOH) transfers its peroxide oxygen to the C=C double bond of cyclohexene, converting it into cyclohexene oxide (epoxide). In doing so, the active –COOOH group on the polymer is irreversibly converted into an inactive –COOH (polystyrene‑formic acid) group — i.e., the reagent itself undergoes a permanent chemical change and is consumed in a 1:1 stoichiometric relationship with cyclohexene, just as free peroxyformic acid would be consumed in solution‑phase epoxidation. To reuse the polymer, the spent –COOH groups must be deliberately re‑oxidized (regenerated) back to –COOOH with H₂O₂/HCOOH before it can epoxidize more cyclohexene. This stoichiometric consumption and requirement for external regeneration is exactly what distinguishes it, as a polymer reagent, from a polymer catalyst, whose active groups would instead be automatically restored within the reaction cycle itself and could keep converting substrate using only a catalytic (sub‑stoichiometric) loading.
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Both polymer reagents and polymer catalysts belong to chemically functional polymers, but there is an essential difference in their roles and final states in reactions. Please clearly state the fundamental difference between polymer reagents and polymer catalysts. Use the reaction of a polymer oxidizing reagent (polystyrene peroxyformic acid) oxidizing cyclohexene as an example to illustrate how polymer reagents demonstrate this difference.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>
+**Fundamental difference:**
+A polymer reagent acts as a stoichiometric reactant — its reactive functional group is chemically consumed (transformed into a new, different functional group) during the reaction, just like a small‑molecule reagent, so it must be used in ≥1:1 (often excess) molar amount relative to the substrate and cannot be reused until it is chemically regenerated back to its original active form.
+
+A polymer catalyst, in contrast, only accelerates the reaction by providing an active site; its functional group participates in the reaction cycle but is regenerated to its original chemical state at the end of each catalytic turnover. It is therefore used in only a small (catalytic) amount and can be reused indefinitely without any separate regeneration step, remaining chemically unchanged after the overall reaction.
+
+**Illustration with polystyrene peroxyformic acid oxidizing cyclohexene:**
+Polystyrene‑bound peroxyformic acid (PS‑COOOH) transfers its peroxide oxygen to the C=C double bond of cyclohexene, converting it into cyclohexene oxide (epoxide). In doing so, the active –COOOH group on the polymer is irreversibly converted into an inactive –COOH (polystyrene‑formic acid) group — i.e., the reagent itself undergoes a permanent chemical change and is consumed in a 1:1 stoichiometric relationship with cyclohexene, just as free peroxyformic acid would be consumed in solution‑phase epoxidation. To reuse the polymer, the spent –COOH groups must be deliberately re‑oxidized (regenerated) back to –COOOH with H₂O₂/HCOOH before it can epoxidize more cyclohexene. This stoichiometric consumption and requirement for external regeneration is exactly what distinguishes it, as a polymer reagent, from a polymer catalyst, whose active groups would instead be automatically restored within the reaction cycle itself and could keep converting substrate using only a catalytic (sub‑stoichiometric) loading.
+</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "Polymer reagents are stoichiometric reactants whose functional groups are chemically consumed and transformed (e.g., -COOOH → -COOH), requiring ≥1:1 molar ratio with substrate and external regeneration for reuse. Polymer catalysts accelerate reactions with active sites that are regenerated to their original state after each cycle, remain chemically unchanged overall, are used in catalytic amounts, and need no separate regeneration. In the polystyrene peroxyformic acid/cyclohexene example: PS-COOOH irreversibly converts to PS-COOH (1:1 stoichiometry, permanent consumption), contrasting with a catalyst whose active group would auto-regenerate in-cycle.",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "OUTPUT correctly identifies the fundamental distinction (stoichiometric consumption + structure change vs. catalytic acceleration + structure preservation), accurately explains the polystyrene peroxyformic acid mechanism with the same before/during/after transformation (-COOOH → -COOH), and emphasizes the need for external regeneration of the reagent—all core claims from GOLD.",
+  "raw": "```json\n{\n  \"parsed\": \"Polymer reagents are stoichiometric reactants whose functional groups are chemically consumed and transformed (e.g., -COOOH → -COOH), requiring ≥1:1 molar ratio with substrate and external regeneration for reuse. Polymer catalysts accelerate reactions with active sites that are regenerated to their original state after each cycle, remain chemically unchanged overall, are used in catalytic amounts, and need no separate regeneration. In the polystyrene peroxyformic acid/cyclohexene example: PS-COOOH irreversibly converts to PS-COOH (1:1 stoichiometry, permanent consumption), contrasting with a catalyst whose active group would auto-regenerate in-cycle.\",\n  \"equivalent\": true,\n  \"score\": 1.0,\n  \"reason\": \"OUTPUT correctly identifies the fundamental distinction (stoichiometric consumption + structure change vs. catalytic acceleration + structure preservation), accurately explains the polystyrene peroxyformic acid mechanism with the same before/during/after transformation (-COOOH → -COOH), and emphasizes the need for external regeneration of the reagent—all core claims from GOLD.\"\n}\n```"
+}

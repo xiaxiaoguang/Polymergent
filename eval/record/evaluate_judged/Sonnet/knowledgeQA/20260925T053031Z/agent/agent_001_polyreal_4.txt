@@ -1,0 +1,53 @@
+id: polyreal_4
+category: StructQA
+gold: In fuel cells, the core functions of polymer proton exchange membranes are twofold: first, to conduct protons ($H^+$), allowing them to migrate smoothly from the anode (where hydrogen is decomposed) to the cathode (where it reacts with oxygen); second, to act as a diaphragm, effectively isolating the fuel at the anode (hydrogen) from the oxidant at the cathode (oxygen), preventing direct contact and short-circuiting. Based on their function and working principle, these membranes belong to the category of ion exchange membranes, more specifically, cation exchange membranes. To achieve efficient proton conduction, this polymer material must possess specific chemical structural characteristics, namely, it must contain a large number of acidic functional groups, such as sulfonic acid groups ($-SO_3H$) or phosphoric acid groups, on its polymer backbone or side chains. These acidic groups can ionize to release mobile protons in a hydrated environment, which are then transferred within the membrane under the influence of an electric field through the 'Grotthuss mechanism' or 'vehicle mechanism', thereby imparting good proton conductivity to the membrane.
+parsed: **Core functions of the PEM in a fuel cell:**
+1. Selectively conduct H⁺ (protons) from the anode to the cathode, providing the ionic (protonic) conduction path that completes the internal circuit.
+2. Act as a physical/electronic barrier that is impermeable to electrons and to the reactant gases (H₂ and O₂), separating the anode and cathode compartments so that electrons are forced through the external circuit (generating current) and fuel/oxidant crossover (which would cause direct chemical reaction and efficiency loss) is prevented.
+
+**Category of functional polymer:** 
+The PEM belongs to the class of **adsorption–separation functional polymers known as ion‑exchange membranes (resins)** — more specifically, it is a **cation‑exchange (proton‑exchange) membrane**, a selective‑permeation/ion‑transport type of functional polymer.
+
+**Required chemical structural characteristics:**
+- A chemically and thermally stable polymer backbone (commonly a perfluorinated or aromatic hydrophobic main chain, e.g., PTFE‑type backbone in Nafion) that resists oxidative/hydrolytic attack in the strongly acidic, oxidizing fuel‑cell environment and provides mechanical strength and low gas permeability.
+- Pendant strongly acidic ion‑exchange groups (typically –SO₃H, sulfonic acid groups) covalently attached to the backbone; these groups readily dissociate to release H⁺ and provide fixed negative sites that make the membrane selectively cation (proton) conductive while blocking electron and anion transport.
+- A microphase-separated morphology in which hydrophobic backbone domains and hydrophilic sulfonic-acid/ion clusters aggregate into continuous, interconnected nanochannels; these hydrated ionic channels enable rapid proton transport (via Grotthuss “hopping” and vehicle mechanisms) while the hydrophobic matrix maintains dimensional/mechanical integrity and prevents gas crossover.
+- Sufficient ion-exchange capacity (density of –SO₃H groups) and water-uptake ability to sustain hydration of the proton-conducting channels, combined with enough crystallinity/crosslinking to keep the membrane insoluble and dimensionally stable under wet/dry and thermal cycling.
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Proton exchange membranes are the core key materials in hydrogen fuel cells, and their performance directly determines the efficiency and lifespan of the cell. What are the core functions of polymer proton exchange membranes in fuel cells? To which category of adsorption separation functional polymers do these membranes belong? What chemical structural characteristics must this polymer material possess to achieve its core functions?
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>
+**Core functions of the PEM in a fuel cell:**
+1. Selectively conduct H⁺ (protons) from the anode to the cathode, providing the ionic (protonic) conduction path that completes the internal circuit.
+2. Act as a physical/electronic barrier that is impermeable to electrons and to the reactant gases (H₂ and O₂), separating the anode and cathode compartments so that electrons are forced through the external circuit (generating current) and fuel/oxidant crossover (which would cause direct chemical reaction and efficiency loss) is prevented.
+
+**Category of functional polymer:** 
+The PEM belongs to the class of **adsorption–separation functional polymers known as ion‑exchange membranes (resins)** — more specifically, it is a **cation‑exchange (proton‑exchange) membrane**, a selective‑permeation/ion‑transport type of functional polymer.
+
+**Required chemical structural characteristics:**
+- A chemically and thermally stable polymer backbone (commonly a perfluorinated or aromatic hydrophobic main chain, e.g., PTFE‑type backbone in Nafion) that resists oxidative/hydrolytic attack in the strongly acidic, oxidizing fuel‑cell environment and provides mechanical strength and low gas permeability.
+- Pendant strongly acidic ion‑exchange groups (typically –SO₃H, sulfonic acid groups) covalently attached to the backbone; these groups readily dissociate to release H⁺ and provide fixed negative sites that make the membrane selectively cation (proton) conductive while blocking electron and anion transport.
+- A microphase-separated morphology in which hydrophobic backbone domains and hydrophilic sulfonic-acid/ion clusters aggregate into continuous, interconnected nanochannels; these hydrated ionic channels enable rapid proton transport (via Grotthuss “hopping” and vehicle mechanisms) while the hydrophobic matrix maintains dimensional/mechanical integrity and prevents gas crossover.
+- Sufficient ion-exchange capacity (density of –SO₃H groups) and water-uptake ability to sustain hydration of the proton-conducting channels, combined with enough crystallinity/crosslinking to keep the membrane insoluble and dimensionally stable under wet/dry and thermal cycling.
+</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "Core functions: (1) conduct H⁺ from anode to cathode; (2) act as barrier separating H₂ and O₂, preventing direct contact. Category: cation exchange membrane (ion exchange membrane). Required structural characteristics: acidic functional groups (sulfonic acid -SO₃H groups) that ionize to release mobile protons; proton transfer via Grotthuss mechanism or vehicle mechanism.",
+  "equivalent": true,
+  "score": 0.95,
+  "reason": "OUTPUT covers all key claims in GOLD (twofold functions, barrier role, cation exchange membrane classification, acidic groups like -SO₃H, Grotthuss/vehicle mechanisms) with added technical depth about backbone stability and microphase separation that is consistent with but beyond GOLD's scope; no contradictions detected.",
+  "raw": "```json\n{\n  \"parsed\": \"Core functions: (1) conduct H⁺ from anode to cathode; (2) act as barrier separating H₂ and O₂, preventing direct contact. Category: cation exchange membrane (ion exchange membrane). Required structural characteristics: acidic functional groups (sulfonic acid -SO₃H groups) that ionize to release mobile protons; proton transfer via Grotthuss mechanism or vehicle mechanism.\",\n  \"equivalent\": true,\n  \"score\": 0.95,\n  \"reason\": \"OUTPUT covers all key claims in GOLD (twofold functions, barrier role, cation exchange membrane classification, acidic groups like -SO₃H, Grotthuss/vehicle mechanisms) with added technical depth about backbone stability and microphase separation that is consistent with but beyond GOLD's scope; no contradictions detected.\"\n}\n```"
+}

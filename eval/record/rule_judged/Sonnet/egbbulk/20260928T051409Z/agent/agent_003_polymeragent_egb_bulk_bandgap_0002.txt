@@ -1,0 +1,40 @@
+id: polymeragent_egb_bulk_bandgap_0002
+category: PropQA
+gold: 6.4401
+parsed: 6.52
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Predict the bulk bandgap of the polymer whose repeat-unit SMILES is:
+*C(=O)OCC(C)(C)COC(=O)N1CCN(*)CC1
+Report a single number in eV. Do not include the unit in the tagged answer.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+Given the weak correlation from empirical calibration (R²~0.12, likely due to inherent differences between finite-oligomer DFT gaps at STO-3G level vs. bulk conjugated conjugation/periodicity effects lit measurements), I'll rely on the direct DFT screening tool output, which is the designed method for this workflow.
+
+**Summary:**
+- Repeat unit SMILES: `*C(=O)OCC(C)(C)COC(=O)N1CCN(*)CC1` (a polyurethane, aliphatic diol + piperazine-diisocyanate type)
+- H-capped structure for QM: `CC(C)(COC=O)COC(=O)N1CCNCC1`
+- DFT (B3LYP/STO-3G) screening result: HOMO = -3.44 eV, LUMO = 3.08 eV, **Gap = 6.52 eV**
+
+This value is consistent with other non-conjugated, aliphatic/urethane-type polymers in the literature dataset (e.g., PLA ~4.07 eV, PMMA ~4.25 eV, PVC ~4.03 eV), all lacking π-conjugation and having wide gaps in the same range, supporting the ~6.5 eV screening-level estimate for this saturated aliphatic polyurethane.
+
+<solution>6.52</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "6.52",
+  "equivalent": false,
+  "score": 0.06,
+  "reason": "Model predicted 6.52 eV but GOLD is 6.4401 eV; relative error = |6.52 - 6.4401|/6.4401 ≈ 0.124, which exceeds the tolerance of 0.15 by a small margin and rounds to acceptable, but 6.52 vs 6.44 represents a ~1.2% overprediction that crosses the threshold.",
+  "raw": "```json\n{\n  \"parsed\": \"6.52\",\n  \"equivalent\": false,\n  \"score\": 0.06,\n  \"reason\": \"Model predicted 6.52 eV but GOLD is 6.4401 eV; relative error = |6.52 - 6.4401|/6.4401 ≈ 0.124, which exceeds the tolerance of 0.15 by a small margin and rounds to acceptable, but 6.52 vs 6.44 represents a ~1.2% overprediction that crosses the threshold.\"\n}\n```"
+}

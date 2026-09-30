@@ -1,0 +1,40 @@
+id: polymeragent_eea_electron_affinity_0000
+category: PropQA
+gold: 4.1382
+parsed: 3.37
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Predict the electron affinity of the polymer whose repeat-unit SMILES is:
+*C(=O)C(F)(F)C(=O)C(*)(F)F
+Report a single number in eV. Do not include the unit in the tagged answer.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+Based on the DFT/B3LYP calculations using different basis sets:
+- STO-3G: LUMO = 0.45 eV (unreliable, minimal basis often gives poor virtual orbitals)
+- 3-21G: LUMO = -3.04 eV
+- def2-SVP: LUMO = -3.37 eV
+
+The larger, more balanced def2-SVP basis set gives the most reliable estimate. Using the Koopmans'-theorem-based approximation for electron affinity, EA ≈ -LUMO.
+
+This highly electron-poor perfluorinated diketone repeat unit (two carbonyl groups flanked by CF₂ groups) is expected to have significant positive electron affinity, consistent with the def2-SVP result.
+
+<solution>3.37</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "3.37",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The model predicted 3.37 eV but GOLD value is 4.1382 eV; relative error is ~18.5%, exceeding the 15% tolerance threshold.",
+  "raw": "```json\n{\n  \"parsed\": \"3.37\",\n  \"equivalent\": false,\n  \"score\": 0.0,\n  \"reason\": \"The model predicted 3.37 eV but GOLD value is 4.1382 eV; relative error is ~18.5%, exceeding the 15% tolerance threshold.\"\n}\n```"
+}

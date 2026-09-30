@@ -1,0 +1,31 @@
+id: polymeragent_egc_chain_bandgap_0007
+category: PropQA
+gold: 3.6564
+parsed: 5.77
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Predict the chain bandgap of the polymer whose repeat-unit SMILES is:
+*C(*)(F)Cl
+Report a single number in eV. Do not include the unit in the tagged answer.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>5.77
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "5.77",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The predicted value 5.77 has a relative error of about 0.578 versus the gold value 3.6564, exceeding the 0.15 tolerance.",
+  "raw": "{\"parsed\":\"5.77\",\"equivalent\":false,\"score\":0.0,\"reason\":\"The predicted value 5.77 has a relative error of about 0.578 versus the gold value 3.6564, exceeding the 0.15 tolerance.\"}"
+}

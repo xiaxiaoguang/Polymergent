@@ -1,14 +1,26 @@
-# Data lake dictionary with detailed descriptions
-
+"""
+Data-lake catalog. Each entry: "{name} — {access type}. {content}. {use/avoid}."
+Access type is always first: local table | repo bundle (read README) | hub dataset | web-only.
+"""
+ 
 data_lake_dict = {
-    "omol25_index.parquet": "Metadata index of OMol25 train_4M DFT molecules (formula, charge, spin, HOMO/LUMO) with dataset_index into the ASE-LMDB.",
-    "PI1M.csv": "Original PI1M dump: ~1M generative p-SMILES polymers from an RNN trained on PolyInfo, with a synthetic-accessibility score per chain (academic use).",
-    "PI1M_v2.csv": "PI1M v2 corpus: 1M p-SMILES polymers plus SA scores for pretraining/augmentation, not experimental properties.",
-    "polymetrix_tg.parquet": "Curated experimental Tg (K) for ~7,362 polymers with PSMILES, polymer class, source, n_datapoints, and reliability tags (PolyMetriX).",
-    "PropagationQuantumChem_2024-03-12.csv": "CopDDB raw table (2024-03-12): 25 DFT descriptors (barriers, reaction energies, SOMO/HOMO/LUMO, buried volume, logP, TS geometry) for radical–monomer pairs over 50 monomers.",
-    "bcdb_phase_behavior.parquet": "BCDB melt-phase table: >5,400 literature di-/multi-block measurements (BigSMILES, morphology, characterization, DOI) plus SCFT rows, stacked by architecture.",
-    "omg_monomers.csv": "OMG virtual monomer library in CRU form from the Jackson Lab generative pipeline (Zenodo 7556992).",
-    "omg_polymers.csv": "OMG polymer CRU table: ~12M linear homopolymer repeat units from 17 template polymerizations on commercially available OMG reactants.",
+    "opoly26": "opoly26 — local table. DFT (ωB97M-V/def2-TZVPD) on polymer clusters (≤360 atoms, 6.57M points): energies, forces, HOMO/LUMO gap, charges. Use for MLIPs/electronic structure. Not experimental Tg or MD bulk properties.",
+    "polyVERSE": "polyVERSE — repo bundle (Ramprasad Group GitHub/Zenodo), read README first. Virtual CRUs (ROP/ROMP/polyimide) + gas P/D/S and recyclable-polymer CSVs. Lineage: Polymer Genome/Khazana. Not the Tg table (polymetrix_tg.parquet).",
+    "polymerscholar": "polymerscholar — web-only, no local file. Literature-mined polymer names/24 properties via API: https://polymerscholar.org/search/api?list=all. Use for lookup only, not as a clean train/test set.",
+    "pareto_greedy_reaction": "pareto_greedy_reaction — repo bundle (Jackson Lab OMG_PhysicalProperties/pareto_greedy), read README first. QC property labels on OMG polymers tagged by the 17 reaction IDs + Chemprop checkpoints. Computed properties/AL batches only, not recipes.",
+    "lematerial_synth.parquet": "lematerial_synth. ~58k synthesis recipes from open-access papers, 16 material classes incl. polymers: steps, precursors, T/t/P, equipment. ~2.5k judged slice for eval. Procedure text only, no properties.",
+    "polymetrix_tg.parquet": "polymetrix_tg.parquet — local table. Curated experimental Tg (K), ~7.3k unique PSMILES, plus class/source/reliability tags. Primary experimental Tg table. Not Tm, permeability, or MD labels.",
+    "opc25.csv": "opc25.csv — local table. NeurIPS 2025 Open Polymer Challenge train (~8k P-SMILES), sparse MD labels: Tg, FFV, Tc (thermal conductivity), density, Rg. Use for multi-task MD property prediction; don't mix test IDs back in.",
+    "polyomics": "polyomics — HuggingFace dataset. RadonPy MD corpus: >105k polymers, 43 properties + χ vs 19 solvents, >7M entries. Use for simulated bulk properties/Sim2Real pretrain, not experimental Tg.",
+    "PI1M.csv": "PI1M.csv — local table. ~1M generative p-SMILES from an RNN trained on PolyInfo + synthetic-accessibility (SA) score. Academic use; pretraining/augmentation only, no property labels.",
+    "PI1M_v2.csv": "PI1M_v2.csv — local table. 1M p-SMILES + SA scores, updated version of PI1M.csv. Pretraining/augmentation only, no property labels.",
+    "PropagationQuantumChem.csv": "PropagationQuantumChem.csv — local table. CopDDB (2024-03-12): 25 DFT descriptors (barriers, reaction energies, SOMO/HOMO/LUMO, buried volume, logP, TS geometry) for radical–monomer pairs, 50 monomers. Reaction-level QC, not bulk polymer properties.",
+    "bcdb_phase_behavior.parquet": "bcdb_phase_behavior.parquet — local table. BCDB melt-phase data: >5,400 literature di-/multi-block measurements (BigSMILES, morphology, DOI) + SCFT rows. Block-copolymer phase behavior only.",
+    "omg_monomers.csv": "omg_monomers.csv — local table. OMG virtual monomer library (CRUs), Jackson Lab pipeline (Zenodo 7556992). Monomer-level only; see omg_polymers.csv for assembled polymers.",
+    "omg_polymers.csv": "omg_polymers.csv — local table. ~12M linear homopolymer CRUs from 17 template reactions on OMG monomers. No property labels; see pareto_greedy_reaction for QC labels on a subset.",
+    "OpenMaterialsGuide.parquet": "OpenMaterialsGuide.parquet — local table. OMG24/AlchemyBench: 17.7k NL synthesis recipes (text, materials, process, characterization, pdf_url). Free-text recipes only, no properties.",
+    "final_polymer_properties_fromliterature.csv": "OpenPoly wide property matrix. Columns: Name, PSMILES, ~26–28 property fields with units in headers, PSMILES_2, PSMILES_4. Values are curated/aggregated literature measurements; many cells empty. Primary OpenPoly ML table.",
+    "final_polymer_property_counts_fromliterature.csv": "OpenPoly two-column index: Property Name, Number. Raw literature occurrence counts before unique-polymer collapse (e.g. Tg 58,755; Tm 37,725). Use only as coverage stats, never as regression labels.",
 }
 
 """Chemistry / polymer-science library_content_dict for env_desc.py.
@@ -28,6 +40,7 @@ library_content_dict = {
     "rdkit": "[Python] Cheminformatics: SMILES/SMARTS, fingerprints, descriptors, "
              "substructure, 2D/3D conformers, reactions. Default for monomers and "
              "repeat units.",
+    "smipoly" : "[Python] SMiPoly (Small Molecules into Polymers)” is rule-based virtual library generator for discovery of functional polymers",
     "openbabel": "[Python + CLI] Format conversion (SMILES/MOL/PDB/XYZ/CIF, 100+). "
                  "Python API plus `obabel` for batch conversion.",
     "pubchempy": "[Python] PubChem REST: name/CID/CAS → structure and computed properties.",
@@ -64,5 +77,4 @@ library_content_dict = {
     "scipy": "[Python] Fit/optimize/integrate (e.g. excess-property or SLE models you code yourself).",
     "matplotlib" : "[Python] Plots.",
     "seaborn" : "[Python] Statistical plots.",
-    # "ddgs" : "[Python]A metasearch library that aggregates results from diverse web search services.",
 }

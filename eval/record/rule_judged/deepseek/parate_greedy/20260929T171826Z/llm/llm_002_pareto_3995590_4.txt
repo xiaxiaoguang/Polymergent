@@ -1,0 +1,29 @@
+id: pareto_3995590_4
+category: KnowledgeQA
+gold: 4.577
+parsed: 4.019
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Polymer reaction_id=3995590, pSMILES `*C=CCN(C*)C(=O)C(C)(C)C(=O)OCC`. Features for conformer_3, dipole=1.449, polarizability=181.7, HOMO eV=-5.245, HOMO-1 eV=-5.475, min q=-0.302, chi_water=1.358. Predict the HOMO-LUMO gap in eV, rounded to 3 decimals.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>4.019
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "4.019",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The relative error is about 0.122, within the 0.15 tolerance.",
+  "raw": "{\"parsed\":\"4.019\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The relative error is about 0.122, within the 0.15 tolerance.\"}"
+}

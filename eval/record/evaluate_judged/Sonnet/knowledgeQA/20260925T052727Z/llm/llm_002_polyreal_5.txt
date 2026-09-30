@@ -1,0 +1,89 @@
+id: polyreal_5
+category: StructQA
+gold: An ideal lithium battery separator should possess the following key performance and structural characteristics: 1. **Porous Structure**: The separator must be a porous film with numerous nanoscale micropores. This is to allow the electrolyte to permeate and pass through, enabling lithium ions ($Li^+$) to shuttle freely between the cathode and anode, forming a complete electrochemical circuit. Uniform pore size and high porosity are fundamental for achieving high ionic conductivity and high-rate charge-discharge performance of the battery. 2. **Electrical Insulation**: While allowing ions to pass through, the separator itself must be an excellent electronic insulator. This is to physically separate the cathode and anode, preventing them from direct contact and causing an internal short circuit, which is the most basic requirement for ensuring battery safety. 3. **Chemical and Electrochemical Stability**: The separator must maintain structural and performance stability in the highly reactive and corrosive organic electrolyte environment over the long term, without being dissolved, swollen, or degraded by the electrolyte. 4. **Sufficient Mechanical Strength**: The separator must have sufficient tensile strength and puncture resistance to withstand the tension during battery winding and assembly, and to resist penetration by lithium dendrites that may form during charge-discharge cycles, preventing internal short circuits and thermal runaway. 5. **Thermal Stability and Thermal Shutdown Characteristics**: A high-performance separator should have a high melting point and dimensional stability to maintain structural integrity when the battery overheats. Additionally, an ideal separator should have a 'thermal shutdown' function, where the micropores close due to polymer melting when the temperature rises abnormally but before reaching the thermal runaway point, thereby blocking ion transport, halting battery reactions, and enhancing battery safety.
+parsed: An ideal lithium-battery separator should simultaneously possess the following structural/performance features, each linked to a specific safety or performance requirement:
+
+1. **Uniform micro/nano-porous structure (controlled pore size, typically 0.03–1 µm, with narrow pore-size distribution and high, uniform porosity ~40‑60%)**
+   - Provides continuous, evenly distributed ion-transport channels for Li⁺, giving low ionic resistance and uniform current distribution, which improves rate capability and cycling uniformity while preventing local current concentration that could cause dendrite growth or hot spots.
+
+2. **Good electrolyte wettability and high electrolyte uptake/retention**
+   - Ensures rapid, complete infiltration of the liquid electrolyte and stable retention during cycling, which lowers interfacial resistance, keeps ionic conductivity high, and prevents "dry" spots that lead to local high current density and lithium plating.
+
+3. **High mechanical strength and dimensional stability (high tensile/puncture strength, low elongation, good tear resistance)**
+   - Must withstand the tension during winding/stacking assembly and resist puncture from electrode burrs or growing lithium dendrites; a mechanically robust separator prevents internal short circuits, a primary cause of thermal runaway.
+
+4. **Thermal stability and low thermal shrinkage at elevated temperature (high melting/softening point, minimal shrinkage up to ~150 °C or higher)**
+   - Prevents separator shrinkage or melting under abuse conditions (overcharge, external heating, internal short), which would otherwise expose the electrodes directly to each other and trigger thermal runaway; ceramic-coated or high-Tm polymer separators (e.g., PP/PAA-coated, PET, PI) improve this.
+
+5. **Shutdown function with an appropriate shutdown temperature window (e.g., PE melts ~130 °C to close pores) combined with a higher melt-integrity temperature (PP layer, ~165 °C) in multilayer (PP/PE/PP) designs**
+   - Automatically closes the pores when the battery overheats, cutting off ion transport and stopping the reaction before a full thermal runaway occurs, while the higher-melting outer layer maintains mechanical integrity to avoid a complete short circuit even after shutdown.
+
+6. **Chemical and electrochemical stability (inertness to electrolyte solvents, salts, and electrode materials over the operating voltage window)**
+   - Avoids side reactions, gas generation, or degradation that would reduce cycle life or generate safety hazards.
+
+7. **Low and stable electrical resistance (ionic conductivity high, electronic conductivity essentially zero)**
+   - Guarantees efficient Li⁺ transport while completely blocking electron flow between electrodes, which is the fundamental function of a separator, ensuring both high rate performance and preventing internal short-circuit currents.
+
+8. **Uniform thickness and flatness with good flexibility for winding/stacking**
+   - Ensures consistent gap between electrodes, uniform pressure distribution, and manufacturability without cracks or pinholes, which is essential for consistent cell performance and safety.
+
+9. **Chemical/functional surface modification (e.g., ceramic coating, polymer coating such as PVDF for adhesion) to enhance wettability, thermal stability, and adhesion to electrodes**
+   - Improves safety margin (higher thermal shrinkage resistance) and reduces interfacial resistance, further boosting cycle life and rate performance.
+
+In summary, an ideal separator must combine a well-controlled porous structure for efficient, uniform ion transport, high mechanical and thermal stability to prevent internal short circuits under mechanical or thermal abuse, a shutdown mechanism to halt runaway reactions, and chemical inertness/good wettability for long-term electrochemical stability — all of which together ensure the battery operates safely under normal and abusive conditions while delivering high energy density, rate capability, and cycle life.
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Among the four core materials of lithium batteries (cathode, anode, electrolyte, separator), high-end separators are a weak point in China's industry and still heavily rely on imports. A battery R&D engineer's task is to develop a high-performance domestic lithium battery separator. Based on a comprehensive introduction to functional polymer materials, deduce what key performance and structural characteristics an ideal lithium battery separator should possess, and explain why these features are crucial for ensuring battery safety and high performance.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>
+An ideal lithium-battery separator should simultaneously possess the following structural/performance features, each linked to a specific safety or performance requirement:
+
+1. **Uniform micro/nano-porous structure (controlled pore size, typically 0.03–1 µm, with narrow pore-size distribution and high, uniform porosity ~40‑60%)**
+   - Provides continuous, evenly distributed ion-transport channels for Li⁺, giving low ionic resistance and uniform current distribution, which improves rate capability and cycling uniformity while preventing local current concentration that could cause dendrite growth or hot spots.
+
+2. **Good electrolyte wettability and high electrolyte uptake/retention**
+   - Ensures rapid, complete infiltration of the liquid electrolyte and stable retention during cycling, which lowers interfacial resistance, keeps ionic conductivity high, and prevents "dry" spots that lead to local high current density and lithium plating.
+
+3. **High mechanical strength and dimensional stability (high tensile/puncture strength, low elongation, good tear resistance)**
+   - Must withstand the tension during winding/stacking assembly and resist puncture from electrode burrs or growing lithium dendrites; a mechanically robust separator prevents internal short circuits, a primary cause of thermal runaway.
+
+4. **Thermal stability and low thermal shrinkage at elevated temperature (high melting/softening point, minimal shrinkage up to ~150 °C or higher)**
+   - Prevents separator shrinkage or melting under abuse conditions (overcharge, external heating, internal short), which would otherwise expose the electrodes directly to each other and trigger thermal runaway; ceramic-coated or high-Tm polymer separators (e.g., PP/PAA-coated, PET, PI) improve this.
+
+5. **Shutdown function with an appropriate shutdown temperature window (e.g., PE melts ~130 °C to close pores) combined with a higher melt-integrity temperature (PP layer, ~165 °C) in multilayer (PP/PE/PP) designs**
+   - Automatically closes the pores when the battery overheats, cutting off ion transport and stopping the reaction before a full thermal runaway occurs, while the higher-melting outer layer maintains mechanical integrity to avoid a complete short circuit even after shutdown.
+
+6. **Chemical and electrochemical stability (inertness to electrolyte solvents, salts, and electrode materials over the operating voltage window)**
+   - Avoids side reactions, gas generation, or degradation that would reduce cycle life or generate safety hazards.
+
+7. **Low and stable electrical resistance (ionic conductivity high, electronic conductivity essentially zero)**
+   - Guarantees efficient Li⁺ transport while completely blocking electron flow between electrodes, which is the fundamental function of a separator, ensuring both high rate performance and preventing internal short-circuit currents.
+
+8. **Uniform thickness and flatness with good flexibility for winding/stacking**
+   - Ensures consistent gap between electrodes, uniform pressure distribution, and manufacturability without cracks or pinholes, which is essential for consistent cell performance and safety.
+
+9. **Chemical/functional surface modification (e.g., ceramic coating, polymer coating such as PVDF for adhesion) to enhance wettability, thermal stability, and adhesion to electrodes**
+   - Improves safety margin (higher thermal shrinkage resistance) and reduces interfacial resistance, further boosting cycle life and rate performance.
+
+In summary, an ideal separator must combine a well-controlled porous structure for efficient, uniform ion transport, high mechanical and thermal stability to prevent internal short circuits under mechanical or thermal abuse, a shutdown mechanism to halt runaway reactions, and chemical inertness/good wettability for long-term electrochemical stability — all of which together ensure the battery operates safely under normal and abusive conditions while delivering high energy density, rate capability, and cycle life.
+
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "An ideal lithium battery separator should have: (1) Uniform micro/nano-porous structure for ion transport and rate capability; (2) Good electrolyte wettability and retention; (3) High mechanical strength and dimensional stability to resist dendrites and prevent short circuits; (4) Thermal stability with low thermal shrinkage; (5) Shutdown function that closes pores upon overheating before thermal runaway; (6) Chemical and electrochemical stability; (7) Low electrical resistance with high ionic conductivity and zero electronic conductivity; (8) Uniform thickness and flatness; (9) Surface modifications to enhance properties.",
+  "equivalent": true,
+  "score": 0.95,
+  "reason": "OUTPUT covers all 5 core GOLD requirements (porous structure, electrical insulation, chemical stability, mechanical strength, thermal stability/shutdown) with consistent mechanistic explanations and adds minor elaborations (wettability, surface coating specifics, thickness uniformity) that enhance rather than contradict the GOLD answer; the comprehensive treatment and quantitative detail (pore sizes, thermal windows, coating materials) demonstrate deeper technical understanding while maintaining conceptual alignment.",
+  "raw": "```json\n{\n  \"parsed\": \"An ideal lithium battery separator should have: (1) Uniform micro/nano-porous structure for ion transport and rate capability; (2) Good electrolyte wettability and retention; (3) High mechanical strength and dimensional stability to resist dendrites and prevent short circuits; (4) Thermal stability with low thermal shrinkage; (5) Shutdown function that closes pores upon overheating before thermal runaway; (6) Chemical and electrochemical stability; (7) Low electrical resistance with high ionic conductivity and zero electronic conductivity; (8) Uniform thickness and flatness; (9) Surface modifications to enhance properties.\",\n  \"equivalent\": true,\n  \"score\": 0.95,\n  \"reason\": \"OUTPUT covers all 5 core GOLD requirements (porous structure, electrical insulation, chemical stability, mechanical strength, thermal stability/shutdown) with consistent mechanistic explanations and adds minor elaborations (wettability, surface coating specifics, thickness uniformity) that enhance rather than contradict the GOLD answer; the comprehensive treatment and quantitative detail (pore sizes, thermal windows, coating materials) demonstrate deeper technical understanding while maintaining conceptual alignment.\"\n}\n```"
+}

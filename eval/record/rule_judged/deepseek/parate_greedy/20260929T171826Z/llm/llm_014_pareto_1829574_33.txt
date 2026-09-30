@@ -1,0 +1,29 @@
+id: pareto_1829574_33
+category: KnowledgeQA
+gold: 5.386
+parsed: 4.083
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Polymer reaction_id=1829574, pSMILES `*C=C(*)C12CCC(NC(=O)OC(C)(C)C)(C1)C2`. Features for conformer_14, dipole=1.134, polarizability=198.8, HOMO eV=-5.282, HOMO-1 eV=-5.583, min q=-0.328, chi_water=1.525. Predict the TDDFT S1 energy in eV, rounded to 3 decimals.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>4.083
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "4.083",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The predicted value 4.083 differs from the gold value 5.386 by about 24.2%, exceeding the 15% tolerance.",
+  "raw": "{\"parsed\":\"4.083\",\"equivalent\":false,\"score\":0.0,\"reason\":\"The predicted value 4.083 differs from the gold value 5.386 by about 24.2%, exceeding the 15% tolerance.\"}"
+}

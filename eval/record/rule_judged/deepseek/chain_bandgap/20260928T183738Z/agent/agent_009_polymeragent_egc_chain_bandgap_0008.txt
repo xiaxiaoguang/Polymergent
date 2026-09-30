@@ -1,0 +1,31 @@
+id: polymeragent_egc_chain_bandgap_0008
+category: PropQA
+gold: 6.4482
+parsed: 6.5244
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Predict the chain bandgap of the polymer whose repeat-unit SMILES is:
+*C(*)O
+Report a single number in eV. Do not include the unit in the tagged answer.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>6.5244</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "6.5244",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The predicted number is within the allowed relative tolerance of the gold value.",
+  "raw": "{\"parsed\":\"6.5244\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The predicted number is within the allowed relative tolerance of the gold value.\"}"
+}

@@ -1,0 +1,43 @@
+id: polyreal_29
+category: KnowledgeQA
+gold: Using polymer reagents offers the following benefits:
+
+1. **From the perspective of operational safety**:
+    * **Reduced toxicity risk**: By covalently bonding the volatile toxic small molecule reagent to a polymer backbone, its vapor pressure drops dramatically to nearly zero, significantly reducing the risk of operators inhaling toxic gases.
+    * **Increased chemical stability**: The confinement effect of the polymer backbone typically enhances the chemical stability of unstable functional groups (for example, small molecule peroxides are explosive, but their stability increases when immobilized). For unstable acylating agents, immobilization can reduce decomposition during use and storage, enhancing safety.
+
+2. **From the perspective of reaction process**:
+    * **Simplified separation**: Since polymer reagents are solid, they can be separated from liquid-phase products by simple filtration after the reaction, eliminating the need for complex separation steps such as extraction and distillation, thus simplifying the process.
+    * **Facilitates automation and continuous production**: Solid granular polymer reagents can be packed into reaction columns to achieve continuous production, where reactants flow through the column to complete the conversion. This solid-phase reaction mode also facilitates programmed control and automated synthesis, improving production efficiency.
+parsed: Operational safety: The polymer-supported reagent is nonvolatile and insoluble, so it greatly reduces inhalation, dermal exposure, and release of toxic vapors. Immobilizing the unstable acylating agent also limits its decomposition and uncontrolled reactivity, making storage and handling safer.
+
+Reaction process: The polymer-bound reagent simplifies reaction workup and purification because it can be removed by simple filtration rather than distillation or extraction. It allows the use of excess reagent to drive reactions to completion without contaminating the product, and the spent polymer may be regenerated and recycled, improving process efficiency and reproducibility.
+rule_score: 0.20161290322580644
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: A pharmaceutical company plans to improve a synthetic process that currently uses a liquid, volatile, toxic, and chemically unstable small molecule acylating agent. It has been proposed to develop it into a polymer-supported reagent. Discuss the specific benefits of using polymer reagents from the perspectives of 'operational safety' and 'reaction process'.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>
+Operational safety: The polymer-supported reagent is nonvolatile and insoluble, so it greatly reduces inhalation, dermal exposure, and release of toxic vapors. Immobilizing the unstable acylating agent also limits its decomposition and uncontrolled reactivity, making storage and handling safer.
+
+Reaction process: The polymer-bound reagent simplifies reaction workup and purification because it can be removed by simple filtration rather than distillation or extraction. It allows the use of excess reagent to drive reactions to completion without contaminating the product, and the spent polymer may be regenerated and recycled, improving process efficiency and reproducibility.
+
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "Safety: nonvolatile/insoluble, reduced inhalation/dermal exposure, immobilized acylating agent more stable. Process: filtration instead of extraction/distillation, recyclable, improved efficiency/reproducibility; lacks continuous column/automation.",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The output covers safety and simplified separation but omits GOLD's key benefit of facilitating automation and continuous production via packed reaction columns.",
+  "raw": "{\"parsed\":\"Safety: nonvolatile/insoluble, reduced inhalation/dermal exposure, immobilized acylating agent more stable. Process: filtration instead of extraction/distillation, recyclable, improved efficiency/reproducibility; lacks continuous column/automation.\",\"equivalent\":false,\"score\":0.0,\"reason\":\"The output covers safety and simplified separation but omits GOLD's key benefit of facilitating automation and continuous production via packed reaction columns.\"}"
+}

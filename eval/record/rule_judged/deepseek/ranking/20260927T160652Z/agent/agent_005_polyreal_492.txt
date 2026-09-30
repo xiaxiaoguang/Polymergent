@@ -1,0 +1,41 @@
+id: polyreal_492
+category: PropQA
+gold: ["b", "c", "d", "a"]
+parsed: ["c", "d", "b", "a"]
+rule_score: 0.25
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer ranking question.
+Think step by step if needed, then give the ordered list.
+
+Question: The optical transparency (Transmittance) of a material is an important consideration in specific applications such as smart windows or optoelectronic devices. Rank the following four systems in order of their **optical transparency (Transmittance) from low to high**. 
+ a: Fe3+/ Fe2+ PVA/gelatin/Binary Solvent 
+ b: [Fe(CN)6]3-/[Fe(CN)6]4- KCl/Gelatin 
+ c: Fe3+/ Fe2+ PVA 
+ d: Fe3+/ Fe2+ HCl/PVA
+
+Put the final ranking inside <solution>...</solution>.
+Use either JSON list form ["a", "b", "c"] or a > b > c.
+Order matters. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+Based on the systems’ composition and the color/absorption behavior of the iron redox couples, the ranking from lowest to highest optical transmittance is:
+
+- **c** Fe³⁺/Fe²⁺ PVA — strongest visible absorption from Fe³⁺–PVA coordination → darkest
+- **d** Fe³⁺/Fe²⁺ HCl/PVA — yellow chloro‑iron species, less transparent than ferricyanide/gelatin
+- **b** [Fe(CN)₆]³⁻/[Fe(CN)₆]⁴⁻ KCl/Gelatin — yellow ferricyanide, moderately transparent
+- **a** Fe³⁺/Fe²⁺ PVA/gelatin/Binary Solvent — highest transparency
+
+<solution>["c", "d", "b", "a"]</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "c > d > b > a",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The output ranks c > d > b > a, which does not match the gold ranking b > c > d > a.",
+  "raw": "{\"parsed\":\"c > d > b > a\",\"equivalent\":false,\"score\":0.0,\"reason\":\"The output ranks c > d > b > a, which does not match the gold ranking b > c > d > a.\"}"
+}

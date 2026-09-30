@@ -1,0 +1,27 @@
+id: chembench_120d904b-9705-ce7a-16c1-315b0114309e
+category: ProtocolQA
+gold: F
+parsed: A
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a multiple choice question about polymer science.
+Think step by step if needed, then give the final answer.
+
+Question: Which of the following monomers can be polymerized using anionic polymerization?
+Options:
+A. propylene sulfide
+B. methyl vinyl ether
+C. isobutene
+D. propiolactone
+E. Insufficient information to answer the question.
+F. n-vinylcarbazole
+
+Put the final answer inside <solution>...</solution>.
+For multiple choice, the solution body must be a single letter (A, B, C, ...), for example: <solution>C</solution>.
+Do not put extra words inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>A</solution>

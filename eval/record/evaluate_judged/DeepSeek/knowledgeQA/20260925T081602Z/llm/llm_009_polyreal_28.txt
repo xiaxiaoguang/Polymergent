@@ -1,0 +1,40 @@
+id: polyreal_28
+category: KnowledgeQA
+gold: According to the content, polymer reagents can be mainly divided into the following three types:
+1. **Polymeric Oxidation/Reduction Reagents**: The function of these reagents is to act as oxidizing or reducing agents in chemical reactions, achieving the oxidation or reduction of substrate molecules. For example, polymeric peracids can oxidize olefins, while polymeric borohydrides can reduce ketones. They function by providing or accepting electrons/atoms.
+
+2. **Polymeric Transfer Reagents**: The function of these reagents is to transfer a specific chemical group to the substrate molecule in a reaction. For instance, polymer-supported Wittig reagents can convert carbonyl compounds into olefins (achieving methylene transfer), and polymeric acylation reagents can transfer acyl groups to substrates.
+
+3. **Polymeric Chiral Reagents**: These reagents contain chiral centers or chiral structures themselves, and their main function is to induce or resolve chiral products in reactions. They are often used in asymmetric synthesis, such as in chiral alkylation reactions, by creating a chiral microenvironment that allows the reaction to stereoselectively produce a specific enantiomer.
+parsed: 1. Polymeric reagents: contain reactive functional groups that participate directly in chemical reactions; they are easily separated and can often be regenerated.
+2. Polymeric catalysts: carry catalytic active sites; they accelerate reactions without being consumed and can be recovered and reused.
+3. Polymeric carriers: serve as supports for immobilizing reagents, catalysts, drugs, or biomolecules; they provide stability, site isolation, controlled release, and easy handling.
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: The research and application of polymer reagents require their proper classification. List the three main application types of polymer reagents and briefly describe the functional characteristics of each type.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>
+1. Polymeric reagents: contain reactive functional groups that participate directly in chemical reactions; they are easily separated and can often be regenerated.
+2. Polymeric catalysts: carry catalytic active sites; they accelerate reactions without being consumed and can be recovered and reused.
+3. Polymeric carriers: serve as supports for immobilizing reagents, catalysts, drugs, or biomolecules; they provide stability, site isolation, controlled release, and easy handling.
+
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "1. Polymeric reagents; 2. Polymeric catalysts; 3. Polymeric carriers",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The output gives a different three-type classification than the gold-required oxidation/reduction, transfer, and chiral polymeric reagents.",
+  "raw": "{\"parsed\":\"1. Polymeric reagents; 2. Polymeric catalysts; 3. Polymeric carriers\",\"equivalent\":false,\"score\":0.0,\"reason\":\"The output gives a different three-type classification than the gold-required oxidation/reduction, transfer, and chiral polymeric reagents.\"}"
+}

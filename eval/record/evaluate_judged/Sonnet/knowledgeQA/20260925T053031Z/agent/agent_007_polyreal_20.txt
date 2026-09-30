@@ -1,0 +1,65 @@
+id: polyreal_20
+category: KnowledgeQA
+gold: When designing the 'monomerization of functional components', at least the following three key factors need to be considered:
+
+1. **Retention of Functionality and Compatibility**: When introducing polymerizable groups (such as double bonds) to the functional components, the chosen chemical reactions and introduction sites must not destroy or significantly reduce the original core functions of the functional components. Additionally, there should be no adverse chemical or electronic interactions between the introduced polymerizable groups and the functional components. For example, the conditions of the polymerization reaction should not cause the functional components to decompose.
+
+2. **Introduction and Selection of Spacers**: Typically, the functional components are not directly connected to the polymerizable groups but are linked through a flexible chemical structure known as a 'spacer' (such as a methylene chain). The role of the spacer is to decouple the motion of the functional components from the polymer main chain, providing the functional components with greater mobility to fully exert their functions. It also helps to avoid excessive steric hindrance effects from bulky functional components on the polymerization reaction.
+
+3. **Reversible Protection of Important Functional Groups**: If the functional components contain reactive functional groups (such as -OH, -NH₂, -COOH) that are unstable or interfere with the polymerization under reaction conditions, they need to be chemically protected before polymerization, temporarily converting them into stable groups. After polymerization, they can be restored through deprotection reactions to ensure smooth polymerization and retention of functionality.
+parsed: When converting a functional component (e.g., a drug, dye, catalyst, bioactive molecule) into a polymerizable monomer, at least the following key factors must be considered:
+
+1. **Preservation of the functional group's activity/structure** – The chemical modification used to install a polymerizable handle (e.g., vinyl, acrylate, epoxide, cyclic group) must not destroy or block the active site/pharmacophore/functional moiety responsible for the desired property (bioactivity, optical, catalytic, etc.). The linkage chemistry should be chemoselective and reversible/cleavable if the functional component needs to be released in its original active form after polymerization.
+
+2. **Compatibility of the polymerizable group with the intended polymerization mechanism** – The introduced reactive group (e.g., acrylate/methacrylate for radical chain-growth, diol/diacid for step-growth, cyclic monomer for ROP) must match the polymerization method chosen, and must not contain other functionalities that interfere with the propagation mechanism (e.g., no free radicals-quenching groups in RP, no groups reactive toward nucleophiles in step-growth condensation). Reactivity ratios with comonomers should also be considered to achieve the desired copolymer microstructure (random, alternating, or block).
+
+3. **Retention of solubility and processability** – The monomer derivative must remain soluble/compatible in the polymerization medium (solvent, other monomers) and yield a polymer with adequate solubility, processability, and mechanical properties; excessive steric bulk or polarity mismatch from the functional group can hinder achieving high molecular weight or good conversion.
+
+4. **Stability of the linkage under polymerization and use conditions** – The bond connecting the functional component to the polymerizable group must be stable enough to survive the polymerization conditions (heat, catalyst, pH, initiators) yet, if required for controlled release applications, be cleavable under target physiological or environmental conditions (hydrolysis, enzymatic, light, redox).
+
+5. **Control of monomer purity and side-reactions** – The functionalization step should be high-yielding and give a pure, well-defined monomer free of side products (e.g., unreacted functional groups, isomers) since impurities can act as chain-transfer agents, inhibitors, or defects that lower molecular weight, broaden dispersity, or introduce uncontrolled branching/crosslinking in the final polymer.
+
+6. **Maintaining the desired stoichiometric balance and functionality of the resulting polymer** – The location and number of polymerizable groups introduced (mono- vs. multi-functional) determine whether the functional component ends up as a pendant group, a chain end, or a crosslinking node, which directly affects the final polymer's architecture and performance (e.g., avoiding unwanted branching/gelation from multivalent functional monomers in step-growth systems).
+
+In summary, three (of the above) key considerations to always address are: (1) preserving the functional activity/structure of the original component during and after monomer conversion, (2) selecting a polymerizable group and linkage chemistry compatible with the intended polymerization mechanism and conditions, and (3) ensuring the resulting monomer's solubility, stability, and purity so that high molecular weight, well-defined functional polymer can be obtained without loss of the desired property.
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: In the preparation of functional polymers, polymerizing functional components is one of the core strategies. The first step in this process is to convert the functional components into polymerizable monomers. When designing the 'monomerization of functional components', multiple factors need to be comprehensively considered to ensure the final functional polymer exhibits excellent performance. List and explain at least three key considerations among them.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>
+When converting a functional component (e.g., a drug, dye, catalyst, bioactive molecule) into a polymerizable monomer, at least the following key factors must be considered:
+
+1. **Preservation of the functional group's activity/structure** – The chemical modification used to install a polymerizable handle (e.g., vinyl, acrylate, epoxide, cyclic group) must not destroy or block the active site/pharmacophore/functional moiety responsible for the desired property (bioactivity, optical, catalytic, etc.). The linkage chemistry should be chemoselective and reversible/cleavable if the functional component needs to be released in its original active form after polymerization.
+
+2. **Compatibility of the polymerizable group with the intended polymerization mechanism** – The introduced reactive group (e.g., acrylate/methacrylate for radical chain-growth, diol/diacid for step-growth, cyclic monomer for ROP) must match the polymerization method chosen, and must not contain other functionalities that interfere with the propagation mechanism (e.g., no free radicals-quenching groups in RP, no groups reactive toward nucleophiles in step-growth condensation). Reactivity ratios with comonomers should also be considered to achieve the desired copolymer microstructure (random, alternating, or block).
+
+3. **Retention of solubility and processability** – The monomer derivative must remain soluble/compatible in the polymerization medium (solvent, other monomers) and yield a polymer with adequate solubility, processability, and mechanical properties; excessive steric bulk or polarity mismatch from the functional group can hinder achieving high molecular weight or good conversion.
+
+4. **Stability of the linkage under polymerization and use conditions** – The bond connecting the functional component to the polymerizable group must be stable enough to survive the polymerization conditions (heat, catalyst, pH, initiators) yet, if required for controlled release applications, be cleavable under target physiological or environmental conditions (hydrolysis, enzymatic, light, redox).
+
+5. **Control of monomer purity and side-reactions** – The functionalization step should be high-yielding and give a pure, well-defined monomer free of side products (e.g., unreacted functional groups, isomers) since impurities can act as chain-transfer agents, inhibitors, or defects that lower molecular weight, broaden dispersity, or introduce uncontrolled branching/crosslinking in the final polymer.
+
+6. **Maintaining the desired stoichiometric balance and functionality of the resulting polymer** – The location and number of polymerizable groups introduced (mono- vs. multi-functional) determine whether the functional component ends up as a pendant group, a chain end, or a crosslinking node, which directly affects the final polymer's architecture and performance (e.g., avoiding unwanted branching/gelation from multivalent functional monomers in step-growth systems).
+
+In summary, three (of the above) key considerations to always address are: (1) preserving the functional activity/structure of the original component during and after monomer conversion, (2) selecting a polymerizable group and linkage chemistry compatible with the intended polymerization mechanism and conditions, and (3) ensuring the resulting monomer's solubility, stability, and purity so that high molecular weight, well-defined functional polymer can be obtained without loss of the desired property.
+</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "Three key factors: (1) Preservation of functional group activity/structure and compatibility with polymerization conditions, (2) Introduction of polymerizable groups compatible with polymerization mechanism and selection of appropriate linkage chemistry/spacers, (3) Stability of linkage and retention of solubility/processability of the monomer and polymer.",
+  "equivalent": false,
+  "score": 0.55,
+  "reason": "OUTPUT covers related but substantially different factors: it emphasizes polymerization mechanism compatibility, solubility/processability, linkage stability for release, and monomer purity—rather than GOLD's specific focus on spacers for decoupling motion/reducing steric hindrance and reversible protection of reactive functional groups before polymerization. While OUTPUT mentions 'linkage' broadly, it does not explicitly address the spacer concept or protection-deprotection strategy that are central to GOLD.",
+  "raw": "```json\n{\n  \"parsed\": \"Three key factors: (1) Preservation of functional group activity/structure and compatibility with polymerization conditions, (2) Introduction of polymerizable groups compatible with polymerization mechanism and selection of appropriate linkage chemistry/spacers, (3) Stability of linkage and retention of solubility/processability of the monomer and polymer.\",\n  \"equivalent\": false,\n  \"score\": 0.55,\n  \"reason\": \"OUTPUT covers related but substantially different factors: it emphasizes polymerization mechanism compatibility, solubility/processability, linkage stability for release, and monomer purity—rather than GOLD's specific focus on spacers for decoupling motion/reducing steric hindrance and reversible protection of reactive functional groups before polymerization. While OUTPUT mentions 'linkage' broadly, it does not explicitly address the spacer concept or protection-deprotection strategy that are central to GOLD.\"\n}\n```"
+}

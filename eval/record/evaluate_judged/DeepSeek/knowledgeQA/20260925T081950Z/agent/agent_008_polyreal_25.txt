@@ -1,0 +1,49 @@
+id: polyreal_25
+category: KnowledgeQA
+gold: The fundamental difference between polymer reagents and polymer catalysts is that polymer reagents directly participate in stoichiometric reactions, and their chemical structure changes before and after the reaction; whereas polymer catalysts only alter the reaction rate, and theoretically, their structure and mass remain unchanged before and after the reaction.
+
+Taking the reaction of polystyrene peroxyformic acid oxidizing cyclohexene as an example, this difference is clearly demonstrated. In this reaction:
+- **Before the reaction**, the active functional group of the polymer reagent is the peroxyformic acid group (-COOOH).
+- **During the reaction**, the peroxyformic acid group transfers an oxygen atom to cyclohexene, oxidizing it to epoxycyclohexane.
+- **After the reaction**, the functional group of the polymer reagent loses this active oxygen and transforms into an ordinary carboxylic acid group (-COOH).
+
+This process shows that the polymer reagent, as one of the reactants, is consumed, and its chemical structure changes from a peroxy acid to a carboxylic acid. To be reused, it must undergo an additional chemical reaction (regeneration) to restore its original form. This is completely different from the characteristic of catalysts, which maintain their structure unchanged in cycles.
+parsed: The fundamental difference is that a polymer reagent is consumed and chemically transformed during the reaction, whereas a polymer catalyst is not consumed and is recovered unchanged.
+
+Example: Polystyrene peroxyformic acid contains polymer-bound peroxyacid groups, PS—C(=O)OOH. When it oxidizes cyclohexene, the peroxyacid group transfers oxygen to the alkene to form cyclohexene oxide, while the polymer itself is reduced to the corresponding carboxylic acid, PS—C(=O)OH:
+
+PS—C(=O)OOH + cyclohexene → PS—C(=O)OH + cyclohexene oxide
+
+Thus the polymer reagent is stoichiometrically consumed and changed, demonstrating that it is not a catalyst in this reaction. The spent polymeric acid may be separated and regenerated, but in the oxidation step itself it functions as a reagent, not a catalyst.
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Both polymer reagents and polymer catalysts belong to chemically functional polymers, but there is an essential difference in their roles and final states in reactions. Please clearly state the fundamental difference between polymer reagents and polymer catalysts. Use the reaction of a polymer oxidizing reagent (polystyrene peroxyformic acid) oxidizing cyclohexene as an example to illustrate how polymer reagents demonstrate this difference.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>
+The fundamental difference is that a polymer reagent is consumed and chemically transformed during the reaction, whereas a polymer catalyst is not consumed and is recovered unchanged.
+
+Example: Polystyrene peroxyformic acid contains polymer-bound peroxyacid groups, PS—C(=O)OOH. When it oxidizes cyclohexene, the peroxyacid group transfers oxygen to the alkene to form cyclohexene oxide, while the polymer itself is reduced to the corresponding carboxylic acid, PS—C(=O)OH:
+
+PS—C(=O)OOH + cyclohexene → PS—C(=O)OH + cyclohexene oxide
+
+Thus the polymer reagent is stoichiometrically consumed and changed, demonstrating that it is not a catalyst in this reaction. The spent polymeric acid may be separated and regenerated, but in the oxidation step itself it functions as a reagent, not a catalyst.</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "Polymer reagents are consumed and chemically transformed in stoichiometric reactions, while polymer catalysts are not consumed and remain unchanged. In the example, polystyrene peroxyformic acid oxidizes cyclohexene: its peroxyacid group transfers oxygen to form cyclohexene oxide and is converted to a carboxylic acid group; the spent polymer can be regenerated but acts as a reagent, not a catalyst.",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The output covers the same key distinction and example as the gold answer, including the reagent's consumption, functional-group change from peroxyacid to carboxylic acid, and difference from a catalyst.",
+  "raw": "{\"parsed\":\"Polymer reagents are consumed and chemically transformed in stoichiometric reactions, while polymer catalysts are not consumed and remain unchanged. In the example, polystyrene peroxyformic acid oxidizes cyclohexene: its peroxyacid group transfers oxygen to form cyclohexene oxide and is converted to a carboxylic acid group; the spent polymer can be regenerated but acts as a reagent, not a catalyst.\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The output covers the same key distinction and example as the gold answer, including the reagent's consumption, functional-group change from peroxyacid to carboxylic acid, and difference from a catalyst.\"}"
+}

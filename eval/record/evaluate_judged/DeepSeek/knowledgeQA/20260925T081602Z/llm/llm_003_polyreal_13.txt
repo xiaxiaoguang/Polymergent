@@ -1,0 +1,45 @@
+id: polyreal_13
+category: KnowledgeQA
+gold: Based on the specific requirements of the three products, the recommended polymerization methods are as follows:
+
+1. **Product A (millimeter-sized porous particles)**: **Suspension polymerization** should be selected. The basis is that suspension polymerization is a method of polymerizing oil-soluble monomer droplets dispersed in water, resulting in millimeter-sized spherical particles, which perfectly match the size range required for Product A. Additionally, by adding a 'porogen' (a substance that is a good solvent for the monomer but a poor solvent for the polymer) to the polymerization system, phase separation can occur during polymerization, ultimately yielding resin particles with a permanent porous structure, which is a key structural feature needed for chromatographic separation media.
+
+2. **Product B (micron-sized, highly uniform particle size)**: **Dispersion polymerization** should be selected. The basis is that a significant feature of dispersion polymerization is its ability to produce micron-sized polymer particles with a very narrow particle size distribution (i.e., monodisperse). For applications requiring use as standard references for instruments, the high uniformity of particle size is a crucial technical indicator, and dispersion polymerization is the ideal method to achieve this goal.
+
+3. **Product C (nano-sized particles)**: **Emulsion polymerization** should be selected. The basis is that the reaction site of emulsion polymerization is in nano-sized micelles, resulting in stable polymer latex, where the polymer particle size is usually at the nanoscale (tens to hundreds of nanometers). This size range is very suitable as a base material for latex paints, capable of forming dense, uniform paint films.
+parsed: A: Suspension polymerization — it produces millimeter-sized porous polymer beads by polymerizing monomer droplets containing porogens, suitable for chromatographic separation media.
+
+B: Dispersion polymerization (or seeded swelling polymerization) — it yields highly uniform, monodisperse micron-sized polymer particles, meeting the requirements of analytical standard references.
+
+C: Emulsion polymerization — it produces nano-sized polymer latex particles in water, ideal for high-performance latex paints.
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: A chemical company plans to produce three different forms and specifications of polymer microsphere products to meet the needs of different markets: Product A is millimeter-sized porous resin particles used as chromatographic separation media; Product B is micron-sized particles with highly uniform particle size used as standard references for analytical instruments; Product C is nano-sized polymer particles used for preparing high-performance latex paints. Please recommend the most suitable polymerization method for the production of these three products and explain the basis for your choice.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>
+A: Suspension polymerization — it produces millimeter-sized porous polymer beads by polymerizing monomer droplets containing porogens, suitable for chromatographic separation media.
+
+B: Dispersion polymerization (or seeded swelling polymerization) — it yields highly uniform, monodisperse micron-sized polymer particles, meeting the requirements of analytical standard references.
+
+C: Emulsion polymerization — it produces nano-sized polymer latex particles in water, ideal for high-performance latex paints.
+
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "A: Suspension polymerization; B: Dispersion polymerization; C: Emulsion polymerization",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The output matches the gold polymerization methods for all three products, with only minor extra wording and an acceptable alternative note for Product B.",
+  "raw": "{\"parsed\":\"A: Suspension polymerization; B: Dispersion polymerization; C: Emulsion polymerization\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The output matches the gold polymerization methods for all three products, with only minor extra wording and an acceptable alternative note for Product B.\"}"
+}

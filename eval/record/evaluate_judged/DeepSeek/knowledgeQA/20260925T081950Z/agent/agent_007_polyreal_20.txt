@@ -1,0 +1,55 @@
+id: polyreal_20
+category: KnowledgeQA
+gold: When designing the 'monomerization of functional components', at least the following three key factors need to be considered:
+
+1. **Retention of Functionality and Compatibility**: When introducing polymerizable groups (such as double bonds) to the functional components, the chosen chemical reactions and introduction sites must not destroy or significantly reduce the original core functions of the functional components. Additionally, there should be no adverse chemical or electronic interactions between the introduced polymerizable groups and the functional components. For example, the conditions of the polymerization reaction should not cause the functional components to decompose.
+
+2. **Introduction and Selection of Spacers**: Typically, the functional components are not directly connected to the polymerizable groups but are linked through a flexible chemical structure known as a 'spacer' (such as a methylene chain). The role of the spacer is to decouple the motion of the functional components from the polymer main chain, providing the functional components with greater mobility to fully exert their functions. It also helps to avoid excessive steric hindrance effects from bulky functional components on the polymerization reaction.
+
+3. **Reversible Protection of Important Functional Groups**: If the functional components contain reactive functional groups (such as -OH, -NH₂, -COOH) that are unstable or interfere with the polymerization under reaction conditions, they need to be chemically protected before polymerization, temporarily converting them into stable groups. After polymerization, they can be restored through deprotection reactions to ensure smooth polymerization and retention of functionality.
+parsed: 1. **Preservation of the functional group / orthogonal reactivity**  
+   The polymerizable group must be introduced without destroying or deactivating the desired functional component. If the functional group interferes with polymerization, it should be protected, or the chemistry should be chosen so the functional group and polymerization mechanism are compatible.
+
+2. **Suitable polymerizability and polymerization control**  
+   The designed monomer must contain an effective polymerizable group (e.g., vinyl, acrylate, norbornene, cyclic ester) that works under the chosen polymerization method and gives controlled molecular weight, conversion, and copolymerization behavior without unwanted side reactions.
+
+3. **Stability, solubility, and purifiability**  
+   The monomer should be chemically stable during synthesis, storage, and polymerization; soluble in the selected reaction medium; and easy to purify, so that reproducible polymerization and high-performance functional polymers can be achieved.
+
+4. **Accessibility and density of functional groups in the final polymer**  
+   Spacer length and monomer structure should be designed so the functional groups are not sterically shielded and their loading/distribution in the polymer can be tuned, ensuring the final material retains the intended function.
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: In the preparation of functional polymers, polymerizing functional components is one of the core strategies. The first step in this process is to convert the functional components into polymerizable monomers. When designing the 'monomerization of functional components', multiple factors need to be comprehensively considered to ensure the final functional polymer exhibits excellent performance. List and explain at least three key considerations among them.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>1. **Preservation of the functional group / orthogonal reactivity**  
+   The polymerizable group must be introduced without destroying or deactivating the desired functional component. If the functional group interferes with polymerization, it should be protected, or the chemistry should be chosen so the functional group and polymerization mechanism are compatible.
+
+2. **Suitable polymerizability and polymerization control**  
+   The designed monomer must contain an effective polymerizable group (e.g., vinyl, acrylate, norbornene, cyclic ester) that works under the chosen polymerization method and gives controlled molecular weight, conversion, and copolymerization behavior without unwanted side reactions.
+
+3. **Stability, solubility, and purifiability**  
+   The monomer should be chemically stable during synthesis, storage, and polymerization; soluble in the selected reaction medium; and easy to purify, so that reproducible polymerization and high-performance functional polymers can be achieved.
+
+4. **Accessibility and density of functional groups in the final polymer**  
+   Spacer length and monomer structure should be designed so the functional groups are not sterically shielded and their loading/distribution in the polymer can be tuned, ensuring the final material retains the intended function.</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "Four factors: preservation/orthogonal reactivity; suitable polymerizability and polymerization control; stability, solubility, purifiability; accessibility/density and spacer length",
+  "equivalent": false,
+  "score": 0.5,
+  "reason": "The output partially covers functionality preservation, protection, and spacer length, but it misses the gold's explicit reversible deprotection and the spacer's role in decoupling motion/mobility from the polymer main chain.",
+  "raw": "{\"parsed\":\"Four factors: preservation/orthogonal reactivity; suitable polymerizability and polymerization control; stability, solubility, purifiability; accessibility/density and spacer length\",\"equivalent\":false,\"score\":0.5,\"reason\":\"The output partially covers functionality preservation, protection, and spacer length, but it misses the gold's explicit reversible deprotection and the spacer's role in decoupling motion/mobility from the polymer main chain.\"}"
+}

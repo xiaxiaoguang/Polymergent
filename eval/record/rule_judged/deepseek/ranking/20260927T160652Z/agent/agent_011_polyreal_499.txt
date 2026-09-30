@@ -1,0 +1,34 @@
+id: polyreal_499
+category: PropQA
+gold: ["c", "d", "b", "a"]
+parsed: ["c", "d", "b", "a"]
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer ranking question.
+Think step by step if needed, then give the ordered list.
+
+Question: Graphene Oxide (GO) and MXene, as two-dimensional nanomaterials, are ideal units for constructing high-performance biomimetic (such as nacre-like) structural materials due to their excellent intrinsic mechanical properties. Through the synergistic effects of chemical reduction (such as HI reduction), nanosheet stacking, polymer crosslinking (such as PSE-AP), and advanced drying techniques (such as confined vacuum), macroscopic materials with ultra-high stiffness (high Young's modulus) can be prepared. After characterizing the mechanical properties of a series of GO and MXene-based composites, their Young's modulus was obtained. Based on relevant research data, please rank the following four composite material systems in order of their **Young's modulus (GPa) from high to low**.
+ a: Reduced Graphene Oxide (rGO), prepared by HI reduction of GO 
+ b: ПBG composite (GO + HI + PSE-AP) 
+ c: ПBMG composite (GO + MXene + confined vacuum + HI + PSE-AP) 
+ d: MG composite (GO + MXene + confined vacuum + HI)
+
+Put the final ranking inside <solution>...</solution>.
+Use either JSON list form ["a", "b", "c"] or a > b > c.
+Order matters. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>["c", "d", "b", "a"]</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "c, d, b, a",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The output exactly matches the gold ranking order.",
+  "raw": "{\"parsed\":\"c, d, b, a\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The output exactly matches the gold ranking order.\"}"
+}

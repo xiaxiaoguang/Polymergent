@@ -1,0 +1,26 @@
+id: chembench_5f6b3a11-10c6-b875-4ddc-e7ddca524165
+category: ProtocolQA
+gold: B
+parsed: E
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a multiple choice question about polymer science.
+Think step by step if needed, then give the final answer.
+
+Question: Which of the following characteristics are typical of Reversible-Deactivation Radical Polymerization (RDRP)?
+Options:
+A. Linear increase of the degree of polymerization ($X_n$) with conversion
+B. First order kinetics with respect to monomer
+C. Insufficient information to answer the question.
+D. Formation of dead polymer chains more than active polymer chains
+E. Narrow molecular weight distribution
+
+Put the final answer inside <solution>...</solution>.
+For multiple choice, the solution body must be a single letter (A, B, C, ...), for example: <solution>C</solution>.
+Do not put extra words inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>E</solution>

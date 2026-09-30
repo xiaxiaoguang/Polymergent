@@ -1,0 +1,196 @@
+{
+  "timestamp_utc": "2026-09-25T06:24:18.360249+00:00",
+  "config_path": "/home/hcao5/workspace/polymer/eval/eval_config.json",
+  "task_origin": "polymer.task.polymer_bench",
+  "data_path": "/home/hcao5/workspace/datasets/polymer/data/polymer/subdata",
+  "split": "all",
+  "split_spec": {
+    "description": "Everything loaded by polymer_bench from the data dir",
+    "dataset": "All",
+    "answer_type": "multipleChoice",
+    "filters": {}
+  },
+  "dataset": "All",
+  "answer_type": "multipleChoice",
+  "judge_model": null,
+  "env_files": [
+    "/home/hcao5/workspace/polymer/.env"
+  ],
+  "sizes": {
+    "selected_available": 9,
+    "run": 9,
+    "offset": 0
+  },
+  "example_id": "chembench_3289d4b6-2db9-9aaf-784c-a4b63e6f6754",
+  "history_dir": "/home/hcao5/workspace/polymer/eval/results/history/20260925T062418Z",
+  "runs": {
+    "llm": {
+      "n": 9,
+      "seconds": 1660.81,
+      "evaluate": {
+        "n": 9,
+        "accuracy": 0.0,
+        "mean_score": 0.0,
+        "coverage": 0.8888888888888888,
+        "refrain_ratio": 0.1111111111111111,
+        "precision": 0.0
+      },
+      "evaluate_judged": {
+        "n": 9,
+        "accuracy": 0.0,
+        "mean_score": 0.0,
+        "rule_accuracy": 0.0,
+        "rule_mean_score": 0.0
+      },
+      "by_category": [
+        {
+          "category": "KnowledgeQA",
+          "n": 3,
+          "accuracy": 0.0,
+          "mean_score": 0.0
+        },
+        {
+          "category": "ProtocolQA",
+          "n": 5,
+          "accuracy": 0.0,
+          "mean_score": 0.0
+        },
+        {
+          "category": "StructQA",
+          "n": 1,
+          "accuracy": 0.0,
+          "mean_score": 0.0
+        }
+      ],
+      "traces": [
+        {
+          "id": "chembench_3289d4b6-2db9-9aaf-784c-a4b63e6f6754",
+          "category": "ProtocolQA",
+          "gold": "A",
+          "pred_parsed": "B",
+          "score": 0.0,
+          "rule_score": 0.0,
+          "judge": null,
+          "correct": false,
+          "seconds": 327.84,
+          "prompt": "The following is a multiple choice question about polymer science.\nThink step by step if needed, then give the final answer.\n\nQuestion: Which of the following monomers can undergo both radical and polyinsertion polymerization?\nOptions:\nA. 1,3-butadiene\nB. ethylene\nC. Insufficient information to answer the question.\nD. isobutylene\nE. propylene\nF. isoprene\n\nPut the final answer inside <solution>...</solution>.\nFor multiple choice, the solution body must be a single letter (A, B, C, ...), for example: <solution>C</solution>.\nDo not put extra words inside the solution tags.",
+          "output": "<solution>B",
+          "dump_file": "/home/hcao5/workspace/polymer/eval/results/history/20260925T062418Z/llm/llm_001_chembench_3289d4b6-2db9-9aaf-784c-a4b63e6f6754.txt"
+        },
+        {
+          "id": "chembench_64884be4-ec8f-4d1b-bafc-44e734cb375e",
+          "category": "ProtocolQA",
+          "gold": "B",
+          "pred_parsed": "D",
+          "score": 0.0,
+          "rule_score": 0.0,
+          "judge": null,
+          "correct": false,
+          "seconds": 13.51,
+          "prompt": "The following is a multiple choice question about polymer science.\nThink step by step if needed, then give the final answer.\n\nQuestion: In which of the following solvents is the cationic polymerization of styrene fastest?\nOptions:\nA. pentane\nB. water\nC. Insufficient information to answer the question.\nD. 2-dichloroethane\n\nPut the final answer inside <solution>...</solution>.\nFor multiple choice, the solution body must be a single letter (A, B, C, ...), for example: <solution>C</solution>.\nDo not put extra words inside the solution tags.",
+          "output": "<solution>D",
+          "dump_file": "/home/hcao5/workspace/polymer/eval/results/history/20260925T062418Z/llm/llm_002_chembench_64884be4-ec8f-4d1b-bafc-44e734cb375e.txt"
+        },
+        {
+          "id": "chembench_6dc12812-1323-77ab-d5ae-30d4c144f47f",
+          "category": "StructQA",
+          "gold": "B",
+          "pred_parsed": "C",
+          "score": 0.0,
+          "rule_score": 0.0,
+          "judge": null,
+          "correct": false,
+          "seconds": 4.04,
+          "prompt": "The following is a multiple choice question about polymer science.\nThink step by step if needed, then give the final answer.\n\nQuestion: How can the molecular structure of elastomers be characterized?\nOptions:\nA. Insufficient information to answer the question.\nB. closely cross-linked\nC. widely cross-linked\nD. not cross-linked\n\nPut the final answer inside <solution>...</solution>.\nFor multiple choice, the solution body must be a single letter (A, B, C, ...), for example: <solution>C</solution>.\nDo not put extra words inside the solution tags.",
+          "output": "<solution>C",
+          "dump_file": "/home/hcao5/workspace/polymer/eval/results/history/20260925T062418Z/llm/llm_003_chembench_6dc12812-1323-77ab-d5ae-30d4c144f47f.txt"
+        },
+        {
+          "id": "chembench_120d904b-9705-ce7a-16c1-315b0114309e",
+          "category": "ProtocolQA",
+          "gold": "F",
+          "pred_parsed": "A",
+          "score": 0.0,
+          "rule_score": 0.0,
+          "judge": null,
+          "correct": false,
+          "seconds": 482.09,
+          "prompt": "The following is a multiple choice question about polymer science.\nThink step by step if needed, then give the final answer.\n\nQuestion: Which of the following monomers can be polymerized using anionic polymerization?\nOptions:\nA. propylene sulfide\nB. methyl vinyl ether\nC. isobutene\nD. propiolactone\nE. Insufficient information to answer the question.\nF. n-vinylcarbazole\n\nPut the final answer inside <solution>...</solution>.\nFor multiple choice, the solution body must be a single letter (A, B, C, ...), for example: <solution>C</solution>.\nDo not put extra words inside the solution tags.",
+          "output": "<solution>A",
+          "dump_file": "/home/hcao5/workspace/polymer/eval/results/history/20260925T062418Z/llm/llm_004_chembench_120d904b-9705-ce7a-16c1-315b0114309e.txt"
+        },
+        {
+          "id": "chembench_fe718e0e-9aca-20db-da55-403d050c0c97",
+          "category": "ProtocolQA",
+          "gold": "A",
+          "pred_parsed": "B",
+          "score": 0.0,
+          "rule_score": 0.0,
+          "judge": null,
+          "correct": false,
+          "seconds": 3.82,
+          "prompt": "The following is a multiple choice question about polymer science.\nThink step by step if needed, then give the final answer.\n\nQuestion: To double the rate of radical polymerization, how must the initiator concentration be changed?\nOptions:\nA. doubled\nB. quadrupled\nC. tripled\nD. Insufficient information to answer the question.\n\nPut the final answer inside <solution>...</solution>.\nFor multiple choice, the solution body must be a single letter (A, B, C, ...), for example: <solution>C</solution>.\nDo not put extra words inside the solution tags.",
+          "output": "<solution>B",
+          "dump_file": "/home/hcao5/workspace/polymer/eval/results/history/20260925T062418Z/llm/llm_005_chembench_fe718e0e-9aca-20db-da55-403d050c0c97.txt"
+        },
+        {
+          "id": "chembench_d82106cb-ba3d-8a04-db1d-bb253ad797bc",
+          "category": "KnowledgeQA",
+          "gold": "D",
+          "pred_parsed": "E",
+          "score": 0.0,
+          "rule_score": 0.0,
+          "judge": null,
+          "correct": false,
+          "seconds": 531.64,
+          "prompt": "The following is a multiple choice question about polymer science.\nThink step by step if needed, then give the final answer.\n\nQuestion: Given that \\pu{20.00 cm^3} of the sample solution was mixed with \\pu{40.00 cm^3} of \\pu{0.100 mol dm^{-3}} \\ce{NaOH} solution and boiled for \\pu{1 h} under reflux, and after hydrolysis, the excess \\ce{NaOH} was titrated with \\pu{0.100 mol dm^{-3}} \\ce{HCl}, and \\pu{18.50 cm^3} of \\ce{HCl} was required to neutralize the remaining \\ce{NaOH}, what is the mass of compound B (a dimer of lactic acid) in the sample (in grams)?\nOptions:\nA. 0.1523\nB. 0.1905\nC. 0.2000\nD. 0.1701\nE. Insufficient information to answer the question.\n\nPut the final answer inside <solution>...</solution>.\nFor multiple choice, the solution body must be a single letter (A, B, C, ...), for example: <solution>C</solution>.\nDo not put extra words inside the solution tags.",
+          "output": "<solution>E",
+          "dump_file": "/home/hcao5/workspace/polymer/eval/results/history/20260925T062418Z/llm/llm_006_chembench_d82106cb-ba3d-8a04-db1d-bb253ad797bc.txt"
+        },
+        {
+          "id": "chembench_5189884b-0e9e-d63d-ccef-5224996bde7b",
+          "category": "KnowledgeQA",
+          "gold": "C",
+          "pred_parsed": "D",
+          "score": 0.0,
+          "rule_score": 0.0,
+          "judge": null,
+          "correct": false,
+          "seconds": 6.81,
+          "prompt": "The following is a multiple choice question about polymer science.\nThink step by step if needed, then give the final answer.\n\nQuestion: Which of the following methods are preferred for measuring both the number average molecular weight ($M_n$) and the weight average molecular weight ($M_w$)?\nOptions:\nA. Insufficient information to answer the question.\nB. membrane osmometry\nC. MALDI-TOF-MS\nD. size exclusion chromatography\nE. end group analysis\n\nPut the final answer inside <solution>...</solution>.\nFor multiple choice, the solution body must be a single letter (A, B, C, ...), for example: <solution>C</solution>.\nDo not put extra words inside the solution tags.",
+          "output": "<solution>D",
+          "dump_file": "/home/hcao5/workspace/polymer/eval/results/history/20260925T062418Z/llm/llm_007_chembench_5189884b-0e9e-d63d-ccef-5224996bde7b.txt"
+        },
+        {
+          "id": "chembench_5f6b3a11-10c6-b875-4ddc-e7ddca524165",
+          "category": "ProtocolQA",
+          "gold": "B",
+          "pred_parsed": "E",
+          "score": 0.0,
+          "rule_score": 0.0,
+          "judge": null,
+          "correct": false,
+          "seconds": 251.42,
+          "prompt": "The following is a multiple choice question about polymer science.\nThink step by step if needed, then give the final answer.\n\nQuestion: Which of the following characteristics are typical of Reversible-Deactivation Radical Polymerization (RDRP)?\nOptions:\nA. Linear increase of the degree of polymerization ($X_n$) with conversion\nB. First order kinetics with respect to monomer\nC. Insufficient information to answer the question.\nD. Formation of dead polymer chains more than active polymer chains\nE. Narrow molecular weight distribution\n\nPut the final answer inside <solution>...</solution>.\nFor multiple choice, the solution body must be a single letter (A, B, C, ...), for example: <solution>C</solution>.\nDo not put extra words inside the solution tags.",
+          "output": "<solution>E",
+          "dump_file": "/home/hcao5/workspace/polymer/eval/results/history/20260925T062418Z/llm/llm_008_chembench_5f6b3a11-10c6-b875-4ddc-e7ddca524165.txt"
+        },
+        {
+          "id": "chembench_dbdf612f-8838-b00c-6024-68aa89e0ea4a",
+          "category": "KnowledgeQA",
+          "gold": "D",
+          "pred_parsed": "E",
+          "score": 0.0,
+          "rule_score": 0.0,
+          "judge": null,
+          "correct": false,
+          "seconds": 39.63,
+          "prompt": "The following is a multiple choice question about polymer science.\nThink step by step if needed, then give the final answer.\n\nQuestion: To determine the degree of crystallinity of a polymer, which of the following characterization techniques are preferred?\nOptions:\nA. Scanning Electron Microscopy\nB. Thermogravimetric Analysis\nC. Insufficient information to answer the question.\nD. Differential Scanning Calorimetry\nE. Wide Angle X-ray Diffraction\n\nPut the final answer inside <solution>...</solution>.\nFor multiple choice, the solution body must be a single letter (A, B, C, ...), for example: <solution>C</solution>.\nDo not put extra words inside the solution tags.",
+          "output": "<solution>E",
+          "dump_file": "/home/hcao5/workspace/polymer/eval/results/history/20260925T062418Z/llm/llm_009_chembench_dbdf612f-8838-b00c-6024-68aa89e0ea4a.txt"
+        }
+      ]
+    }
+  },
+  "errors": {}
+}

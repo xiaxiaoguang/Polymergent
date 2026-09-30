@@ -1,0 +1,34 @@
+id: polyreal_494
+category: PropQA
+gold: ["b", "a", "d", "c"]
+parsed: ["d", "a", "c", "b"]
+rule_score: 0.25
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer ranking question.
+Think step by step if needed, then give the ordered list.
+
+Question: In the design of thermoelectric chemical cells (TECs) and ionic thermoelectric gels (i-TE Gels), ionic conductivity ($\sigma$) is one of the key factors determining the internal resistance and total output power of the device. It, together with the square of the Seebeck coefficient ($S_e^2$), constitutes the power factor (Power Factor, $PF = S_e^2 \sigma$). Therefore, achieving high ionic conductivity is an important way to optimize the performance of thermoelectric gels. Based on relevant experimental data, please rank the following electrolyte/gel matrix systems in order of their **ionic conductivity ($\sigma$) from low to high**.
+ a: PVA gel system with [Fe(CN)6]3-/[Fe(CN)6]4- as the redox couple 
+ b: I3-/I- aqueous solution system 
+ c: PVA gel system with Fe3+/Fe2+ as the redox couple and HCl added 
+ d: PVA/gelatin/binary solvent system with Fe3+/Fe2+ as the redox couple
+
+Put the final ranking inside <solution>...</solution>.
+Use either JSON list form ["a", "b", "c"] or a > b > c.
+Order matters. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>["d", "a", "c", "b"]</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "d, a, c, b",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The output ranking is d > a > c > b, which does not match the gold ranking b > a > d > c.",
+  "raw": "{\"parsed\":\"d, a, c, b\",\"equivalent\":false,\"score\":0.0,\"reason\":\"The output ranking is d > a > c > b, which does not match the gold ranking b > a > d > c.\"}"
+}

@@ -1,0 +1,26 @@
+id: chembench_5189884b-0e9e-d63d-ccef-5224996bde7b
+category: KnowledgeQA
+gold: C
+parsed: D
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a multiple choice question about polymer science.
+Think step by step if needed, then give the final answer.
+
+Question: Which of the following methods are preferred for measuring both the number average molecular weight ($M_n$) and the weight average molecular weight ($M_w$)?
+Options:
+A. Insufficient information to answer the question.
+B. membrane osmometry
+C. MALDI-TOF-MS
+D. size exclusion chromatography
+E. end group analysis
+
+Put the final answer inside <solution>...</solution>.
+For multiple choice, the solution body must be a single letter (A, B, C, ...), for example: <solution>C</solution>.
+Do not put extra words inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>D

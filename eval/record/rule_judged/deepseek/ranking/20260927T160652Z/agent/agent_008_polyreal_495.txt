@@ -1,0 +1,36 @@
+id: polyreal_495
+category: PropQA
+gold: ["c", "d", "b", "a"]
+parsed: c > d > a > b
+rule_score: 0.5
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer ranking question.
+Think step by step if needed, then give the ordered list.
+
+Question: In non-redox ionic thermoelectric (i-TE) gels, the thermopower ($S_e$) primarily arises from the differential thermophoresis (Soret effect) of cations and anions in the gel matrix under a temperature gradient. Therefore, the type and concentration of electrolytes have a decisive impact on the $S_e$ value. Based on existing experimental data of gelatin-based i-TE systems, please rank the following four electrolyte gel systems in order of their thermopower $S_e$ (mV K-1) from high to low.
+ a: Gelatin-0.8 M NaCl 
+ b: Gelatin-0.8 M KNO3 
+ c: Gelatin-0.8 M KCl 
+ d: Gelatin-0.3 M KCl
+
+Put the final ranking inside <solution>...</solution>.
+Use either JSON list form ["a", "b", "c"] or a > b > c.
+Order matters. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+Based on the retrieved information from the Science paper (Han et al., Science 2020, DOI 10.1126/science.aaz5045), gelatin–KCl exhibits the highest ionic thermoelectric thermopower (6.7 mV K⁻¹ at 0.8 M), with K⁺ thermodiffusion giving a strong positive Seebeck coefficient. Among electrolyte types, KCl > NaCl > KNO₃, and for a given salt, higher concentration gives higher S_e. Thus the 0.8 M KCl gel ranks first, followed by the lower-concentration KCl gel, then NaCl, then KNO₃.
+
+<solution>c > d > a > b</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "c > d > a > b",
+  "equivalent": false,
+  "score": 0.0,
+  "reason": "The output ranks the last two items as a > b, while the gold ranking requires b > a.",
+  "raw": "{\"parsed\":\"c > d > a > b\",\"equivalent\":false,\"score\":0.0,\"reason\":\"The output ranks the last two items as a > b, while the gold ranking requires b > a.\"}"
+}

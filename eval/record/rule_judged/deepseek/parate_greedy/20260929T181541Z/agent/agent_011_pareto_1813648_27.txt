@@ -1,0 +1,29 @@
+id: pareto_1813648_27
+category: KnowledgeQA
+gold: 2.604
+parsed: 2.576
+rule_score: 1.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer science question.
+Think step by step if needed, then give the exact short final answer.
+
+Question: Polymer reaction_id=1813648, pSMILES `*Oc1ccccc1CCOC(=O)Nc1cccc2c(NC(*)=O)cccc12`. Features for conformer_6, dipole=2.401, polarizability=319.5, HOMO eV=-4.924, HOMO-1 eV=-5.207, min q=-0.304, chi_water=1.050. Predict the TDDFT T1 energy in eV, rounded to 3 decimals.
+
+Put the final answer inside <solution>...</solution>.
+For a number, output only the number (and unit if asked). For a ranking, output the ordered list. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+<solution>2.576</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "2.576",
+  "equivalent": true,
+  "score": 1.0,
+  "reason": "The extracted number 2.576 is within 15% relative error of the gold value 2.604.",
+  "raw": "{\"parsed\":\"2.576\",\"equivalent\":true,\"score\":1.0,\"reason\":\"The extracted number 2.576 is within 15% relative error of the gold value 2.604.\"}"
+}

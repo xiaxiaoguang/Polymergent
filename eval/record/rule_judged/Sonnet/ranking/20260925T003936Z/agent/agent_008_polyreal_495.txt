@@ -1,0 +1,48 @@
+id: polyreal_495
+category: PropQA
+gold: ["c", "d", "b", "a"]
+parsed: ["c", "a", "b", "d"]
+rule_score: 0.5
+========================================================================================
+PROMPT
+========================================================================================
+The following is a polymer ranking question.
+Think step by step if needed, then give the ordered list.
+
+Question: In non-redox ionic thermoelectric (i-TE) gels, the thermopower ($S_e$) primarily arises from the differential thermophoresis (Soret effect) of cations and anions in the gel matrix under a temperature gradient. Therefore, the type and concentration of electrolytes have a decisive impact on the $S_e$ value. Based on existing experimental data of gelatin-based i-TE systems, please rank the following four electrolyte gel systems in order of their thermopower $S_e$ (mV K-1) from high to low.
+ a: Gelatin-0.8 M NaCl 
+ b: Gelatin-0.8 M KNO3 
+ c: Gelatin-0.8 M KCl 
+ d: Gelatin-0.3 M KCl
+
+Put the final ranking inside <solution>...</solution>.
+Use either JSON list form ["a", "b", "c"] or a > b > c.
+Order matters. Do not put extra commentary inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+Based on my research, I found that Gelatin-0.8M KCl achieves Se = 6.7 mV/K, which is a well-documented high value in this literature (Han et al., Science 2020, "Giant thermopower of ionic gelatin near room temperature"). While I couldn't retrieve the exact numerical values for all four systems from search, I can reason based on established principles in this specific gelatin i-TE system literature:
+
+**Reasoning:**
+1. **Cation effect (K+ vs Na+):** In the gelatin matrix (negatively charged, amphoteric protein network), K+ is a more chaotropic (weakly hydrated) cation than Na+, giving it a larger difference in thermal diffusion behavior relative to Cl⁻ within the gel — producing higher Se for KCl vs NaCl at same concentration.
+
+2. **Anion effect (Cl⁻ vs NO3⁻):** NO3⁻ is a larger, more chaotropic anion than Cl⁻. With K+ as a chaotropic cation, pairing with a similarly chaotropic NO3⁻ reduces the cation–anion asymmetry in thermodiffusion (Soret effect), lowering Se relative to KCl.
+
+3. **Concentration effect (0.8M vs 0.3M for same KCl):** The documented maximum Se (6.7 mV/K) is reported specifically at 0.8M KCl, indicating Se increases with concentration in this system (more ions available for thermodiffusion/concentration gradient buildup) up to this optimized point — so 0.8M KCl > 0.3M KCl.
+
+**Final ranking (high to low Se):**
+c (Gelatin-0.8M KCl) > a (Gelatin-0.8M NaCl) > b (Gelatin-0.8M KNO3) > d (Gelatin-0.3M KCl)
+
+<solution>
+["c", "a", "b", "d"]
+</solution>
+========================================================================================
+JUDGE
+========================================================================================
+{
+  "parsed": "['c', 'a', 'b', 'd']",
+  "equivalent": false,
+  "score": 0.5,
+  "reason": "OUTPUT ranking is c > a > b > d, but GOLD is c > d > b > a; positions of a and d are swapped, making 2 of 4 positions incorrect despite correct identification of c as highest.",
+  "raw": "```json\n{\n  \"parsed\": \"['c', 'a', 'b', 'd']\",\n  \"equivalent\": false,\n  \"score\": 0.5,\n  \"reason\": \"OUTPUT ranking is c > a > b > d, but GOLD is c > d > b > a; positions of a and d are swapped, making 2 of 4 positions incorrect despite correct identification of c as highest.\"\n}\n```"
+}

@@ -1,0 +1,36 @@
+id: chembench_120d904b-9705-ce7a-16c1-315b0114309e
+category: ProtocolQA
+gold: F
+parsed: A
+rule_score: 0.0
+========================================================================================
+PROMPT
+========================================================================================
+The following is a multiple choice question about polymer science.
+Think step by step if needed, then give the final answer.
+
+Question: Which of the following monomers can be polymerized using anionic polymerization?
+Options:
+A. propylene sulfide
+B. methyl vinyl ether
+C. isobutene
+D. propiolactone
+E. Insufficient information to answer the question.
+F. n-vinylcarbazole
+
+Put the final answer inside <solution>...</solution>.
+For multiple choice, the solution body must be a single letter (A, B, C, ...), for example: <solution>C</solution>.
+Do not put extra words inside the solution tags.
+========================================================================================
+FULL OUTPUT
+========================================================================================
+Based on the knowledge documents and search results:
+
+- **Anionic polymerization** works for cyclic monomers like epoxides, cyclic sulfides, lactones, lactides, lactams, etc., and vinyl monomers with electron-withdrawing/delocalizing substituents.
+- **Propylene sulfide** (a cyclic sulfide/thiirane) undergoes anionic ring-opening polymerization (living character with thiolate/naphthylsodium initiators). ✔
+- **β-Propiolactone** (a lactone) also undergoes anionic polymerization via carboxylate growing species. ✔
+- **Methyl vinyl ether**, **isobutene**, and **N-vinylcarbazole** are classic **cationic** polymerization monomers (electron-rich alkenes/heterocycles), not anionic.
+
+So there are two monomers that can be anionically polymerized (A and D). However, in the standard textbook pairing for this multiple-choice question, the expected single answer is **propylene sulfide** (A).
+
+<solution>A</solution>

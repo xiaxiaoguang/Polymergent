@@ -26,13 +26,12 @@ class ToolRetriever:
         # Build prompt sections for available resources
         prompt_sections = []
         prompt_sections.append(f"""
-You are an expert chemical research assistant. Your task is to select the relevant resources to help answer a user's query.
+You are a chemical research assistant. Select resources that can help answer the user query.
 
 USER QUERY: {query}
 
-Below are the available resources. For each category, select items that are directly or indirectly relevant to answering the query.
-Be generous in your selection - include resources that might be useful for the task, even if they're not explicitly mentioned in the query.
-It's better to include slightly more resources than to miss potentially useful ones.
+Below are the available resources. For each category, select items that are relevant to the query, directly or by a clear supporting role (data needed for a later step, a library that implements a needed method, a protocol that constrains an experiment, a tool that retrieves a missing fact).
+Prefer recall over extreme precision: include an item if it is reasonably likely to help. Do not include items with no plausible path to the query. Do not prefer a category because it is a database, literature search, or custom resource; prefer an item because it fits this query.
 
 AVAILABLE TOOLS:
 {self._format_resources_for_prompt(resources.get("tools", []))}
@@ -73,20 +72,17 @@ LIBRARIES: [0, 2, 4, 5, 8]"""
 
 If a category has no relevant items, use an empty list, e.g., DATA_LAKE: []
 
-IMPORTANT GUIDELINES:
-1. Be generous but not excessive - aim to include all potentially relevant resources
-2. ALWAYS prioritize database tools for general queries - include as many database tools as possible
-3. Include all literature search tools
-4. For wet lab sequence type of queries, ALWAYS include molecular biology tools
-5. For data lake items, include datasets that could provide useful information
-6. For libraries, include those that provide functions needed for analysis
-7. For know-how documents, include those that provide relevant protocols, best practices, or troubleshooting guidance
-8. Don't exclude resources just because they're not explicitly mentioned in the query
-9. When in doubt about a database tool or molecular biology tool, include it rather than exclude it
+SELECTION GUIDELINES:
+1. Select by fit to the query, not by resource type.
+2. Include an item if it can supply facts, data, methods, protocols, or analysis functions the query needs.
+3. Include a supporting item when the main task will likely need it next, Especially Datalake.
+4. For data lake items, include datasets that could provide information the query needs.
+5. For libraries and tools, include those that provide functions needed for the analysis.
+6. For know-how documents, include those that provide relevant protocols, best practices, or troubleshooting guidance.
+7. Do not exclude an item only because the query did not name it.
 """
         # breakpoint()
         prompt = "\n".join(prompt_sections) + response_format
-
         # Use the provided LLM or create a new one
         if llm is None:
             llm = ChatOpenAI(model="gpt-4o")

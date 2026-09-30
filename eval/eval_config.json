@@ -1,0 +1,256 @@
+{
+  "version": "1.0.0",
+  "description": "Eval routing for polymer_bench. Add a split here when convert_datasets.py emits a new source. run_eval.py does not need code changes.",
+  "data": {
+    "candidates": [
+      "./data",
+      "data/polymer",
+      "/home/hcao5/workspace/datasets/polymer/data",
+      "/home/hcao5/workspace/polymer/eval/data"
+    ],
+    "task_files": [
+      "polymer/external_tasks.json",
+      "polymer/seed_tasks.json",
+      "external_tasks.json",
+      "seed_tasks.json",
+      "hard_tasks.json",
+      "hard_tasks.synced.json"
+    ]
+  },
+  "runtime": {
+    "agent_root": "/home/hcao5/workspace/datasets",
+    "agent_llm": "claude-sonnet-5",
+    "baseline_llm": "claude-sonnet-5",
+    "judge_model": "claude-haiku-4-5-20251001",
+    "stop_sequences": [
+      "</execute>",
+      "</solution>"
+    ],
+    "default_n": 10,
+    "default_split": "easy",
+    "default_tolerance_rel": 0.15
+  },
+  "scoring": {
+    "multipleChoice": {
+      "judge_default": false,
+      "pass_threshold": 0.5
+    },
+    "exactMatch": {
+      "judge_default": true,
+      "pass_threshold": 0.5
+    },
+    "ranking": {
+      "judge_default": true,
+      "pass_threshold": 0.5
+    }
+  },
+  "splits": {
+    "easy": {
+      "description": "Textbook / ChemBench-style KnowledgeQA MCQ",
+      "dataset": "KnowledgeQA",
+      "answer_type": "multipleChoice",
+      "filters": {}
+    },
+    "knowledge_open": {
+      "description": "Open KnowledgeQA (PolyReal qa + ChemBench open items)",
+      "dataset": "KnowledgeQA",
+      "answer_type": "exactMatch",
+      "filters": {}
+    },
+    "protocol": {
+      "description": "Lab safety and protocol items",
+      "dataset": "ProtocolQA",
+      "answer_type": "exactMatch",
+      "filters": {},
+      "sort": {
+        "by": "question_len",
+        "ascending": false
+      }
+    },
+    "rank": {
+      "description": "PolyReal ranking items (ordered lists in ideal)",
+      "dataset": "PropQA",
+      "answer_type": "exactMatch",
+      "filters": {
+        "source_regex": "PolyReal",
+        "ideal_startswith": "[",
+        "answer_type_in": [
+          "ranking",
+          "exactMatch"
+        ]
+      }
+    },
+    "numeric": {
+      "description": "SMILES-to-number property holdouts from every numeric source",
+      "dataset": "PropQA",
+      "answer_type": "exactMatch",
+      "filters": {
+        "source_regex": "POINT2|PolymerAgent|OPC25|PolyMetriX|OpenPoly|OpenMaterials",
+        "ideal_has_number": true,
+        "ideal_not_startswith": "["
+      }
+    },
+    "dbqa": {
+      "description": "Spectrum / table / raw extraction (PolyReal DbQA)",
+      "dataset": "DbQA",
+      "answer_type": "exactMatch",
+      "filters": {}
+    },
+    "polyreal": {
+      "description": "All converted PolyReal items",
+      "dataset": "All",
+      "answer_type": null,
+      "filters": {
+        "source_regex": "^PolyReal$"
+      }
+    },
+    "chembench": {
+      "description": "Polymer-filtered ChemBench items",
+      "dataset": "All",
+      "answer_type": null,
+      "filters": {
+        "source_regex": "^ChemBench$"
+      }
+    },
+    "opc25": {
+      "description": "NeurIPS Open Polymer Prediction 2025 public+private holdouts",
+      "dataset": "PropQA",
+      "answer_type": "exactMatch",
+      "filters": {
+        "source_regex": "^OPC25_"
+      }
+    },
+    "polymetrix": {
+      "description": "PolyMetriX Tg holdouts",
+      "dataset": "PropQA",
+      "answer_type": "exactMatch",
+      "filters": {
+        "source_regex": "^PolyMetriX$"
+      }
+    },
+    "openmaterials": {
+      "description": "OpenMaterials impact splits",
+      "dataset": "All",
+      "answer_type": null,
+      "filters": {
+        "source_regex": "^OpenMaterials_"
+      }
+    },
+    "hard": {
+      "description": "Protocol + property + DB items from converted corpora (no short seed MCQ)",
+      "dataset": "All",
+      "answer_type": "exactMatch",
+      "filters": {
+        "category_in": [
+          "ProtocolQA",
+          "PropQA",
+          "DbQA"
+        ],
+        "source_regex": "PolyReal|POINT2|PolymerAgent|OPC25|PolyMetriX|OpenPoly|OpenMaterials|ChemBench"
+      }
+    },
+    "all": {
+      "description": "Everything loaded by polymer_bench from the data dir",
+      "dataset": "All",
+      "answer_type": null,
+      "filters": {}
+    },
+    "hard_filtered": {
+      "description": "Items a cheap LLM failed. Load /home/hcao5/workspace/polymer/eval/results/hard_filter/hard_tasks.json via polymer_bench data dir or filter source=HardFilter.",
+      "dataset": "All",
+      "answer_type": null,
+      "filters": {
+        "source_regex": "HardFilter"
+      },
+      "judge": true
+    },
+    "hard_protocol": {
+      "description": "Hard ProtocolQA subset",
+      "dataset": "ProtocolQA",
+      "answer_type": "exactMatch",
+      "filters": {
+        "source_regex": "^HardFilter$",
+        "category_in": [
+          "ProtocolQA"
+        ]
+      },
+      "judge": true
+    },
+    "hard_struct": {
+      "description": "Hard StructQA subset",
+      "dataset": "StructQA",
+      "answer_type": "exactMatch",
+      "filters": {
+        "source_regex": "^HardFilter$",
+        "category_in": [
+          "StructQA"
+        ]
+      },
+      "judge": true
+    },
+    "hard_numeric": {
+      "description": "Hard numeric PropQA subset",
+      "dataset": "PropQA",
+      "answer_type": "exactMatch",
+      "filters": {
+        "source_regex": "^HardFilter$",
+        "category_in": [
+          "PropQA"
+        ],
+        "answer_type_in": [
+          "exactMatch"
+        ],
+        "ideal_has_number": true,
+        "ideal_not_startswith": "["
+      },
+      "judge": true
+    },
+    "hard_rank": {
+      "description": "Hard ranking subset",
+      "dataset": "PropQA",
+      "answer_type": "ranking",
+      "filters": {
+        "source_regex": "^HardFilter$",
+        "answer_type_in": [
+          "ranking"
+        ],
+        "ideal_startswith": "["
+      },
+      "judge": true
+    },
+    "hard_mm": {
+      "description": "Hard multimodal subset",
+      "dataset": "MmQA",
+      "answer_type": "exactMatch",
+      "filters": {
+        "source_regex": "^HardFilter$",
+        "mm": true
+      },
+      "judge": true
+    },
+    "hard_knowledge": {
+      "description": "Hard KnowledgeQA subset",
+      "dataset": "KnowledgeQA",
+      "answer_type": null,
+      "filters": {
+        "source_regex": "^HardFilter$",
+        "category_in": [
+          "KnowledgeQA"
+        ]
+      },
+      "judge": true
+    },
+    "hard_dbqa": {
+      "description": "Hard DbQA subset",
+      "dataset": "DbQA",
+      "answer_type": "exactMatch",
+      "filters": {
+        "source_regex": "^HardFilter$",
+        "category_in": [
+          "DbQA"
+        ]
+      },
+      "judge": true
+    }
+  }
+}
