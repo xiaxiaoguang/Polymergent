@@ -1,7 +1,6 @@
 name: polymer2
 channels:
   - conda-forge
-  - bioconda
 dependencies:
   # --- 层 0 ---
   - python=3.11

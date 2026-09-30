@@ -2,6 +2,7 @@
 .buildplan
 .env
 debug*
+data/
 .*
 polymer/know_how/*.md
 # Byte-compiled / optimized / DLL files
