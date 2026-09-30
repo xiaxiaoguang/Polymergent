@@ -2,6 +2,7 @@ python3 convert/pareto_reaction.py \
   --raw-dir ./raw/pareto_greedy_reaction \
   --out ./polymer/tasks2.json
 
+python3 convert_datasets.py --holdout-frac 0.01 --property-tasks-per-item 5
 
 
 

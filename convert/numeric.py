@@ -40,28 +40,27 @@ OPC25_PROPS: dict[str, tuple[str, str, str]] = {
     "Rg": ("radius_of_gyration", "Å", "radius of gyration"),
 }
 
+OPENPOLY_EXCLUDED = {"id", "name", "psmiles", "reference"}
 
-def convert_point2_tg(raw_dir: Path, limit: int, holdout_frac: float) -> list[dict]:
-    candidates = [
-        raw_dir / "point2" / "polymer_tg_dataset.csv",
-        raw_dir / "point2" / "polymer_tg_dataset.parquet",
-    ]
-    path = next((p for p in candidates if p.exists()), None)
-    if path is None:
-        return []
-    df = read_table(path)
-    smiles = guess_smiles_col(df) or "SMILES"
-    value = "Tg_K" if "Tg_K" in df.columns else next(
-        (c for c in df.columns if str(c).lower() in {"tg", "tg_k", "tg_c"}), None
+
+def openpoly_property_meta(column: str) -> tuple[str, str, str]:
+    """Return normalized property name, unit, and display label from an OpenPoly column."""
+    units = (
+        ("_cm2_per_s", "cm^2/s"),
+        ("_kJ_per_m2", "kJ/m^2"),
+        ("_W_per_mK", "W/(m·K)"),
+        ("_percentage", "percent"),
+        ("_Barrer", "Barrer"),
+        ("_meq_per_g", "meq/g"),
+        ("_eV", "eV"),
+        ("_MPa", "MPa"),
+        ("_K", "K"),
     )
-    if value is None:
-        return []
-    unit = "K" if "k" in str(value).lower() else "C"
-    return numeric_tasks(
-        df, smiles, value, "glass_transition_temperature", unit, "POINT2_Tg",
-        limit, holdout_frac, "POINT2 Tg table converted to agent exactMatch items.",
-        label="glass transition temperature",
-    )
+    for suffix, unit in units:
+        if column.endswith(suffix):
+            base = column[: -len(suffix)]
+            return slug(base), unit, base.replace("_", " ").lower()
+    return slug(column), "dimensionless", column.replace("_", " ").lower()
 
 
 def convert_polyagent(raw_dir: Path, limit: int, holdout_frac: float) -> list[dict]:
@@ -121,7 +120,7 @@ def convert_opc25(raw_dir: Path, limit: int, holdout_frac: float) -> list[dict]:
         if smiles is None:
             continue
         id_col = guess_id_col(df)
-        known = {c for c in df.columns if c in OPC25_PROPS}
+        known = [c for c in OPC25_PROPS if c in df.columns]
         targets = [(c, *OPC25_PROPS[c]) for c in known] or [
             (c, slug(c), "unknown", str(c)) for c in numeric_cols(df, {smiles, id_col or ""})
         ]
@@ -182,44 +181,68 @@ def convert_openmaterials(raw_dir: Path, limit: int, holdout_frac: float, polyme
         source = f"OpenMaterials_{split}"
         df = read_table(path)
         records = df.to_dict(orient="records")
-        if records and _qa_like_row(records[0]):
-            kept = 0
-            for i, rec in enumerate(records):
-                question = as_str(rec.get("question") or rec.get("input") or rec.get("prompt") or rec.get("query"))
-                if not question:
-                    continue
-                blob = " ".join([question, as_str(rec.get("keywords")), split])
-                if polymer_only and not POLYMER_RE.search(blob):
-                    continue
-                impact = "high_impact" if "high" in split else "standard_impact"
+        impact = "high_impact" if "high" in split else "standard_impact"
+        made = 0
+        for i, rec in enumerate(records):
+            source_id = as_str(rec.get("id") or rec.get("uuid") or i)
+            material = as_str(rec.get("Material_Name"))
+            formula = as_str(rec.get("Chemical_Formula"))
+            material_class = as_str(rec.get("Material_Class"))
+            application = as_str(rec.get("Application_Domain"))
+            process = as_str(rec.get("Synthesis_Process") or rec.get("process"))
+            contribution = as_str(rec.get("contribution"))
+            recipe = as_str(rec.get("recipe"))
+            blob = " ".join(
+                [material, formula, material_class, application, process, contribution, recipe]
+            )
+            if not material or (polymer_only and not POLYMER_RE.search(blob)):
+                continue
+            context = contribution or recipe or material
+            rows.append(
+                make_task(
+                    tid=f"openmaterials_{slug(split)}_{i:04d}_name",
+                    source=source,
+                    source_id=source_id,
+                    category="KnowledgeQA",
+                    subfield=impact,
+                    question=f"Based on this materials description:\n{context}\nWhat is the material name?",
+                    ideal=material,
+                    keywords=["material identification", impact],
+                    license_note="OpenMaterials impact split converted to agent items.",
+                    extra={"formula": formula, "material_class": material_class},
+                )
+            )
+            if process:
                 rows.append(
                     make_task(
-                        tid=f"openmaterials_{slug(split)}_{i:04d}",
+                        tid=f"openmaterials_{slug(split)}_{i:04d}_process",
                         source=source,
-                        source_id=as_str(rec.get("id") or rec.get("uuid") or i),
-                        category="KnowledgeQA",
+                        source_id=source_id,
+                        category="ProtocolQA",
                         subfield=impact,
-                        question=question,
-                        ideal=as_str(rec.get("answer") or rec.get("target") or rec.get("ideal") or rec.get("label")),
-                        keywords=as_list(rec.get("keywords")) + [impact],
+                        question=f"For {material}, what synthesis process is described?\n{recipe or contribution}",
+                        ideal=process,
+                        keywords=["synthesis process", impact],
                         license_note="OpenMaterials impact split converted to agent items.",
                     )
                 )
-                kept += 1
-                if kept >= max(limit * 3, limit):
-                    break
-            continue
-        smiles = guess_smiles_col(df)
-        if smiles is None:
-            continue
-        for col in numeric_cols(df, {smiles}):
-            rows.extend(
-                numeric_tasks(
-                    df, smiles, col, slug(col), "unknown", source,
-                    limit, holdout_frac, "OpenMaterials table converted to agent exactMatch items.",
-                    label=str(col),
+            if application:
+                rows.append(
+                    make_task(
+                        tid=f"openmaterials_{slug(split)}_{i:04d}_application",
+                        source=source,
+                        source_id=source_id,
+                        category="KnowledgeQA",
+                        subfield=impact,
+                        question=f"What is the application domain of {material}?\n{contribution or recipe}",
+                        ideal=application,
+                        keywords=["application domain", impact],
+                        license_note="OpenMaterials impact split converted to agent items.",
+                    )
                 )
-            )
+            made += 1
+            if made >= limit:
+                break
     return rows
 
 
@@ -227,21 +250,28 @@ def convert_openpoly(raw_dir: Path, limit: int, holdout_frac: float) -> list[dic
     folder = raw_dir / "openpoly"
     if not folder.exists():
         return []
-    files = iter_files(folder, ("*.csv", "*.parquet", "*.jsonl", "*.json"))
+    files = iter_files(folder, ("*.csv", "*.parquet", "*.jsonl", "*.json", "*.xlsx", "*.xls"))
     rows: list[dict] = []
     for path in files:
         df = read_table(path)
-        smiles = guess_smiles_col(df)
+        smiles = next((c for c in ("PSMILES", "pSMILES", "SMILES", "smiles") if c in df.columns), None)
+        if smiles is None:
+            smiles = guess_smiles_col(df)
         if smiles is None:
             continue
-        for col in numeric_cols(df, {smiles}):
-            unit = "C" if re.search(r"tg|glass", str(col), re.I) else "unknown"
+        excluded = {c for c in df.columns if str(c).lower() in OPENPOLY_EXCLUDED}
+        value_cols = [
+            c for c in df.columns
+            if c not in {smiles, *excluded} and pd_numeric_any(df[c])
+        ]
+        for col in value_cols:
+            prop, unit, label = openpoly_property_meta(str(col))
             rows.extend(
                 numeric_tasks(
-                    df, smiles, col, slug(col), unit, "OpenPoly",
+                    df, smiles, col, prop, unit, "OpenPoly",
                     limit, holdout_frac,
                     "OpenPoly literature-derived polymer properties converted to agent items.",
-                    label=str(col),
+                    label=label,
                 )
             )
     return rows
