@@ -13,7 +13,7 @@ is the polymer analog:
 
 Data sources, in load order:
     1. Bundled seed set   data/polymer/seed_tasks.json
-    2. Local files under  {path}/polymer/  (json, jsonl, parquet, csv)
+    2. Local task files and generated views under {path} or {path}/polymer/
     3. Optional Hugging Face datasets if `source` is a hub id
 
 Usage::
@@ -47,62 +47,19 @@ except ImportError:
 from .scoring import parse_rank_list as _parse_rank_list
 from .scoring import parse_response as _parse_response
 from .scoring import score_one as _score_fn
+from .constants import (
+    ANSWER_TYPES,
+    DATASETS,
+    EXTRA_TASK_FILES,
+    REFRAIN_TEXT,
+    TASK_DIFFICULTY_VIEW_FILES,
+    TASK_FAMILY_VIEW_FILES,
+    TASK_VIEW_FILES,
+    normalize_answer_type,
+    normalize_category,
+)
 
 np.random.seed(42)
-
-DATASETS = (
-    "KnowledgeQA",
-    "StructQA",
-    "ProtocolQA",
-    "PropQA",
-    "DbQA",
-    "MmQA",
-    "All",
-)
-
-ANSWER_TYPES = ("multipleChoice", "exactMatch", "ranking")
-
-CATEGORY_ALIASES = {
-    "knowledgeqa": "KnowledgeQA",
-    "knowledge": "KnowledgeQA",
-    "hle": "KnowledgeQA",
-    "conceptual": "KnowledgeQA",
-    "conknow": "KnowledgeQA",
-    "structqa": "StructQA",
-    "structure": "StructQA",
-    "seqqa": "StructQA",
-    "strund": "StructQA",
-    "mechanism": "StructQA",
-    "protocolqa": "ProtocolQA",
-    "protocol": "ProtocolQA",
-    "safe": "ProtocolQA",
-    "propqa": "PropQA",
-    "property": "PropQA",
-    "proppred": "PropQA",
-    "propcopr": "PropQA",
-    "propcompr": "PropQA",
-    "rank": "PropQA",
-    "ranking": "PropQA",
-    "dbqa": "DbQA",
-    "database": "DbQA",
-    "spectrum": "DbQA",
-    "spectrumqa": "DbQA",
-    "table": "DbQA",
-    "raw": "DbQA",
-    "mmqa": "MmQA",
-    "multimodal": "MmQA",
-    "visionqa": "MmQA",
-    "all": "All",
-}
-
-REFRAIN_TEXT = "Insufficient information to answer the question."
-
-EXTRA_TASK_FILES = (
-    "tasks.json",
-    "tasks2.json",
-    "external_tasks.json",
-)
-
 
 def shuffle(x):
     np.random.shuffle(x)
@@ -112,13 +69,7 @@ def shuffle(x):
 def _normalize_category(value: str | None) -> str | None:
     if value is None or (isinstance(value, float) and np.isnan(value)):
         return None
-    key = str(value).strip()
-    aliased = CATEGORY_ALIASES.get(key.lower())
-    if aliased:
-        return aliased
-    if key in DATASETS:
-        return key
-    return key
+    return normalize_category(value)
 
 
 def _is_present(value) -> bool:
@@ -179,7 +130,7 @@ class polymer_bench(base_task):
         self,
         path: str = "/home/hcao5/workspace/datasets/polymer/data",
         dataset: str = "KnowledgeQA",
-        answer_type: str = "multipleChoice",
+        answer_type: str | None = "multipleChoice",
         source: str | None = None,
         add_refrain: bool = True,
         seed: int = 42,
@@ -187,7 +138,7 @@ class polymer_bench(base_task):
         print(path)
         if dataset not in DATASETS:
             raise ValueError(f"dataset must be one of {list(DATASETS)}")
-        if answer_type not in ANSWER_TYPES:
+        if answer_type is not None and answer_type not in ANSWER_TYPES:
             raise ValueError("answer_type must be one of ['exactMatch', 'multipleChoice', 'ranking']")
 
         self.dataset = dataset
@@ -213,7 +164,7 @@ class polymer_bench(base_task):
                 df["answer_type"].astype(str).str.lower() == "ranking"
             )
             df = df[looks_rank]
-            
+
         df = df.reset_index(drop=True)
         if len(df) == 0:
             raise ValueError(
@@ -223,11 +174,26 @@ class polymer_bench(base_task):
 
         if answer_type == "multipleChoice":
             df = self._materialize_choices(df)
+        elif answer_type is None:
+            multiple_choice = df["answer_type"] == "multipleChoice"
+            df["options_letters"] = ""
+            df["letter_refrain"] = ""
+            if multiple_choice.any():
+                choices_df = self._materialize_choices(df.loc[multiple_choice].copy())
+                for index, row in choices_df.iterrows():
+                    for column in (
+                        "choices",
+                        "ideal",
+                        "letter_answer",
+                        "options_letters",
+                        "letter_refrain",
+                    ):
+                        df.at[index, column] = row[column]
 
         self._frame = df
         self.query = df["question"].values
         self.options = df["options_letters"].values if "options_letters" in df.columns else [""] * len(df)
-        self.answer = df["letter_answer"].values if answer_type == "multipleChoice" else df["ideal"].values
+        self.answer = self._answers_for(df)
         if "letter_refrain" in df.columns:
             self.refrain_label = df["letter_refrain"].values
         else:
@@ -235,8 +201,24 @@ class polymer_bench(base_task):
         self.ids = df["id"].astype(str).values
         self.categories = df["category"].values
 
+        self.prompt = self._prompt_for(answer_type or "exactMatch")
+
+    def _answers_for(self, frame: pd.DataFrame) -> np.ndarray:
+        if self.answer_type == "multipleChoice":
+            return frame["letter_answer"].values
+        if self.answer_type is None:
+            return np.array(
+                [
+                    row["letter_answer"] if row["answer_type"] == "multipleChoice" else row["ideal"]
+                    for _, row in frame.iterrows()
+                ]
+            )
+        return frame["ideal"].values
+
+    @staticmethod
+    def _prompt_for(answer_type: str) -> str:
         if answer_type == "multipleChoice":
-            self.prompt = (
+            return (
                 "The following is a multiple choice question about polymer science.\n"
                 "Think step by step if needed, then give the final answer.\n\n"
                 "Question: {question}\n"
@@ -247,8 +229,8 @@ class polymer_bench(base_task):
                 "(A, B, C, ...), for example: <solution>C</solution>.\n"
                 "Do not put extra words inside the solution tags."
             )
-        elif answer_type == "ranking":
-            self.prompt = (
+        if answer_type == "ranking":
+            return (
                 "The following is a polymer ranking question.\n"
                 "Think step by step if needed, then give the ordered list.\n\n"
                 "Question: {question}\n\n"
@@ -257,17 +239,16 @@ class polymer_bench(base_task):
                 "Use either JSON list form [\"a\", \"b\", \"c\"] or a > b > c.\n"
                 "Order matters. Do not put extra commentary inside the solution tags."
             )
-        else:
-            self.prompt = (
-                "The following is a polymer science question.\n"
-                "Think step by step if needed, then give the exact short final answer.\n\n"
-                "Question: {question}\n\n"
-                "{asset_note}"
-                "Put the final answer inside <solution>...</solution>.\n"
-                "For a number, output only the number (and unit if asked). "
-                "For a ranking, output the ordered list. "
-                "Do not put extra commentary inside the solution tags."
-            )
+        return (
+            "The following is a polymer science question.\n"
+            "Think step by step if needed, then give the exact short final answer.\n\n"
+            "Question: {question}\n\n"
+            "{asset_note}"
+            "Put the final answer inside <solution>...</solution>.\n"
+            "For a number, output only the number (and unit if asked). "
+            "For a ranking, output the ordered list. "
+            "Do not put extra commentary inside the solution tags."
+        )
 
     def _load_frame(self, path: str, source: str | None) -> pd.DataFrame:
         frames: list[pd.DataFrame] = []
@@ -285,8 +266,19 @@ class polymer_bench(base_task):
         for root in search_roots:
             if not root.exists():
                 continue
-            for name in EXTRA_TASK_FILES:
-                candidate = root / name
+            candidates = [root / name for name in (*EXTRA_TASK_FILES, *TASK_VIEW_FILES)]
+            existing = [candidate for candidate in candidates if candidate.exists()]
+            if any(candidate.name == "external_tasks.json" for candidate in existing):
+                existing = [
+                    candidate
+                    for candidate in existing
+                    if candidate.name not in TASK_FAMILY_VIEW_FILES + TASK_DIFFICULTY_VIEW_FILES
+                ]
+            elif any(candidate.name in TASK_FAMILY_VIEW_FILES for candidate in existing):
+                existing = [
+                    candidate for candidate in existing if candidate.name not in TASK_DIFFICULTY_VIEW_FILES
+                ]
+            for candidate in existing:
                 if candidate.exists() and str(candidate.resolve()) not in seen:
                     frames.append(self._read_any(candidate))
                     seen.add(str(candidate.resolve()))
@@ -396,7 +388,7 @@ class polymer_bench(base_task):
                     category = "KnowledgeQA"
 
             item_id = _first_present(row, ["id", "ID", "uid"], f"{category}_{len(records):04d}")
-            raw_atype = str(_first_present(row, ["answer_type"], "") or "").strip()
+            raw_atype = normalize_answer_type(_first_present(row, ["answer_type"], "")) or ""
             if raw_atype in ANSWER_TYPES:
                 atype = raw_atype
             elif letter and letter.isalpha() and choices:
@@ -505,10 +497,7 @@ class polymer_bench(base_task):
             if "options_letters" in clone._frame.columns
             else np.array([""] * len(clone._frame))
         )
-        if self.answer_type == "multipleChoice":
-            clone.answer = clone._frame["letter_answer"].values
-        else:
-            clone.answer = clone._frame["ideal"].values
+        clone.answer = clone._answers_for(clone._frame)
         clone.refrain_label = (
             clone._frame["letter_refrain"].values
             if "letter_refrain" in clone._frame.columns
@@ -570,13 +559,15 @@ class polymer_bench(base_task):
     def get_example(self, index=None):
         if index is None:
             index = int(np.random.randint(len(self.query)))
-        if self.answer_type == "multipleChoice":
-            prompt = self.prompt.format(question=self.query[index], options=self.options[index])
+        prompt_type = self.answer_type or self._frame.iloc[index]["answer_type"]
+        prompt_template = self._prompt_for(prompt_type)
+        if prompt_type == "multipleChoice":
+            prompt = prompt_template.format(question=self.query[index], options=self.options[index])
         else:
             try:
-                prompt = self.prompt.format(question=self.query[index], asset_note=self._asset_note(index))
+                prompt = prompt_template.format(question=self.query[index], asset_note=self._asset_note(index))
             except KeyError:
-                prompt = self.prompt.format(question=self.query[index])
+                prompt = prompt_template.format(question=self.query[index])
         return {
             "id": self.ids[index],
             "category": self.categories[index],
@@ -590,8 +581,11 @@ class polymer_bench(base_task):
         for i in range(len(self.query)):
             yield self.get_example(i)
 
-    def parse_response(self, response: str) -> str:
-        return _parse_response(response, self.answer_type)
+    def parse_response(self, response: str, index: int | None = None) -> str:
+        answer_type = self.answer_type
+        if answer_type is None:
+            answer_type = self._frame.iloc[index]["answer_type"] if index is not None else "exactMatch"
+        return _parse_response(response, answer_type)
 
     @staticmethod
     def _normalize_text(text: str) -> str:
@@ -610,6 +604,9 @@ class polymer_bench(base_task):
 
     def _score_one(self, pred: str, gold: str, index: int | None = None) -> float:
         rel = 0.15
+        answer_type = self.answer_type
+        if answer_type is None and index is not None:
+            answer_type = self._frame.iloc[index]["answer_type"]
         if index is not None and "tolerance_rel" in self._frame.columns:
             raw = self._frame.iloc[index].get("tolerance_rel")
             if raw is not None and str(raw) not in {"", "nan", "None"}:
@@ -617,7 +614,7 @@ class polymer_bench(base_task):
                     rel = float(raw)
                 except (TypeError, ValueError):
                     pass
-        return _score_fn(pred, gold, self.answer_type, tolerance_rel=rel)
+        return _score_fn(pred, gold, answer_type or "exactMatch", tolerance_rel=rel)
 
     def evaluate(self, response):
         if len(response) != len(self.answer):
@@ -625,7 +622,7 @@ class polymer_bench(base_task):
                 f"evaluate() expected {len(self.answer)} predictions, got {len(response)}. "
                 "Score a subset by slicing the task first or pass only the items you ran."
             )
-        parsed = [self.parse_response(item) for item in response]
+        parsed = [self.parse_response(item, i) for i, item in enumerate(response)]
         scores = [self._score_one(parsed[i], self.answer[i], i) for i in range(len(parsed))]
         parsed_arr = np.array(parsed)
         refrain = self.refrain_label
@@ -643,7 +640,7 @@ class polymer_bench(base_task):
         return out
 
     def evaluate_by_category(self, response):
-        parsed = [self.parse_response(item) for item in response]
+        parsed = [self.parse_response(item, i) for i, item in enumerate(response)]
         rows = []
         for cat in sorted(set(self.categories)):
             idx = np.where(self.categories == cat)[0]

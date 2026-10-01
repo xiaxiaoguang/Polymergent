@@ -1,10 +1,12 @@
-name: polymer2
+name: polymer
 channels:
   - conda-forge
+  - bioconda
 dependencies:
   # --- 层 0 ---
   - python=3.11
   - pip
+  - setuptools<81  # 新增：setuptools>=81 删除了 pkg_resources，mbuild/foyer/gmso 仍在 import 它
   - git            # 新增：pip 装 GitHub 仓库（pysimm / RadonPy）需要
 
   # --- 层 1–4：数值底座，禁止再走 pip ---
@@ -79,7 +81,7 @@ dependencies:
       # --- 化学纯 Python ---
       - pubchempy
       - cirpy
-      - mordred
+      - mordredcommunity        # 维护中的 mordred 分支，import 名仍是 mordred
       - stk
       - thermo
       - chemicals

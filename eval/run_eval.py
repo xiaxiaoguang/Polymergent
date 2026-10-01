@@ -24,6 +24,7 @@ import ast
 import json
 import os
 import re
+import sys
 import time
 import traceback
 from collections import Counter
@@ -33,6 +34,9 @@ from pathlib import Path
 import pandas as pd
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE.parent))
+from polymer.task.bench.constants import ANSWER_TYPES
+
 DEFAULT_CONFIG = HERE / "eval_config.json"
 
 JUDGE_PROMPT = """You are a strict grading assistant for polymer-science eval items.
@@ -552,9 +556,7 @@ def select_task(polymer_bench, args, cfg: dict):
     spec = splits[args.split]
     dataset = args.dataset or spec.get("dataset") or "All"
     answer_type = args.answer_type if args.answer_type is not None else spec.get("answer_type")
-    kwargs = {"path": args.data, "dataset": dataset}
-    if answer_type:
-        kwargs["answer_type"] = answer_type
+    kwargs = {"path": args.data, "dataset": dataset, "answer_type": answer_type}
     try:
         task = polymer_bench(**kwargs)
     except TypeError:
@@ -596,7 +598,7 @@ def list_splits(cfg: dict) -> None:
 
 
 def list_sources(polymer_bench, data_dir: Path) -> None:
-    task = polymer_bench(path=str(data_dir), dataset="All")
+    task = polymer_bench(path=str(data_dir), dataset="All", answer_type=None)
     df = task._frame
     rows = []
     for source, part in df.groupby(_series(df, "source").astype(str)):
@@ -659,9 +661,9 @@ def write_turn_file(dump_dir: Path, kind: str, index: int, item: dict, raw_text:
 
 def record_turn(kind, index, total, slice_, item, raw, extract_fn, dump_dir: Path | None, judge_llm=None, default_tol=0.15):
     text = _as_text(extract_fn(raw))
-    parsed = slice_.parse_response(text)
-    gold = item["answer"]
     local_i = index - 1
+    parsed = slice_.parse_response(text, local_i)
+    gold = item["answer"]
     score = float(slice_._score_one(parsed, gold, local_i))
     seconds = item.get("_seconds", 0.0)
     judge = None
@@ -822,7 +824,7 @@ def main() -> None:
     parser.add_argument("--dump-dir", default=str(HERE / "results" / "history"))
     parser.add_argument("--split", default=runtime.get("default_split") or "easy", choices=sorted(splits) or None)
     parser.add_argument("--dataset", default=None)
-    parser.add_argument("--answer-type", dest="answer_type", default=None, choices=["multipleChoice", "exactMatch", "ranking"])
+    parser.add_argument("--answer-type", dest="answer_type", default=None, choices=ANSWER_TYPES)
     parser.add_argument("--source", default=None, help="regex override for source column")
     parser.add_argument("--id-prefix", dest="id_prefix", default=None)
     parser.add_argument("--subfield", default=None)
